@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="150" viewBox="0 0 1200 150" role="img" aria-label="Contact">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b16"/>
+      <stop offset="52%" stop-color="#10152b"/>
+      <stop offset="100%" stop-color="#071d27"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="48%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#8ca3c7" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="150" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="150" rx="24" fill="url(#grid)"/>
+  <ellipse cx="1040" cy="18" rx="240" ry="120" fill="#38bdf8" opacity="0.13" filter="url(#glow)"/>
+  <ellipse cx="130" cy="150" rx="260" ry="110" fill="#8b5cf6" opacity="0.14" filter="url(#glow)"/>
+
+  <rect x="34" y="31" width="7" height="88" rx="3.5" fill="url(#accent)"/>
+  <circle cx="1126" cy="38" r="5" fill="#2dd4bf"/>
+  <circle cx="1145" cy="38" r="5" fill="#38bdf8"/>
+  <circle cx="1164" cy="38" r="5" fill="#8b5cf6"/>
+
+  <text x="60" y="78" fill="#f8fafc" font-size="38" font-weight="700" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="0.4">Contact</text>
+  
+  <text x="60" y="112" fill="#9fb4c8" font-size="17" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="1.2">Kraków, Poland · open to serious technical opportunities</text>
+  <rect x="60" y="132" width="1080" height="2" rx="1" fill="url(#accent)" opacity="0.72"/>
+</svg>

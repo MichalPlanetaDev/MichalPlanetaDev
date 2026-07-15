@@ -1,146 +1,25 @@
 <div align="center">
 
-# Hi 👋, I'm Michał Płaneta
+<img src="./assets/profile-header.svg" width="100%" alt="Michał Płaneta — Software Engineer" />
 
-### Software Engineer | Game Developer | 3D Artist
+<br>
 
-<img src="https://github.com/MichalPlanetaDev.png" alt="Michał Płaneta" width="150" height="150" style="border-radius: 50%;" />
+<a href="https://github.com/MichalPlanetaDev">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=3000&pause=800&color=61DAFB&center=true&vCenter=true&width=900&lines=Deterministic+systems%2C+game+technology%2C+and+defensive+engineering;Linux-first+development%2C+CI%2FCD%2C+testing%2C+and+reproducible+delivery;Software+that+can+be+inspected%2C+explained%2C+and+maintained;Connecting+code%2C+graphics%2C+infrastructure%2C+and+hardware" alt="Engineering focus" />
+</a>
 
-</div>
+<br>
 
-## 🚀 About Me
+[![GitHub](https://img.shields.io/badge/GitHub-MichalPlanetaDev-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Micha%C5%82_P%C5%82aneta-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/micha%C5%82-p%C5%82aneta-4b5701235)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michalplanetabiznes@gmail.com)
 
-I am a student of applied computer science specializing in game development. I’m passionate about every area of IT as well as fields outside of IT, so you could call me a versatile, enthusiastic engineer. I love building systems from scratch by combining software, hardware, design, and my general knowledge. Currently, I’m expanding my knowledge in game networking, cloud platforms, and AI/ML. My hobbies include aerospace engineering, music, and astronomy.
+<br>
 
-## 📚 Learning & Knowledge
-
-<div align="left">
-
-- 🌱 I'm currently learning **game networking, security, and AI/ML**
-
-</div>
-
-## 💼 Work Experience
-
-| Company | Position | Duration |
-|---|---|---|
-| DataAnnotation | Software Engineer & AI Data Evaluator | 2026-04 - Present |
-
-### Software Engineer & AI Data Evaluator at DataAnnotation
-*Remote*
-
-Evaluated AI-generated responses across technical and reasoning-focused tasks, including programming, debugging, software-engineering judgment, instruction following, and rubric-based assessment. Reviewed outputs for correctness, completeness, factual reliability, edge-case handling, code quality, and alignment with complex task requirements.
-
-**Technologies:** AI Evaluation, LLM Evaluation, Prompt Evaluation, Rubric-Based Grading, Code Review, Python, JavaScript, SQL, Docker, Git, Linux, WSL, Technical Writing, Software Engineering, Go, C++, Kubernetes, AI/ML
-
-**Key Achievements:**
-- completed technical AI evaluation tasks involving software-engineering, coding, and reasoning quality assessment
-- reviewed AI outputs for instruction following, factual accuracy, code correctness, edge-case coverage, and overall task success
-- worked with detailed grading rubrics and multi-step evaluation criteria for model-quality assessment
-- contributed to evaluation workflows requiring precision, consistency, and careful analysis of complex prompts
-
-## 🚀 Projects
-
-| Project | Description | Links |
-|---|---|---|
-| Tickline | Tickline is a defensive security-engineering portfolio project focused on deterministic simulation, protocol hardening, evidence integrity, forensic replay, analytics, and reproducible verification. It combines C++ systems code, a Go developer console, Python analytics, SQLite-backed evidence workflows, Dockerized validation, and GitHub Actions CI. | [Live](https://github.com/MichalPlanetaDev/tickline/releases/tag/v1.0.0) / [GitHub](https://github.com/MichalPlanetaDev/tickline) |
-
-### Tickline
-
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=MichalPlanetaDev&repo=tickline&theme=tokyonight&hide_border=true" alt="Tickline" width="500"/>
-
-**Technologies Used:** C++23, Go, Python, C#, Docker, CMake, SQLite, CTest, GitHub Actions, Unity, Linux, CI/CD, Bash, Shell
-
-## 🎓 Education
-
-| Institution | Degree | Duration |
-|---|---|---|
-| DSW IDEIS Cracow | Engineer | 2024-10 - 2029-02 |
-
-### Engineer in Applied Computer Science
-*DSW IDEIS Cracow*
-
-C#, Python, object-oriented programming, SQL databases, computer architecture, web technologies, operating systems, networking, algorithms and data structures, advanced mathematics and statistics, physics, IT security, design patterns, software engineering, Unity Engine, game physics, 3D modelling, Blender, 2D/3D animation, UX/UI, shaders, level design, writing game documentation, balancing, optimization, testing and video game production
-
-## 📞 Contact & Links
-
-<div align="left">
-
-- 📫 How to reach me **michalplanetabiznes@gmail.com**
-
-</div>
-
-## 🌐 Connect with Me
-
-<div align="center">
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev)&nbsp;&nbsp;&nbsp;[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/michał-płaneta-4b5701235)&nbsp;&nbsp;&nbsp;[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/RespondeatSuperior)&nbsp;&nbsp;&nbsp;[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/.skillu)
-
-</div>
-
-## 🛠️ Skills & Technologies
-
-### 💻 Programming Languages
-
-![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=white)&nbsp;&nbsp;&nbsp;![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)&nbsp;&nbsp;&nbsp;![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)&nbsp;&nbsp;&nbsp;![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)&nbsp;&nbsp;&nbsp;![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)&nbsp;&nbsp;&nbsp;![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)&nbsp;&nbsp;&nbsp;![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)&nbsp;&nbsp;&nbsp;![Perl](https://img.shields.io/badge/Perl-39457E?style=for-the-badge&logo=perl&logoColor=white)&nbsp;&nbsp;&nbsp;![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white)&nbsp;&nbsp;&nbsp;![Scala](https://img.shields.io/badge/Scala-DC322F?style=for-the-badge&logo=scala&logoColor=white)&nbsp;&nbsp;&nbsp;![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)&nbsp;&nbsp;&nbsp;![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)&nbsp;&nbsp;&nbsp;![Clojure](https://img.shields.io/badge/Clojure-5881D8?style=for-the-badge&logo=clojure&logoColor=white)&nbsp;&nbsp;&nbsp;![Objective-C](https://img.shields.io/badge/Objective--C-00589B?style=for-the-badge&logo=objectivec&logoColor=white)&nbsp;&nbsp;&nbsp;![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)&nbsp;&nbsp;&nbsp;![Haskell](https://img.shields.io/badge/Haskell-5D4F85?style=for-the-badge&logo=haskell&logoColor=white)&nbsp;&nbsp;&nbsp;![Erlang](https://img.shields.io/badge/Erlang-A90533?style=for-the-badge&logo=erlang&logoColor=white)
-
-### 💻 Frontend Development
-
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuejs&logoColor=white)&nbsp;&nbsp;&nbsp;![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)&nbsp;&nbsp;&nbsp;![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)&nbsp;&nbsp;&nbsp;![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)&nbsp;&nbsp;&nbsp;![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)&nbsp;&nbsp;&nbsp;![Qt](https://img.shields.io/badge/Qt-41CD52?style=for-the-badge&logo=qt&logoColor=white)&nbsp;&nbsp;&nbsp;![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)&nbsp;&nbsp;&nbsp;![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)&nbsp;&nbsp;&nbsp;![Backbone.js](https://img.shields.io/badge/Backbone.js-0071B5?style=for-the-badge&logo=backbonejs&logoColor=white)&nbsp;&nbsp;&nbsp;![Svelte](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)&nbsp;&nbsp;&nbsp;![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)&nbsp;&nbsp;&nbsp;![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=white)&nbsp;&nbsp;&nbsp;![AngularJS](https://img.shields.io/badge/AngularJS-DD0031?style=for-the-badge&logo=angularjs&logoColor=white)
-
-### 💻 Mobile App Development
-
-![React Native](https://img.shields.io/badge/React%20Native-61DAFB?style=for-the-badge&logo=react&logoColor=white)&nbsp;&nbsp;&nbsp;![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)&nbsp;&nbsp;&nbsp;![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-
-### 💻 Backend Development
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)&nbsp;&nbsp;&nbsp;![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)&nbsp;&nbsp;&nbsp;![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)&nbsp;&nbsp;&nbsp;![Nginx](https://img.shields.io/badge/Nginx-269539?style=for-the-badge&logo=nginx&logoColor=white)&nbsp;&nbsp;&nbsp;![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)&nbsp;&nbsp;&nbsp;![Kafka](https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
-
-### 💻 AI/ML
-
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)&nbsp;&nbsp;&nbsp;![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)&nbsp;&nbsp;&nbsp;![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)&nbsp;&nbsp;&nbsp;![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
-
-### 💻 Database
-
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;&nbsp;&nbsp;![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)&nbsp;&nbsp;&nbsp;![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)&nbsp;&nbsp;&nbsp;![Microsoft SQL Server](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)&nbsp;&nbsp;&nbsp;![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)&nbsp;&nbsp;&nbsp;![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-
-### 💻 DevOps
-
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)&nbsp;&nbsp;&nbsp;![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)&nbsp;&nbsp;&nbsp;![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)&nbsp;&nbsp;&nbsp;![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)&nbsp;&nbsp;&nbsp;![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)&nbsp;&nbsp;&nbsp;![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-
-### 💻 Framework
-
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)&nbsp;&nbsp;&nbsp;![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)&nbsp;&nbsp;&nbsp;![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)&nbsp;&nbsp;&nbsp;![Ruby on Rails](https://img.shields.io/badge/Ruby%20on%20Rails-CC0000?style=for-the-badge&logo=rubyonrails&logoColor=white)&nbsp;&nbsp;&nbsp;![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-
-### 💻 Testing
-
-![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)&nbsp;&nbsp;&nbsp;![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)&nbsp;&nbsp;&nbsp;![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-
-### 💻 Software
-
-![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=matlab&logoColor=white)&nbsp;&nbsp;&nbsp;![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)&nbsp;&nbsp;&nbsp;![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-
-### 💻 Static Site Generators
-
-![Nuxt.js](https://img.shields.io/badge/Nuxt.js-00DC82?style=for-the-badge&logo=nuxtdotjs&logoColor=white)&nbsp;&nbsp;&nbsp;![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-
-### 💻 Game Engines
-
-![Unity](https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=unity&logoColor=black)&nbsp;&nbsp;&nbsp;![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-313131?style=for-the-badge&logo=unrealengine&logoColor=white)
-
-### 💻 Other
-
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)&nbsp;&nbsp;&nbsp;![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)&nbsp;&nbsp;&nbsp;![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
-
-## 📊 GitHub Stats & Activity
-
-<div align="center">
-
-![GitHub Trophy](https://github-profile-trophy.vercel.app/?username=MichalPlanetaDev&theme=onedark&column=7&margin-w=15&margin-h=15)
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=MichalPlanetaDev&show_icons=true&theme=radical&count_private=true&include_all_commits=true)
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=MichalPlanetaDev&layout=compact&theme=radical&langs_count=10)
+![Location](https://img.shields.io/badge/Krak%C3%B3w%2C_Poland-334155?style=flat-square&logo=googlemaps&logoColor=white)
+![Work](https://img.shields.io/badge/Open_to-Software_%26_Game_Engineering-0F766E?style=flat-square)
+![Environment](https://img.shields.io/badge/Daily_environment-Ubuntu_%C2%B7_WSL_%C2%B7_CLI-5C2D91?style=flat-square&logo=linux&logoColor=white)
+![Focus](https://img.shields.io/badge/Current_focus-C%2B%2B_%C2%B7_Systems_%C2%B7_Security-1D4ED8?style=flat-square)
 
 </div>
 
@@ -148,10 +27,317 @@ C#, Python, object-oriented programming, SQL databases, computer architecture, w
 
 <div align="center">
 
-### 🎯 "Code is like humor. When you have to explain it, it's bad." – Cory House
+[Profile](#engineering-profile) · [Projects](#selected-engineering-work) · [Stack](#technology-stack) · [Workflow](#engineering-workflow) · [Stats](#github-activity) · [Direction](#current-direction) · [Contact](#contact)
 
-**Thank you for visiting my profile! 😊**
+</div>
 
-![Profile Views](https://komarev.com/ghpvc/?username=MichalPlanetaDev&color=brightgreen&style=flat-square&label=Profile+Views)
+---
+
+<img src="./assets/profile.svg" width="100%" alt="Engineering Profile" />
+
+## Engineering Profile
+
+```text
+michal@wsl:~$ whoami
+Software engineer working across systems, games, security, tooling, graphics, and hardware.
+
+michal@wsl:~$ cat priorities.txt
+Correctness. Reproducibility. Clear architecture. Honest technical claims.
+
+michal@wsl:~$ cat current-focus.txt
+C++ systems engineering, deterministic simulation, game technology, CI/CD, and defensive security.
+```
+
+I like projects where the interesting part is not only what appears on screen, but why the system behaves reliably. The repository should show that clearly through its architecture, tests, setup, documentation, and known limitations.
+
+<table>
+<tr>
+<td width="25%" align="center"><b>Systems</b><br><sub>Deterministic runtimes, protocols, replay, persistence, and performance.</sub></td>
+<td width="25%" align="center"><b>Game Technology</b><br><sub>Gameplay systems, physics, rendering, tools, and realtime interaction.</sub></td>
+<td width="25%" align="center"><b>Security</b><br><sub>Validation, trust boundaries, evidence integrity, and defensive design.</sub></td>
+<td width="25%" align="center"><b>Delivery</b><br><sub>Linux workflows, CI/CD, tests, Docker, documentation, and releases.</sub></td>
+</tr>
+</table>
+
+---
+
+<img src="./assets/projects.svg" width="100%" alt="Selected Engineering Work" />
+
+## Selected Engineering Work
+
+### Tickline
+
+<div align="center">
+
+<a href="https://github.com/MichalPlanetaDev/tickline">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MichalPlanetaDev&repo=tickline&theme=tokyonight&hide_border=true&bg_color=070B16" width="62%" alt="Tickline repository" />
+</a>
+
+<br>
+
+![Flagship](https://img.shields.io/badge/FLAGSHIP-SYSTEMS_%26_SECURITY-7C3AED?style=for-the-badge)
+![C++23](https://img.shields.io/badge/C%2B%2B-23-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![CI](https://img.shields.io/badge/CI-QUALITY_GATES-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+
+</div>
+
+Tickline is my main systems project. A C++23 fixed-step simulation acts as the source of truth, while the rest of the repository handles command validation, tamper-evident records, replay, investigation data, analytics, developer tooling, visualization, automated checks, and reproducible builds.
+
+<div align="center">
+
+[![Repository](https://img.shields.io/badge/Open_repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev/tickline)
+
+</div>
+
+<br>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Space Invaders Adventure
+
+A browser-based 3D space-combat project with Babylon.js, WebGPU-to-WebGL fallback, first-person and third-person flight, enemy waves, component damage, weapon heat, cinematic transitions, and automated browser checks.
+
+<br>
+
+![Babylon.js](https://img.shields.io/badge/Babylon.js-121212?style=flat-square)
+![WebGPU](https://img.shields.io/badge/WebGPU-005A9C?style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
+
+</td>
+<td width="50%" valign="top">
+
+### Signal Forge
+
+An interactive signal and oscilloscope-style application focused on procedural visualization, readable controls, responsive UI, and the relationship between generated data and realtime presentation.
+
+<br>
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Canvas](https://img.shields.io/badge/Canvas-Rendering-E34F26?style=flat-square&logo=html5&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Unity Game Collection
+
+Several complete academic game projects covering platforming, top-down combat, endless gameplay, physics, tilemaps, enemy behaviour, scene flow, UI, animation, audio, and reusable gameplay systems.
+
+<br>
+
+![Unity](https://img.shields.io/badge/Unity-000000?style=flat-square&logo=unity&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
+![PhysX](https://img.shields.io/badge/PhysX-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![Cinemachine](https://img.shields.io/badge/Cinemachine-222222?style=flat-square)
+
+</td>
+<td width="50%" valign="top">
+
+### Electronics and Physical Computing
+
+Hands-on work with soldering, THT and PCB assembly, digital circuits, timers, counters, displays, light sensors, and software-assisted data processing for physical systems.
+
+<br>
+
+![Electronics](https://img.shields.io/badge/Electronics-Embedded_systems-B91C1C?style=flat-square)
+![Python](https://img.shields.io/badge/Python-Data_processing-3776AB?style=flat-square&logo=python&logoColor=white)
+![Hardware](https://img.shields.io/badge/Hardware-Prototyping-475569?style=flat-square)
+![IoT](https://img.shields.io/badge/IoT-Exploration-0F766E?style=flat-square)
+
+</td>
+</tr>
+</table>
+
+---
+
+<img src="./assets/stack.svg" width="100%" alt="Technology Stack" />
+
+## Technology Stack
+
+<div align="center">
+
+### Languages
+
+<img src="https://skillicons.dev/icons?i=cpp,cs,python,ts,js,java,go,bash,html,css&theme=dark&perline=10" alt="Programming languages" />
+
+<br><br>
+
+![SQL](https://img.shields.io/badge/SQL-Relational_data-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![WGSL](https://img.shields.io/badge/WGSL-GPU_shaders-5A45FF?style=for-the-badge)
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=for-the-badge&logo=markdown&logoColor=white)
+
+### Game Development, Realtime, and Graphics
+
+<img src="https://skillicons.dev/icons?i=unity,unreal,blender&theme=dark&perline=6" alt="Game and graphics tools" />
+
+<br><br>
+
+![Babylon.js](https://img.shields.io/badge/Babylon.js-Realtime_3D-BB464B?style=for-the-badge)
+![WebGL](https://img.shields.io/badge/WebGL-Rendering-990000?style=for-the-badge&logo=webgl&logoColor=white)
+![WebGPU](https://img.shields.io/badge/WebGPU-Modern_GPU_API-005A9C?style=for-the-badge)
+![PhysX](https://img.shields.io/badge/PhysX-Game_physics-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
+![Cinemachine](https://img.shields.io/badge/Cinemachine-Camera_systems-222222?style=for-the-badge)
+![Substance 3D Painter](https://img.shields.io/badge/Substance_3D_Painter-Texturing-1E1E1E?style=for-the-badge&logo=adobe&logoColor=white)
+![FMOD](https://img.shields.io/badge/FMOD-Interactive_audio-000000?style=for-the-badge)
+![Wwise](https://img.shields.io/badge/Wwise-Game_audio-00549F?style=for-the-badge)
+
+### Web, Applications, and Backend
+
+<img src="https://skillicons.dev/icons?i=react,nextjs,nodejs,vite,tailwind,sass,dotnet,fastapi&theme=dark&perline=8" alt="Web and backend technologies" />
+
+<br><br>
+
+![REST](https://img.shields.io/badge/REST-API_design-02569B?style=for-the-badge)
+![Workers](https://img.shields.io/badge/Web_Workers-Background_processing-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![IndexedDB](https://img.shields.io/badge/IndexedDB-Browser_storage-1F2937?style=for-the-badge)
+![Responsive UI](https://img.shields.io/badge/Responsive_UI-Accessible_interfaces-0F766E?style=for-the-badge)
+
+### Data, Testing, and Automation
+
+<img src="https://skillicons.dev/icons?i=postgres,mysql,sqlite,pytorch,tensorflow,opencv&theme=dark&perline=6" alt="Data and AI technologies" />
+
+<br><br>
+
+![Playwright](https://img.shields.io/badge/Playwright-Browser_testing-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-Unit_testing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-Numerical_computing-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data_analysis-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Scientific_visualization-11557C?style=for-the-badge)
+![PocketBase](https://img.shields.io/badge/PocketBase-Backend_platform-B8DBE4?style=for-the-badge)
+
+### Systems, DevOps, and Engineering Tools
+
+<img src="https://skillicons.dev/icons?i=linux,ubuntu,windows,azure,git,github,docker,githubactions,cmake,npm,vscode,visualstudio,rider,pycharm&theme=dark&perline=14" alt="Systems and engineering tools" />
+
+<br><br>
+
+![WSL](https://img.shields.io/badge/WSL-Linux_on_Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![CLI](https://img.shields.io/badge/CLI-Terminal_first-111827?style=for-the-badge&logo=gnubash&logoColor=white)
+![tmux](https://img.shields.io/badge/tmux-Terminal_workspaces-1BB91F?style=for-the-badge&logo=tmux&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-Quality_gates-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![Sanitizers](https://img.shields.io/badge/Sanitizers-Runtime_validation-B91C1C?style=for-the-badge)
+![Fuzzing](https://img.shields.io/badge/Fuzzing-Malformed_input_testing-7C3AED?style=for-the-badge)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Static_delivery-222222?style=for-the-badge&logo=githubpages&logoColor=white)
+
+</div>
+
+---
+
+<img src="./assets/workflow.svg" width="100%" alt="Engineering Workflow" />
+
+## Engineering Workflow
+
+<div align="center">
+
+```mermaid
+flowchart LR
+    A[Issue and scope] --> B[Branch and implementation]
+    B --> C[Local quality gate]
+    C --> D[Tests and static checks]
+    D --> E[Pull request]
+    E --> F[CI verification]
+    F --> G[Release and documentation]
+```
+
+</div>
+
+<table>
+<tr>
+<td align="center" width="20%"><b>Linux first</b><br><sub>Ubuntu, WSL, Bash, tmux, CLI tooling.</sub></td>
+<td align="center" width="20%"><b>Testable</b><br><sub>Unit, integration, browser, and deterministic checks.</sub></td>
+<td align="center" width="20%"><b>Reproducible</b><br><sub>Documented setup, Docker, clean-install validation.</sub></td>
+<td align="center" width="20%"><b>Reviewable</b><br><sub>Issues, branches, commits, PR-style workflow.</sub></td>
+<td align="center" width="20%"><b>Operational</b><br><sub>CI gates, releases, debugging notes, limitations.</sub></td>
+</tr>
+</table>
+
+---
+
+<img src="./assets/stats.svg" width="100%" alt="GitHub Activity" />
+
+## GitHub Activity
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=MichalPlanetaDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=070B16&rank_icon=github" width="48%" alt="GitHub statistics" />
+<img src="https://streak-stats.demolab.com?user=MichalPlanetaDev&theme=tokyonight&hide_border=true&background=070B16" width="48%" alt="GitHub contribution streak" />
+
+<br>
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MichalPlanetaDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=070B16&langs_count=10" width="48%" alt="Repository language statistics" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=MichalPlanetaDev&theme=tokyo-night&hide_border=true&bg_color=070B16" width="48%" alt="GitHub activity graph" />
+
+<br>
+
+<img src="https://github-profile-trophy.vercel.app/?username=MichalPlanetaDev&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7" width="96%" alt="GitHub profile trophies" />
+
+</div>
+
+<sub>Language cards describe the composition of public repositories, not a proficiency ranking.</sub>
+
+---
+
+<img src="./assets/direction.svg" width="100%" alt="Current Direction" />
+
+## Current Direction
+
+```mermaid
+graph TB
+    A[Engineering Focus] --> B[C++ Systems]
+    A --> C[Game Technology]
+    A --> D[Security Engineering]
+    A --> E[Platform and Delivery]
+    A --> F[Applied Research]
+
+    B --> B1[Deterministic simulation]
+    B --> B2[Memory and concurrency]
+    B --> B3[Performance and tooling]
+
+    C --> C1[Game networking]
+    C --> C2[Rendering and shaders]
+    C --> C3[Physics and engine systems]
+
+    D --> D1[Protocol hardening]
+    D --> D2[Evidence and replay]
+    D --> D3[Defensive anti-cheat research]
+
+    E --> E1[Backend and distributed systems]
+    E --> E2[Cloud and observability]
+    E --> E3[CI/CD and production debugging]
+
+    F --> F1[AI and machine learning]
+    F --> F2[Embedded systems and robotics]
+    F --> F3[Graphics and simulation]
+```
+
+---
+
+<img src="./assets/contact.svg" width="100%" alt="Contact" />
+
+## Contact
+
+<div align="center">
+
+I am most interested in technically serious work where software must remain understandable, testable, reliable, and maintainable after the first successful demo.
+
+<br><br>
+
+[![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/micha%C5%82-p%C5%82aneta-4b5701235)
+[![Email](https://img.shields.io/badge/Send_an_Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:michalplanetabiznes@gmail.com)
+[![Repositories](https://img.shields.io/badge/Explore_repositories-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev?tab=repositories)
+
+<br><br>
+
+<img src="https://komarev.com/ghpvc/?username=MichalPlanetaDev&label=Profile%20views&color=38bdf8&style=flat-square" alt="Profile view counter" />
+
+<br><br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=120&section=footer" width="100%" alt="Profile footer" />
 
 </div>

@@ -5,7 +5,7 @@
 <br>
 
 <a href="https://github.com/MichalPlanetaDev">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=3000&pause=800&color=61DAFB&center=true&vCenter=true&width=900&lines=Deterministic+systems%2C+game+technology%2C+and+defensive+engineering;Linux-first+development%2C+CI%2FCD%2C+testing%2C+and+reproducible+delivery;Software+that+can+be+inspected%2C+explained%2C+and+maintained;Connecting+code%2C+graphics%2C+infrastructure%2C+and+hardware" alt="Engineering focus" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&duration=3000&pause=800&color=61DAFB&center=true&vCenter=true&width=900&lines=Systems%2C+game+technology%2C+security%2C+and+realtime+software;Deterministic+engineering%2C+CI%2FCD%2C+testing%2C+and+reproducible+delivery;Software+that+can+be+inspected%2C+explained%2C+and+maintained;Connecting+code%2C+graphics%2C+infrastructure%2C+and+hardware" alt="Engineering focus" />
 </a>
 
 <br>
@@ -19,7 +19,7 @@
 ![Location](https://img.shields.io/badge/Krak%C3%B3w%2C_Poland-334155?style=flat-square&logo=googlemaps&logoColor=white)
 ![Work](https://img.shields.io/badge/Open_to-Software_%26_Game_Engineering-0F766E?style=flat-square)
 ![Environment](https://img.shields.io/badge/Daily_environment-Ubuntu_%C2%B7_WSL_%C2%B7_CLI-5C2D91?style=flat-square&logo=linux&logoColor=white)
-![Focus](https://img.shields.io/badge/Current_focus-C%2B%2B_%C2%B7_Systems_%C2%B7_Security-1D4ED8?style=flat-square)
+![Focus](https://img.shields.io/badge/Focus-C%2B%2B_%C2%B7_Systems_%C2%B7_Game_Tech_%C2%B7_Security-1D4ED8?style=flat-square)
 
 </div>
 
@@ -27,7 +27,7 @@
 
 <div align="center">
 
-[Profile](#engineering-profile) · [Projects](#selected-engineering-work) · [Stack](#technology-stack) · [Workflow](#engineering-workflow) · [Stats](#github-activity) · [Direction](#current-direction) · [Contact](#contact)
+[Profile](#engineering-profile) · [Flagship Work](#flagship-engineering-work) · [Selected Work](#selected-work) · [Stack](#technology-stack) · [Approach](#engineering-approach) · [Live Metrics](#live-engineering-footprint) · [Contact](#contact)
 
 </div>
 
@@ -39,57 +39,99 @@
 
 ```text
 michal@wsl:~$ whoami
-Software engineer working across systems, games, security, tooling, graphics, and hardware.
+Software engineer working across systems, game technology, security,
+realtime graphics, tooling, backend services, and physical computing.
 
-michal@wsl:~$ cat priorities.txt
-Correctness. Reproducibility. Clear architecture. Honest technical claims.
-
-michal@wsl:~$ cat current-focus.txt
-C++ systems engineering, deterministic simulation, game technology, CI/CD, and defensive security.
+michal@wsl:~$ cat engineering-principles.txt
+Correctness. Reproducibility. Explicit architecture. Measurable behaviour.
+Clear documentation. Honest technical claims.
 ```
 
-I like projects where the interesting part is not only what appears on screen, but why the system behaves reliably. The repository should show that clearly through its architecture, tests, setup, documentation, and known limitations.
+I am most engaged by projects that require participation across the complete engineering process rather than responsibility for one isolated layer. I want to understand how a system is designed, implemented, validated, measured, debugged, documented, and delivered, including the difficult parts involving algorithms, mathematics, physics, concurrency, rendering, simulation, data integrity, and performance.
+
+This is why I identify primarily as a software engineer rather than through one narrowly defined technology. I work comfortably between low-level systems, game and rendering technology, web applications, backend services, automation, testing, infrastructure, data processing, electronics, and technical documentation. The objective is not to collect technologies, but to use the appropriate ones to build systems whose behaviour can be inspected and explained.
 
 <table>
 <tr>
-<td width="25%" align="center"><b>Systems</b><br><sub>Deterministic runtimes, protocols, replay, persistence, and performance.</sub></td>
-<td width="25%" align="center"><b>Game Technology</b><br><sub>Gameplay systems, physics, rendering, tools, and realtime interaction.</sub></td>
-<td width="25%" align="center"><b>Security</b><br><sub>Validation, trust boundaries, evidence integrity, and defensive design.</sub></td>
-<td width="25%" align="center"><b>Delivery</b><br><sub>Linux workflows, CI/CD, tests, Docker, documentation, and releases.</sub></td>
+<td width="25%" align="center"><b>Systems</b><br><sub>Deterministic runtimes, protocols, replay, persistence, concurrency, and performance.</sub></td>
+<td width="25%" align="center"><b>Game Technology</b><br><sub>Gameplay systems, physics, rendering, tools, realtime interaction, audio, and content pipelines.</sub></td>
+<td width="25%" align="center"><b>Security</b><br><sub>Trust boundaries, validation, evidence integrity, telemetry, investigation, and defensive design.</sub></td>
+<td width="25%" align="center"><b>Delivery</b><br><sub>Linux workflows, CI/CD, automated tests, Docker, documentation, releases, and reproducible builds.</sub></td>
 </tr>
 </table>
 
 ---
 
-<img src="./assets/projects.svg" width="100%" alt="Selected Engineering Work" />
+<img src="./assets/projects.svg" width="100%" alt="Flagship Engineering Work" />
 
-## Selected Engineering Work
+## Flagship Engineering Work
 
 ### Tickline
 
 <div align="center">
 
 <a href="https://github.com/MichalPlanetaDev/tickline">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MichalPlanetaDev&repo=tickline&theme=tokyonight&hide_border=true&bg_color=070B16" width="62%" alt="Tickline repository" />
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=MichalPlanetaDev&repo=tickline&theme=tokyonight&hide_border=true&bg_color=070B16" width="70%" alt="Tickline repository" />
 </a>
 
 <br>
 
-![Flagship](https://img.shields.io/badge/FLAGSHIP-SYSTEMS_%26_SECURITY-7C3AED?style=for-the-badge)
+![Flagship](https://img.shields.io/badge/FLAGSHIP-DETERMINISTIC_SECURITY_ENGINEERING-7C3AED?style=for-the-badge)
 ![C++23](https://img.shields.io/badge/C%2B%2B-23-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![CI](https://img.shields.io/badge/CI-QUALITY_GATES-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 
 </div>
 
-Tickline is my main systems project. A C++23 fixed-step simulation acts as the source of truth, while the rest of the repository handles command validation, tamper-evident records, replay, investigation data, analytics, developer tooling, visualization, automated checks, and reproducible builds.
+Tickline is a multi-language defensive engineering system built around an authoritative deterministic simulation. It accepts untrusted network-like input, performs bounded parsing and strict command validation, records accepted and rejected outcomes as canonical evidence, maintains a tamper-evident chain, persists verified investigations, reproduces behaviour through replay, exposes a read-only forensic workspace, and generates explainable analytics.
+
+The repository is intentionally designed as one connected engineering system rather than a collection of unrelated demonstrations. Its C++23 runtime, Go developer console, Python analytics, SQLite investigation storage, Unity forensic viewer, Docker verification path, CI configuration, threat model, architecture documentation, and release process exist to demonstrate how responsibility moves through explicit trust boundaries.
 
 <div align="center">
 
-[![Repository](https://img.shields.io/badge/Open_repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev/tickline)
+[![Repository](https://img.shields.io/badge/Open_Tickline-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev/tickline)
+[![Architecture](https://img.shields.io/badge/Read_architecture-0F766E?style=for-the-badge)](https://github.com/MichalPlanetaDev/tickline/blob/main/docs/architecture.md)
+[![Threat Model](https://img.shields.io/badge/Threat_model-B91C1C?style=for-the-badge)](https://github.com/MichalPlanetaDev/tickline/blob/main/docs/threat-model.md)
 
 </div>
 
 <br>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Rust Security Sandbox
+
+A defensive multiplayer-security laboratory built around an authoritative Rust server, structured telemetry, evidence generation, SQLite-backed investigations, a read-only API, and a dashboard for reviewing suspicious sessions. It models findings as evidence rather than automatic punishment and keeps presentation, storage, validation, and investigation concerns separated.
+
+<br>
+
+[![Repository](https://img.shields.io/badge/Open_repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev/rust-security-sandbox)
+![Rust](https://img.shields.io/badge/Rust-Authoritative_server-000000?style=flat-square&logo=rust&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Investigations-003B57?style=flat-square&logo=sqlite&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Reproducible_demo-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+</td>
+<td width="50%" valign="top">
+
+### Anti-Cheat Portfolio
+
+A focused Rust workspace demonstrating server-authoritative multiplayer simulation, client command validation, movement and fire-rate detection, packet-sequence validation, JSONL telemetry, offline replay, player-level risk summaries, CSV investigation export, Docker Compose, and a CLI-first Linux workflow.
+
+<br>
+
+[![Repository](https://img.shields.io/badge/Open_repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/MichalPlanetaDev/anticheat-portfolio)
+![Rust](https://img.shields.io/badge/Rust-Workspace-000000?style=flat-square&logo=rust&logoColor=white)
+![Telemetry](https://img.shields.io/badge/Telemetry-JSONL-475569?style=flat-square)
+![CI](https://img.shields.io/badge/CI-Automated_checks-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+
+</td>
+</tr>
+</table>
+
+---
+
+## My Past Projects
 
 <table>
 <tr>
@@ -97,27 +139,27 @@ Tickline is my main systems project. A C++23 fixed-step simulation acts as the s
 
 ### Space Invaders Adventure
 
-A browser-based 3D space-combat project with Babylon.js, WebGPU-to-WebGL fallback, first-person and third-person flight, enemy waves, component damage, weapon heat, cinematic transitions, and automated browser checks.
+A browser-based 3D space-combat project using Babylon.js and TypeScript, with WebGPU-to-WebGL fallback, six-degree-of-freedom flight, first-person and third-person cameras, component damage, weapon heat, enemy waves, boss encounters, cinematic transitions, and automated browser checks.
 
 <br>
 
-![Babylon.js](https://img.shields.io/badge/Babylon.js-121212?style=flat-square)
-![WebGPU](https://img.shields.io/badge/WebGPU-005A9C?style=flat-square)
+![Babylon.js](https://img.shields.io/badge/Babylon.js-Realtime_3D-BB464B?style=flat-square)
+![WebGPU](https://img.shields.io/badge/WebGPU-GPU_API-005A9C?style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-Testing-2EAD33?style=flat-square&logo=playwright&logoColor=white)
 
 </td>
 <td width="50%" valign="top">
 
 ### Signal Forge
 
-An interactive signal and oscilloscope-style application focused on procedural visualization, readable controls, responsive UI, and the relationship between generated data and realtime presentation.
+An interactive oscilloscope and signal-analysis application focused on procedural visualization, readable technical controls, responsive UI, generated data, realtime presentation, and the relationship between signal parameters and their rendered representation.
 
 <br>
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Canvas](https://img.shields.io/badge/Canvas-Rendering-E34F26?style=flat-square&logo=html5&logoColor=white)
+![Canvas](https://img.shields.io/badge/Canvas-Procedural_rendering-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 </td>
@@ -127,25 +169,25 @@ An interactive signal and oscilloscope-style application focused on procedural v
 
 ### Unity Game Collection
 
-Several complete academic game projects covering platforming, top-down combat, endless gameplay, physics, tilemaps, enemy behaviour, scene flow, UI, animation, audio, and reusable gameplay systems.
+Academic and personal game projects covering platforming, arena survival, endless gameplay, tilemaps, physics, enemy behaviour, reusable gameplay systems, scene flow, UI, animation, audio, shaders, camera systems, and content integration.
 
 <br>
 
 ![Unity](https://img.shields.io/badge/Unity-000000?style=flat-square&logo=unity&logoColor=white)
 ![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
 ![PhysX](https://img.shields.io/badge/PhysX-76B900?style=flat-square&logo=nvidia&logoColor=white)
-![Cinemachine](https://img.shields.io/badge/Cinemachine-222222?style=flat-square)
+![FMOD](https://img.shields.io/badge/FMOD-Interactive_audio-000000?style=flat-square)
 
 </td>
 <td width="50%" valign="top">
 
 ### Electronics and Physical Computing
 
-Hands-on work with soldering, THT and PCB assembly, digital circuits, timers, counters, displays, light sensors, and software-assisted data processing for physical systems.
+Hands-on work with soldering, THT and PCB assembly, digital logic, timers, counters, seven-segment displays, light sensors, measurement, physical prototyping, and software-assisted acquisition and processing of data from real-world systems.
 
 <br>
 
-![Electronics](https://img.shields.io/badge/Electronics-Embedded_systems-B91C1C?style=flat-square)
+![Electronics](https://img.shields.io/badge/Electronics-Physical_computing-B91C1C?style=flat-square)
 ![Python](https://img.shields.io/badge/Python-Data_processing-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Hardware](https://img.shields.io/badge/Hardware-Prototyping-475569?style=flat-square)
 ![IoT](https://img.shields.io/badge/IoT-Exploration-0F766E?style=flat-square)
@@ -160,19 +202,21 @@ Hands-on work with soldering, THT and PCB assembly, digital circuits, timers, co
 
 ## Technology Stack
 
+The technologies below describe tools I have used in engineering, academic, research, or portfolio work. They are grouped by responsibility rather than presented as an unqualified proficiency ranking.
+
 <div align="center">
 
-### Languages
+### Languages and Runtime Work
 
-<img src="https://skillicons.dev/icons?i=cpp,cs,python,ts,js,java,go,bash,html,css&theme=dark&perline=10" alt="Programming languages" />
+<img src="https://skillicons.dev/icons?i=cpp,rust,cs,python,ts,js,java,go,bash,html,css&theme=dark&perline=11" alt="Programming languages" />
 
 <br><br>
 
 ![SQL](https://img.shields.io/badge/SQL-Relational_data-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![WGSL](https://img.shields.io/badge/WGSL-GPU_shaders-5A45FF?style=for-the-badge)
-![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=for-the-badge&logo=markdown&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-Technical_documentation-000000?style=for-the-badge&logo=markdown&logoColor=white)
 
-### Game Development, Realtime, and Graphics
+### Game, Graphics, and Realtime Systems
 
 <img src="https://skillicons.dev/icons?i=unity,unreal,blender&theme=dark&perline=6" alt="Game and graphics tools" />
 
@@ -182,36 +226,22 @@ Hands-on work with soldering, THT and PCB assembly, digital circuits, timers, co
 ![WebGL](https://img.shields.io/badge/WebGL-Rendering-990000?style=for-the-badge&logo=webgl&logoColor=white)
 ![WebGPU](https://img.shields.io/badge/WebGPU-Modern_GPU_API-005A9C?style=for-the-badge)
 ![PhysX](https://img.shields.io/badge/PhysX-Game_physics-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
-![Cinemachine](https://img.shields.io/badge/Cinemachine-Camera_systems-222222?style=for-the-badge)
 ![Substance 3D Painter](https://img.shields.io/badge/Substance_3D_Painter-Texturing-1E1E1E?style=for-the-badge&logo=adobe&logoColor=white)
 ![FMOD](https://img.shields.io/badge/FMOD-Interactive_audio-000000?style=for-the-badge)
 ![Wwise](https://img.shields.io/badge/Wwise-Game_audio-00549F?style=for-the-badge)
 
-### Web, Applications, and Backend
+### Applications, Backend, Data, and Automation
 
-<img src="https://skillicons.dev/icons?i=react,nextjs,nodejs,vite,tailwind,sass,dotnet,fastapi&theme=dark&perline=8" alt="Web and backend technologies" />
+<img src="https://skillicons.dev/icons?i=react,nextjs,nodejs,vite,tailwind,sass,dotnet,fastapi,postgres,mysql,sqlite,pytorch,tensorflow,opencv&theme=dark&perline=14" alt="Application, backend, and data technologies" />
 
 <br><br>
 
 ![REST](https://img.shields.io/badge/REST-API_design-02569B?style=for-the-badge)
-![Workers](https://img.shields.io/badge/Web_Workers-Background_processing-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![IndexedDB](https://img.shields.io/badge/IndexedDB-Browser_storage-1F2937?style=for-the-badge)
-![Responsive UI](https://img.shields.io/badge/Responsive_UI-Accessible_interfaces-0F766E?style=for-the-badge)
-
-### Data, Testing, and Automation
-
-<img src="https://skillicons.dev/icons?i=postgres,mysql,sqlite,pytorch,tensorflow,opencv&theme=dark&perline=6" alt="Data and AI technologies" />
-
-<br><br>
-
 ![Playwright](https://img.shields.io/badge/Playwright-Browser_testing-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-Unit_testing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-Numerical_computing-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Data_analysis-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-Scientific_visualization-11557C?style=for-the-badge)
-![PocketBase](https://img.shields.io/badge/PocketBase-Backend_platform-B8DBE4?style=for-the-badge)
 
-### Systems, DevOps, and Engineering Tools
+### Systems, Tooling, and Delivery
 
 <img src="https://skillicons.dev/icons?i=linux,ubuntu,windows,azure,git,github,docker,githubactions,cmake,npm,vscode,visualstudio,rider,pycharm&theme=dark&perline=14" alt="Systems and engineering tools" />
 
@@ -219,102 +249,43 @@ Hands-on work with soldering, THT and PCB assembly, digital circuits, timers, co
 
 ![WSL](https://img.shields.io/badge/WSL-Linux_on_Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)
 ![CLI](https://img.shields.io/badge/CLI-Terminal_first-111827?style=for-the-badge&logo=gnubash&logoColor=white)
-![tmux](https://img.shields.io/badge/tmux-Terminal_workspaces-1BB91F?style=for-the-badge&logo=tmux&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Quality_gates-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-![Sanitizers](https://img.shields.io/badge/Sanitizers-Runtime_validation-B91C1C?style=for-the-badge)
-![Fuzzing](https://img.shields.io/badge/Fuzzing-Malformed_input_testing-7C3AED?style=for-the-badge)
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Static_delivery-222222?style=for-the-badge&logo=githubpages&logoColor=white)
 
 </div>
 
 ---
 
-<img src="./assets/workflow.svg" width="100%" alt="Engineering Workflow" />
+<img src="./assets/workflow.svg" width="100%" alt="Engineering Approach" />
 
-## Engineering Workflow
+## Engineering Approach
 
-<div align="center">
-
-```mermaid
-flowchart LR
-    A[Issue and scope] --> B[Branch and implementation]
-    B --> C[Local quality gate]
-    C --> D[Tests and static checks]
-    D --> E[Pull request]
-    E --> F[CI verification]
-    F --> G[Release and documentation]
-```
-
-</div>
+I prefer repositories that communicate their engineering decisions directly. A project should make its boundaries, assumptions, setup, validation strategy, failure modes, limitations, and operational workflow visible. The source code is only one part of that evidence.
 
 <table>
 <tr>
-<td align="center" width="20%"><b>Linux first</b><br><sub>Ubuntu, WSL, Bash, tmux, CLI tooling.</sub></td>
-<td align="center" width="20%"><b>Testable</b><br><sub>Unit, integration, browser, and deterministic checks.</sub></td>
-<td align="center" width="20%"><b>Reproducible</b><br><sub>Documented setup, Docker, clean-install validation.</sub></td>
-<td align="center" width="20%"><b>Reviewable</b><br><sub>Issues, branches, commits, PR-style workflow.</sub></td>
-<td align="center" width="20%"><b>Operational</b><br><sub>CI gates, releases, debugging notes, limitations.</sub></td>
+<td align="center" width="20%"><b>Linux first</b><br><sub>Ubuntu, WSL, Bash, terminal tooling, and reproducible commands.</sub></td>
+<td align="center" width="20%"><b>Testable</b><br><sub>Unit, integration, browser, deterministic, and clean-install checks.</sub></td>
+<td align="center" width="20%"><b>Reviewable</b><br><sub>Clear commits, explicit scope, architecture notes, and technical rationale.</sub></td>
+<td align="center" width="20%"><b>Defensive</b><br><sub>Trust boundaries, bounded inputs, validation, evidence, and failure analysis.</sub></td>
+<td align="center" width="20%"><b>Operational</b><br><sub>CI gates, releases, logs, debugging paths, and documented limitations.</sub></td>
 </tr>
 </table>
 
 ---
 
-<img src="./assets/stats.svg" width="100%" alt="GitHub Activity" />
+<img src="./assets/stats.svg" width="100%" alt="Live Engineering Footprint" />
 
-## GitHub Activity
+## Live Engineering Footprint
+
+The panel below is generated automatically from the repository workflow. It consolidates GitHub activity, language composition, engineering habits, achievements, recently played Spotify tracks, and Steam activity without repeating the same information through several unrelated third-party cards.
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=MichalPlanetaDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=070B16&rank_icon=github" width="48%" alt="GitHub statistics" />
-<img src="https://streak-stats.demolab.com?user=MichalPlanetaDev&theme=tokyonight&hide_border=true&background=070B16" width="48%" alt="GitHub contribution streak" />
-
-<br>
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MichalPlanetaDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=070B16&langs_count=10" width="48%" alt="Repository language statistics" />
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=MichalPlanetaDev&theme=tokyo-night&hide_border=true&bg_color=070B16" width="48%" alt="GitHub activity graph" />
-
-<br>
-
-<img src="https://github-profile-trophy.vercel.app/?username=MichalPlanetaDev&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7" width="96%" alt="GitHub profile trophies" />
+<img src="./github-metrics.svg" width="100%" alt="Michał Płaneta — live GitHub, Spotify, and Steam metrics" />
 
 </div>
 
-<sub>Language cards describe the composition of public repositories, not a proficiency ranking.</sub>
-
----
-
-<img src="./assets/direction.svg" width="100%" alt="Current Direction" />
-
-## Current Direction
-
-```mermaid
-graph TB
-    A[Engineering Focus] --> B[C++ Systems]
-    A --> C[Game Technology]
-    A --> D[Security Engineering]
-    A --> E[Platform and Delivery]
-    A --> F[Applied Research]
-
-    B --> B1[Deterministic simulation]
-    B --> B2[Memory and concurrency]
-    B --> B3[Performance and tooling]
-
-    C --> C1[Game networking]
-    C --> C2[Rendering and shaders]
-    C --> C3[Physics and engine systems]
-
-    D --> D1[Protocol hardening]
-    D --> D2[Evidence and replay]
-    D --> D3[Defensive anti-cheat research]
-
-    E --> E1[Backend and distributed systems]
-    E --> E2[Cloud and observability]
-    E --> E3[CI/CD and production debugging]
-
-    F --> F1[AI and machine learning]
-    F --> F2[Embedded systems and robotics]
-    F --> F3[Graphics and simulation]
-```
+<sub>Repository-language metrics describe the composition of public repositories. They are not a proficiency ranking. Spotify and Steam data reflect external account activity at the most recent workflow refresh.</sub>
 
 ---
 
@@ -324,7 +295,7 @@ graph TB
 
 <div align="center">
 
-I am most interested in technically serious work where software must remain understandable, testable, reliable, and maintainable after the first successful demo.
+I am interested in technically serious work where software must remain understandable, testable, reliable, and maintainable after the first successful demonstration. I am particularly drawn to roles that allow responsibility across several connected parts of a system rather than limiting engineering work to one repetitive layer.
 
 <br><br>
 

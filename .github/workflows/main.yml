@@ -34,7 +34,6 @@ jobs:
 
           config_display: columns
           config_octicon: yes
-          config_presets: "@tokyonight"
           config_timezone: Europe/Warsaw
           config_twemoji: yes
 
@@ -50,9 +49,6 @@ jobs:
           plugin_habits_from: 200
           plugin_habits_languages_limit: 8
           plugin_habits_languages_threshold: 0%
-
-          plugin_introduction: yes
-          plugin_introduction_title: yes
 
           plugin_languages: yes
           plugin_languages_analysis_timeout: 15
@@ -79,10 +75,6 @@ jobs:
           plugin_music_token: ${{ secrets.SPOTIFY_TOKENS }}
           plugin_music_limit: 3
           plugin_music_played_at: yes
-
-          plugin_repositories: yes
-          plugin_repositories_featured: tickline, rust-security-sandbox, anticheat-portfolio
-          plugin_repositories_order: featured, pinned, starred, random
 
           plugin_steam: yes
           plugin_steam_token: ${{ secrets.STEAM_TOKEN }}

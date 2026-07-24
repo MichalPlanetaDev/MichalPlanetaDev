@@ -508,7 +508,7 @@ def main() -> None:
 
     svg = increase_height(
         svg,
-        126,
+        156,
     )
 
     if "Unexpected error" in svg:

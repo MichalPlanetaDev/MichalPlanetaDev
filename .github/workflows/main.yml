@@ -14,15 +14,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  github-metrics:
+  profile-metrics:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
+
+    env:
+      PROFILE_USER: MichalPlanetaDev
+      PROFILE_TOKEN: ${{ secrets.METRICS_TOKEN }}
+      PERSONALITY_URL: ${{ secrets.SIXTEEN_PERSONALITIES_URL }}
 
     steps:
-      - name: Generate GitHub metrics
+      - name: Generate compact GitHub metrics
         uses: lowlighter/metrics@latest
         with:
           filename: github-metrics.svg
+
           token: ${{ secrets.METRICS_TOKEN }}
           committer_token: ${{ github.token }}
           committer_branch: main
@@ -32,14 +38,13 @@ jobs:
           user: MichalPlanetaDev
           template: classic
 
-          base: header, activity, repositories, metadata
+          base: header, metadata
           base_hireable: yes
           base_skip: no
-          commits_authoring: MichalPlanetaDev
 
+          config_display: columns
           config_octicon: yes
-          config_padding: 20, 8 + 11%
-          config_presets: "@lunar-red"
+          config_presets: "@tokyonight"
           config_timezone: Europe/Warsaw
           config_twemoji: yes
 
@@ -52,7 +57,7 @@ jobs:
           plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_details: percentage
-          plugin_languages_limit: 8
+          plugin_languages_limit: 6
           plugin_languages_other: yes
           plugin_languages_recent_categories: markup, programming
           plugin_languages_recent_days: 14
@@ -65,85 +70,23 @@ jobs:
           plugin_repositories_order: featured, pinned, starred, random
           plugin_repositories_pinned: 0
 
-  spotify-metrics:
-    needs: github-metrics
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    steps:
-      - name: Generate Spotify metrics
-        uses: lowlighter/metrics@latest
-        with:
-          filename: spotify-metrics.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          committer_token: ${{ github.token }}
-          committer_branch: main
-          committer_message: "Update Spotify metrics [skip ci]"
-          output_action: commit
-
-          base: ""
-
-          config_octicon: yes
-          config_padding: 20, 8 + 11%
-          config_presets: "@lunar-red"
-          config_timezone: Europe/Warsaw
-          config_twemoji: yes
-
           plugin_music: yes
           plugin_music_provider: spotify
           plugin_music_mode: recent
           plugin_music_token: ${{ secrets.SPOTIFY_TOKENS }}
-          plugin_music_limit: 5
+          plugin_music_limit: 3
           plugin_music_played_at: yes
-
-  steam-metrics:
-    needs: spotify-metrics
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    steps:
-      - name: Generate Steam metrics
-        uses: lowlighter/metrics@latest
-        with:
-          filename: steam-metrics.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          committer_token: ${{ github.token }}
-          committer_branch: main
-          committer_message: "Update Steam metrics [skip ci]"
-          output_action: commit
-
-          base: ""
-
-          config_octicon: yes
-          config_padding: 20, 8 + 11%
-          config_presets: "@lunar-red"
-          config_timezone: Europe/Warsaw
-          config_twemoji: yes
 
           plugin_steam: yes
           plugin_steam_token: ${{ secrets.STEAM_TOKEN }}
           plugin_steam_user: "76561198302989920"
           plugin_steam_sections: player, recently-played, most-played
-          plugin_steam_games_limit: 3
-          plugin_steam_recent_games_limit: 3
-          plugin_steam_achievements_limit: 2
+          plugin_steam_games_limit: 2
+          plugin_steam_recent_games_limit: 2
+          plugin_steam_achievements_limit: 0
           plugin_steam_playtime_threshold: 1
 
-  stable-profile-cards:
-    needs: steam-metrics
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    env:
-      PROFILE_USER: MichalPlanetaDev
-      PROFILE_TOKEN: ${{ secrets.METRICS_TOKEN }}
-      PERSONALITY_URL: ${{ secrets.SIXTEEN_PERSONALITIES_URL }}
-
-    steps:
-      - name: Check out latest main branch
+      - name: Check out latest main
         uses: actions/checkout@v4
         with:
           ref: main
@@ -153,26 +96,19 @@ jobs:
       - name: Synchronize generated metrics
         run: git pull --rebase origin main
 
-      - name: Generate stable profile cards
-        run: python3 scripts/generate_profile_cards.py
+      - name: Generate compact supplemental metrics
+        run: python3 scripts/generate_compact_metrics.py
 
-      - name: Validate generated SVG files
+      - name: Validate supplemental metrics
         shell: bash
         run: |
           set -Eeuo pipefail
 
-          for file in \
-            coding-activity.svg \
-            engineering-achievements.svg \
-            personality-profile.svg
-          do
-            test -s "$file"
-            grep -q '<svg' "$file"
-            grep -q '</svg>' "$file"
-            echo "[PASS] $file"
-          done
+          test -s supplemental-metrics.svg
+          grep -q '<svg' supplemental-metrics.svg
+          grep -q '</svg>' supplemental-metrics.svg
 
-      - name: Commit stable profile cards
+      - name: Commit supplemental metrics
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -180,16 +116,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add \
-            coding-activity.svg \
-            engineering-achievements.svg \
-            personality-profile.svg
+          git add supplemental-metrics.svg
 
           if git diff --cached --quiet
           then
-            echo "[PASS] Stable profile cards already current"
+            echo "[PASS] Supplemental metrics already current"
             exit 0
           fi
 
-          git commit -m "Update stable profile cards [skip ci]"
+          git commit -m "Update supplemental metrics [skip ci]"
           git push origin main

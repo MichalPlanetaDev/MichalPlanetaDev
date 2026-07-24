@@ -352,6 +352,45 @@ def increase_height(
     )
 
 
+def widen_language_bar(svg: str) -> str:
+    pattern = re.compile(
+        r'<svg class="bar" '
+        r'xmlns="http://www\.w3\.org/2000/svg"'
+        r'[^>]*>',
+        re.DOTALL,
+    )
+
+    replacement = (
+        '<svg class="bar" '
+        'xmlns="http://www.w3.org/2000/svg" '
+        'width="100%" '
+        'height="10" '
+        'viewBox="0 0 460 8" '
+        'preserveAspectRatio="none" '
+        'style="'
+        'display:block;'
+        'width:calc(100% - 64px);'
+        'max-width:780px;'
+        'height:10px;'
+        'margin:6px auto 8px;'
+        'overflow:hidden;'
+        'border-radius:5px;'
+        '">'
+    )
+
+    updated_svg, replacement_count = pattern.subn(
+        replacement,
+        svg,
+        count=1,
+    )
+
+    if replacement_count != 1:
+        raise RuntimeError(
+            "Could not locate exactly one language bar"
+        )
+
+    return updated_svg
+
 def main() -> None:
     activity = contribution_summary()
     achievements = achievement_summary()
@@ -359,6 +398,8 @@ def main() -> None:
     svg = SVG_PATH.read_text(
         encoding="utf-8",
     )
+
+    svg = widen_language_bar(svg)
 
     svg = re.sub(
         (

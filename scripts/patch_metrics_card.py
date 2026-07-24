@@ -354,8 +354,8 @@ def increase_height(
 
 def widen_language_bar(svg: str) -> str:
     pattern = re.compile(
-        r'<svg class="bar" '
-        r'xmlns="http://www\.w3\.org/2000/svg"'
+        r'<svg class="bar"\\s+'
+        r'xmlns="http://www\\.w3\\.org/2000/svg"'
         r'[^>]*>',
         re.DOTALL,
     )
@@ -363,15 +363,12 @@ def widen_language_bar(svg: str) -> str:
     replacement = (
         '<svg class="bar" '
         'xmlns="http://www.w3.org/2000/svg" '
-        'width="100%" '
+        'width="780" '
         'height="10" '
         'viewBox="0 0 460 8" '
         'preserveAspectRatio="none" '
         'style="'
         'display:block;'
-        'width:calc(100% - 64px);'
-        'max-width:780px;'
-        'height:10px;'
         'margin:6px auto 8px;'
         'overflow:hidden;'
         'border-radius:5px;'

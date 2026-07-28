@@ -6,6 +6,13 @@ on:
   schedule:
     - cron: "17 4 * * *"
 
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/main.yml"
+      - "scripts/patch_metrics_card.py"
+
 permissions:
   contents: write
 
@@ -23,7 +30,7 @@ jobs:
       PROFILE_TOKEN: ${{ secrets.METRICS_TOKEN }}
 
     steps:
-      - name: Generate the original compact Metrics card
+      - name: Generate original compact Metrics card
         uses: lowlighter/metrics@latest
         with:
           filename: github-metrics.svg
@@ -75,20 +82,20 @@ jobs:
           plugin_steam_achievements_limit: 0
           plugin_steam_playtime_threshold: 1
 
-      - name: Check out the generated card
-        uses: actions/checkout@v4
+      - name: Check out generated card
+        uses: actions/checkout@v5
         with:
           ref: main
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Synchronize the Metrics commit
+      - name: Synchronize Metrics commit
         run: git pull --rebase origin main
 
-      - name: Restore the two compact sections and personality
+      - name: Restore compact supplemental sections
         run: python3 scripts/patch_metrics_card.py
 
-      - name: Verify the final card
+      - name: Verify final card
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -104,7 +111,7 @@ jobs:
             exit 1
           fi
 
-      - name: Commit the repaired single-card SVG
+      - name: Commit repaired single-card SVG
         shell: bash
         run: |
           set -Eeuo pipefail

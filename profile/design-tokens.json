@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "themeId": "planetary-observatory",
+  "palette": {
+    "background": {
+      "void": "#05080d",
+      "deep": "#07101d",
+      "panel": "#0b1826",
+      "panel-raised": "#102436"
+    },
+    "text": {
+      "primary": "#d8f4f1",
+      "secondary": "#86a6b4",
+      "muted": "#587887"
+    },
+    "accent": {
+      "signal": "#54e3d3",
+      "orbit": "#4f78ff",
+      "warning": "#e8b15c",
+      "critical": "#e26d73",
+      "success": "#69d3a2"
+    },
+    "border": {
+      "subtle": "#1b3445",
+      "strong": "#31546a"
+    }
+  },
+  "typography": {
+    "fontStack": [
+      "Inter",
+      "Segoe UI",
+      "Arial",
+      "sans-serif"
+    ],
+    "sizes": {
+      "display": 58,
+      "title": 32,
+      "heading": 20,
+      "body": 14,
+      "label": 11,
+      "micro": 9
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "tracking": {
+      "display": -1.2,
+      "heading": 0.6,
+      "label": 1.4
+    }
+  },
+  "spacing": {
+    "unit": 4,
+    "steps": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64
+    ]
+  },
+  "radii": {
+    "small": 8,
+    "medium": 14,
+    "large": 22,
+    "pill": 999
+  },
+  "strokes": {
+    "hairline": 1,
+    "emphasis": 2
+  },
+  "opacity": {
+    "subtle": 0.12,
+    "muted": 0.45,
+    "secondary": 0.72,
+    "strong": 0.88
+  },
+  "layout": {
+    "canvasWidth": 1200,
+    "safeInset": 60,
+    "columns": 12,
+    "gutter": 24,
+    "sectionGap": 56
+  },
+  "effects": {
+    "glowBlur": 5,
+    "glowOpacity": 0.28
+  },
+  "rules": {
+    "motion": "static-github",
+    "density": "editorial",
+    "cornerLanguage": "soft-technical",
+    "contrastPairs": [
+      {
+        "foreground": "text.primary",
+        "background": "background.void",
+        "minimum": 7.0
+      },
+      {
+        "foreground": "text.secondary",
+        "background": "background.panel",
+        "minimum": 4.5
+      },
+      {
+        "foreground": "accent.signal",
+        "background": "background.deep",
+        "minimum": 4.5
+      }
+    ]
+  }
+}

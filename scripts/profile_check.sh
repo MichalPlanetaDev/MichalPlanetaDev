@@ -12,6 +12,13 @@ CHECK_ROOT="$REPOSITORY_ROOT/.profile-build/check"
 FIRST_OUTPUT="$CHECK_ROOT/manifest-first"
 SECOND_OUTPUT="$CHECK_ROOT/manifest-second"
 
+FIRST_TOKENS="$CHECK_ROOT/tokens-first.json"
+SECOND_TOKENS="$CHECK_ROOT/tokens-second.json"
+COMMITTED_TOKENS="$(
+    printf '%s\n' \
+        "$REPOSITORY_ROOT/assets/generated/contracts/visual-grammar.json"
+)"
+
 FIRST_PROBE="$CHECK_ROOT/probe-first.svg"
 SECOND_PROBE="$CHECK_ROOT/probe-second.svg"
 
@@ -49,7 +56,8 @@ uv run pytest
 shellcheck \
     scripts/profile_build.sh \
     scripts/profile_check.sh \
-    scripts/profile_probe.sh
+    scripts/profile_probe.sh \
+    scripts/profile_tokens.sh
 
 scripts/profile_build.sh \
     "$FIRST_OUTPUT"
@@ -69,6 +77,28 @@ cmp --silent \
 
 python3 -B -m json.tool \
     "$FIRST_MANIFEST" \
+    >/dev/null
+
+scripts/profile_tokens.sh \
+    "$FIRST_TOKENS"
+
+scripts/profile_tokens.sh \
+    "$SECOND_TOKENS"
+
+test -s "$FIRST_TOKENS"
+test -s "$SECOND_TOKENS"
+test -s "$COMMITTED_TOKENS"
+
+cmp --silent \
+    "$FIRST_TOKENS" \
+    "$SECOND_TOKENS"
+
+cmp --silent \
+    "$FIRST_TOKENS" \
+    "$COMMITTED_TOKENS"
+
+python3 -B -m json.tool \
+    "$FIRST_TOKENS" \
     >/dev/null
 
 scripts/profile_probe.sh \
@@ -209,4 +239,5 @@ PYTHON_SVG_POLICY
 printf '[PASS] Python formatting, lint and static analysis\n'
 printf '[PASS] Behavioral tests and shell validation\n'
 printf '[PASS] Deterministic publication manifest\n'
+printf '[PASS] Deterministic visual grammar contract\n'
 printf '[PASS] Deterministic static SVG probe and safety policy\n'

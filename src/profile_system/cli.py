@@ -8,6 +8,10 @@ import tempfile
 from collections.abc import Sequence
 from pathlib import Path
 
+from profile_system.design_tokens import (
+    DesignTokenError,
+    load_design_token_snapshot,
+)
 from profile_system.manifest import render_profile_manifest
 from profile_system.model import (
     ProfileDataError,
@@ -18,6 +22,7 @@ from profile_system.probes import (
     load_svg_probe_snapshot,
 )
 from profile_system.svg_document import render_svg_probe
+from profile_system.visual_grammar import render_visual_grammar
 
 
 def _write_atomic(
@@ -76,6 +81,18 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
 
+    tokens_parser = subparsers.add_parser("tokens")
+    tokens_parser.add_argument(
+        "--source",
+        required=True,
+        type=Path,
+    )
+    tokens_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
     probe_parser = subparsers.add_parser("probe")
     probe_parser.add_argument(
         "--source",
@@ -107,6 +124,16 @@ def main(
             )
             return 0
 
+        if arguments.command == "tokens":
+            token_snapshot = load_design_token_snapshot(arguments.source)
+            document = render_visual_grammar(token_snapshot)
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
         if arguments.command == "probe":
             probe_snapshot = load_svg_probe_snapshot(arguments.source)
             document = render_svg_probe(probe_snapshot)
@@ -121,6 +148,7 @@ def main(
         OSError,
         UnicodeError,
         json.JSONDecodeError,
+        DesignTokenError,
         ProbeDataError,
         ProfileDataError,
     ) as error:

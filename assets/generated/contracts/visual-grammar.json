@@ -1,0 +1,124 @@
+{
+  "contrast": [
+    {
+      "actual": 17.316,
+      "background": "background.void",
+      "foreground": "text.primary",
+      "minimum": 7.0,
+      "passes": true
+    },
+    {
+      "actual": 6.929,
+      "background": "background.panel",
+      "foreground": "text.secondary",
+      "minimum": 4.5,
+      "passes": true
+    },
+    {
+      "actual": 12.086,
+      "background": "background.deep",
+      "foreground": "accent.signal",
+      "minimum": 4.5,
+      "passes": true
+    }
+  ],
+  "generator": {
+    "name": "profile-system",
+    "version": "0.1.0"
+  },
+  "groups": {
+    "colors": {
+      "count": 14,
+      "values": {
+        "accent.critical": "#e26d73",
+        "accent.orbit": "#4f78ff",
+        "accent.signal": "#54e3d3",
+        "accent.success": "#69d3a2",
+        "accent.warning": "#e8b15c",
+        "background.deep": "#07101d",
+        "background.panel": "#0b1826",
+        "background.panel-raised": "#102436",
+        "background.void": "#05080d",
+        "border.strong": "#31546a",
+        "border.subtle": "#1b3445",
+        "text.muted": "#587887",
+        "text.primary": "#d8f4f1",
+        "text.secondary": "#86a6b4"
+      }
+    },
+    "effects": {
+      "glowBlur": 5,
+      "glowOpacity": 0.28
+    },
+    "layout": {
+      "canvasWidth": 1200,
+      "columns": 12,
+      "gutter": 24,
+      "safeInset": 60,
+      "sectionGap": 56
+    },
+    "opacity": {
+      "muted": 0.45,
+      "secondary": 0.72,
+      "strong": 0.88,
+      "subtle": 0.12
+    },
+    "radii": {
+      "large": 22,
+      "medium": 14,
+      "pill": 999,
+      "small": 8
+    },
+    "spacing": {
+      "steps": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64
+      ],
+      "unit": 4
+    },
+    "strokes": {
+      "emphasis": 2,
+      "hairline": 1
+    },
+    "typography": {
+      "fontStack": [
+        "Inter",
+        "Segoe UI",
+        "Arial",
+        "sans-serif"
+      ],
+      "sizes": {
+        "body": 14,
+        "display": 58,
+        "heading": 20,
+        "label": 11,
+        "micro": 9,
+        "title": 32
+      },
+      "tracking": {
+        "display": -1.2,
+        "heading": 0.6,
+        "label": 1.4
+      },
+      "weights": {
+        "bold": 700,
+        "medium": 500,
+        "regular": 400,
+        "semibold": 600
+      }
+    }
+  },
+  "rules": {
+    "cornerLanguage": "soft-technical",
+    "density": "editorial",
+    "motion": "static-github"
+  },
+  "schemaVersion": 1,
+  "themeId": "planetary-observatory"
+}

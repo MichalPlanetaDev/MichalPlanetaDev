@@ -1,0 +1,13 @@
+{
+  "name": "michal-planeta-profile-system",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "profile:build": "bash scripts/profile_build.sh",
+    "profile:check": "bash scripts/profile_check.sh"
+  }
+}

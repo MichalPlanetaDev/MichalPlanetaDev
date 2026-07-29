@@ -13,10 +13,21 @@ from profile_system.model import (
     ProfileDataError,
     load_profile_snapshot,
 )
+from profile_system.probes import (
+    ProbeDataError,
+    load_svg_probe_snapshot,
+)
+from profile_system.svg_document import render_svg_probe
 
 
-def _write_atomic(path: Path, content: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
+def _write_atomic(
+    path: Path,
+    content: str,
+) -> None:
+    path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
     descriptor, temporary_name = tempfile.mkstemp(
         dir=path.parent,
@@ -37,7 +48,10 @@ def _write_atomic(path: Path, content: str) -> None:
             stream.flush()
             os.fsync(stream.fileno())
 
-        os.replace(temporary_path, path)
+        os.replace(
+            temporary_path,
+            path,
+        )
     except BaseException:
         temporary_path.unlink(missing_ok=True)
         raise
@@ -62,29 +76,58 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
 
+    probe_parser = subparsers.add_parser("probe")
+    probe_parser.add_argument(
+        "--source",
+        required=True,
+        type=Path,
+    )
+    probe_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
     return parser
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def main(
+    argv: Sequence[str] | None = None,
+) -> int:
     arguments = _parser().parse_args(argv)
 
     try:
         if arguments.command == "build":
-            snapshot = load_profile_snapshot(arguments.source)
-            manifest = render_profile_manifest(snapshot)
+            profile_snapshot = load_profile_snapshot(arguments.source)
+            manifest = render_profile_manifest(profile_snapshot)
 
             _write_atomic(
                 arguments.output_dir / "profile-manifest.json",
                 manifest,
             )
             return 0
+
+        if arguments.command == "probe":
+            probe_snapshot = load_svg_probe_snapshot(arguments.source)
+            document = render_svg_probe(probe_snapshot)
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
     except (
         OSError,
         UnicodeError,
         json.JSONDecodeError,
+        ProbeDataError,
         ProfileDataError,
     ) as error:
-        print(f"profile-system: {error}", file=sys.stderr)
+        print(
+            f"profile-system: {error}",
+            file=sys.stderr,
+        )
         return 2
 
     return 2

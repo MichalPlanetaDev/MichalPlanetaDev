@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-label="Static SVG Surface Probe">
+  <title>Static SVG Surface Probe</title>
+  <defs>
+    <linearGradient id="background-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07101d" stop-opacity="1" />
+      <stop offset="52%" stop-color="#0b1927" stop-opacity="1" />
+      <stop offset="100%" stop-color="#08121b" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="sample-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#54e3d3" stop-opacity="1" />
+      <stop offset="100%" stop-color="#4f78ff" stop-opacity="1" />
+    </linearGradient>
+    <radialGradient id="planet-gradient" cx="42%" cy="35%" r="66%">
+      <stop offset="0%" stop-color="#c8fff7" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#5ea8ca" stop-opacity="0.86" />
+      <stop offset="100%" stop-color="#182d4f" stop-opacity="0.42" />
+    </radialGradient>
+    <linearGradient id="mask-gradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000000" stop-opacity="1" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="1" />
+    </linearGradient>
+    <clipPath id="sample-clip">
+      <circle cx="0" cy="0" r="38" />
+    </clipPath>
+    <mask id="sample-mask" maskContentUnits="objectBoundingBox">
+      <rect x="0" y="0" width="1" height="1" fill="url(#mask-gradient)" />
+    </mask>
+    <filter id="sample-filter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1200" height="620" fill="url(#background-gradient)" />
+  <circle cx="1080" cy="48" r="170" fill="url(#planet-gradient)" opacity="0.32" />
+  <rect x="0" y="0" width="1200" height="104" fill="#081521" mask="url(#sample-mask)" opacity="0.58" />
+  <text x="60" y="50" fill="#d7f5f1" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="650" letter-spacing="2.2">STATIC SVG SURFACE PROBE</text>
+  <text x="60" y="78" fill="#668b9d" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="550" letter-spacing="1.4">DETERMINISTIC / STATIC / REPOSITORY-OWNED</text>
+  <text x="1025" y="67" fill="#75eadf" font-family="Inter, Segoe UI, sans-serif" font-size="34" font-weight="650" letter-spacing="2">09</text>
+  <g id="capability-solid-geometry">
+    <rect x="60" y="136" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="80" y1="137" x2="188" y2="137" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="78" y="154" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <rect x="97" y="176" width="54" height="48" rx="9" fill="#50d8ca" />
+    <circle cx="142" cy="184" r="9" fill="#d6fff8" />
+    <text x="188" y="189" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">SOLID GEOMETRY</text>
+    <text x="188" y="214" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">SOLID-GEOMETRY</text>
+    <circle cx="378" cy="159" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-path-geometry">
+    <rect x="428" y="136" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="448" y1="137" x2="556" y2="137" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="446" y="154" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <path d="M 461 219 L 480 179 L 497 209 L 521 174" fill="none" stroke="#70e8da" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" />
+    <text x="556" y="189" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">PATH GEOMETRY</text>
+    <text x="556" y="214" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">PATH-GEOMETRY</text>
+    <circle cx="746" cy="159" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-linear-gradient">
+    <rect x="796" y="136" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="816" y1="137" x2="924" y2="137" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="814" y="154" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <rect x="830" y="174" width="60" height="52" rx="12" fill="url(#sample-gradient)" />
+    <text x="924" y="189" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">LINEAR GRADIENT</text>
+    <text x="924" y="214" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">LINEAR-GRADIENT</text>
+    <circle cx="1114" cy="159" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-radial-gradient">
+    <rect x="60" y="288" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="80" y1="289" x2="188" y2="289" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="78" y="306" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <circle cx="124" cy="352" r="31" fill="url(#planet-gradient)" />
+    <text x="188" y="341" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">RADIAL GRADIENT</text>
+    <text x="188" y="366" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">RADIAL-GRADIENT</text>
+    <circle cx="378" cy="311" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-clip-path">
+    <rect x="428" y="288" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="448" y1="289" x2="556" y2="289" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="446" y="306" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <g clip-path="url(#sample-clip)" transform="translate(492 352)">
+      <circle cx="-22" cy="0" r="31" fill="#4f78ff" />
+      <circle cx="22" cy="0" r="31" fill="#54e3d3" />
+    </g>
+    <text x="556" y="341" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">CLIP PATH</text>
+    <text x="556" y="366" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">CLIP-PATH</text>
+    <circle cx="746" cy="311" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-mask">
+    <rect x="796" y="288" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="816" y1="289" x2="924" y2="289" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="814" y="306" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <rect x="827" y="330" width="66" height="44" rx="12" fill="#65eadc" mask="url(#sample-mask)" />
+    <text x="924" y="341" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">MASK</text>
+    <text x="924" y="366" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">MASK</text>
+    <circle cx="1114" cy="311" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-filter">
+    <rect x="60" y="440" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="80" y1="441" x2="188" y2="441" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="78" y="458" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <circle cx="124" cy="504" r="25" fill="#6ce9dd" filter="url(#sample-filter)" />
+    <text x="188" y="493" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">STATIC FILTER</text>
+    <text x="188" y="518" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">FILTER</text>
+    <circle cx="378" cy="463" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-text">
+    <rect x="428" y="440" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="448" y1="441" x2="556" y2="441" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="446" y="458" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <text x="464" y="513" fill="#d7fff8" font-family="Inter, Segoe UI, sans-serif" font-size="34" font-weight="650" letter-spacing="1">Aa</text>
+    <text x="556" y="493" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">NATIVE TEXT</text>
+    <text x="556" y="518" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">TEXT</text>
+    <circle cx="746" cy="463" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+  <g id="capability-opacity">
+    <rect x="796" y="440" width="344" height="128" rx="19" fill="#0b1826" stroke="#233f54" stroke-width="1" />
+    <line x1="816" y1="441" x2="924" y2="441" stroke="#57dfd2" stroke-width="2" opacity="0.85" />
+    <rect x="814" y="458" width="92" height="92" rx="16" fill="#0a1725" stroke="#244258" stroke-width="1" />
+    <circle cx="849" cy="504" r="25" fill="#4f78ff" opacity="0.72" />
+    <circle cx="871" cy="504" r="25" fill="#54e3d3" opacity="0.62" />
+    <text x="924" y="493" fill="#d8e9ef" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="650" letter-spacing="1.1">OPACITY LAYERS</text>
+    <text x="924" y="518" fill="#7193a5" font-family="Inter, Segoe UI, sans-serif" font-size="10" font-weight="500" letter-spacing="0.9">OPACITY</text>
+    <circle cx="1114" cy="463" r="4" fill="#62e5d8" opacity="0.8" />
+  </g>
+</svg>

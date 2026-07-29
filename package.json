@@ -8,6 +8,7 @@
   },
   "scripts": {
     "profile:build": "bash scripts/profile_build.sh",
-    "profile:check": "bash scripts/profile_check.sh"
+    "profile:check": "bash scripts/profile_check.sh",
+    "profile:probe": "bash scripts/profile_probe.sh"
   }
 }

@@ -26,6 +26,13 @@ COMMITTED_KERNEL="$(
         "$REPOSITORY_ROOT/assets/generated/kernel/svg-renderer-kernel.svg"
 )"
 
+FIRST_SCENE="$CHECK_ROOT/scene-first.svg"
+SECOND_SCENE="$CHECK_ROOT/scene-second.svg"
+COMMITTED_SCENE="$(
+    printf '%s\n' \
+        "$REPOSITORY_ROOT/assets/generated/scenes/planetary-observatory.svg"
+)"
+
 FIRST_PROBE="$CHECK_ROOT/probe-first.svg"
 SECOND_PROBE="$CHECK_ROOT/probe-second.svg"
 
@@ -65,6 +72,7 @@ shellcheck \
     scripts/profile_check.sh \
     scripts/profile_kernel.sh \
     scripts/profile_probe.sh \
+    scripts/profile_scene.sh \
     scripts/profile_tokens.sh
 
 scripts/profile_build.sh \
@@ -231,6 +239,114 @@ if not required_identifiers.issubset(identifier_set):
     )
 PYTHON_KERNEL_POLICY
 
+scripts/profile_scene.sh \
+    "$FIRST_SCENE"
+
+scripts/profile_scene.sh \
+    "$SECOND_SCENE"
+
+test -s "$FIRST_SCENE"
+test -s "$SECOND_SCENE"
+test -s "$COMMITTED_SCENE"
+
+cmp --silent \
+    "$FIRST_SCENE" \
+    "$SECOND_SCENE"
+
+cmp --silent \
+    "$FIRST_SCENE" \
+    "$COMMITTED_SCENE"
+
+xmllint \
+    --noout \
+    "$FIRST_SCENE"
+
+xmllint \
+    --noout \
+    "$COMMITTED_SCENE"
+
+python3 -B - \
+    "$FIRST_SCENE" \
+    profile/scenes/planetary-observatory.json <<'PYTHON_SCENE_POLICY'
+from __future__ import annotations
+
+import json
+import re
+import sys
+import xml.etree.ElementTree as element_tree
+from pathlib import Path
+
+svg_path = Path(sys.argv[1])
+source_path = Path(sys.argv[2])
+root = element_tree.parse(svg_path).getroot()
+source = json.loads(source_path.read_text(encoding="utf-8"))
+
+required_identifiers = {
+    "renderer-kernel-title",
+    "renderer-kernel-description",
+    "scene-background",
+    "scene-stars",
+    "scene-window",
+    "scene-planet",
+    "scene-architecture",
+    "scene-console",
+    "scene-atmosphere",
+    "scene-foreground",
+}
+forbidden_elements = {
+    "animate",
+    "animateMotion",
+    "animateTransform",
+    "foreignObject",
+    "image",
+    "script",
+    "set",
+}
+identifiers: list[str] = []
+references: set[str] = set()
+star_count = 0
+
+if root.attrib.get("role") != "img":
+    raise SystemExit("Observatory scene root must use role=img")
+if root.attrib.get("viewBox") != "0 0 1200 720":
+    raise SystemExit("Observatory scene viewBox differs from its contract")
+
+for element in root.iter():
+    name = element.tag.rsplit("}", 1)[-1]
+    if name in forbidden_elements:
+        raise SystemExit(f"Forbidden observatory SVG element: {name}")
+    identifier = element.attrib.get("id")
+    if identifier is not None:
+        identifiers.append(identifier)
+    if element.get("id") == "scene-stars":
+        star_count = sum(
+            child.tag.rsplit("}", 1)[-1] == "circle"
+            for child in element
+        )
+    for attribute_name, value in element.attrib.items():
+        local_name = attribute_name.rsplit("}", 1)[-1]
+        if local_name.lower().startswith("on"):
+            raise SystemExit(f"Forbidden SVG event attribute: {local_name}")
+        if local_name == "href":
+            raise SystemExit("Observatory scene must not contain href")
+        references.update(re.findall(r"url\(#([a-z0-9-]+)\)", value))
+
+identifier_set = set(identifiers)
+if len(identifiers) != len(identifier_set):
+    raise SystemExit("Observatory scene contains duplicate identifiers")
+if not required_identifiers.issubset(identifier_set):
+    missing = sorted(required_identifiers - identifier_set)
+    raise SystemExit("Observatory scene is missing layers: " + ", ".join(missing))
+if not references.issubset(identifier_set):
+    unresolved = sorted(references - identifier_set)
+    raise SystemExit(
+        "Observatory scene contains unresolved references: "
+        + ", ".join(unresolved)
+    )
+if star_count != source["starCount"]:
+    raise SystemExit("Rendered star count differs from the scene contract")
+PYTHON_SCENE_POLICY
+
 scripts/profile_probe.sh \
     "$FIRST_PROBE"
 
@@ -371,4 +487,5 @@ printf '[PASS] Behavioral tests and shell validation\n'
 printf '[PASS] Deterministic publication manifest\n'
 printf '[PASS] Deterministic visual grammar contract\n'
 printf '[PASS] Deterministic SVG renderer kernel\n'
+printf '[PASS] Deterministic planetary observatory scene\n'
 printf '[PASS] Deterministic static SVG probe and safety policy\n'

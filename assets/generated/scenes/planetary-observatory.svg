@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="renderer-kernel-title renderer-kernel-description" height="720" role="img" viewBox="0 0 1200 720" width="1200">
+  <title id="renderer-kernel-title">Planetary Observatory Scene System</title>
+  <desc id="renderer-kernel-description">A deterministic static observatory interior framing a ringed planet, star field, structural window, command console and holographic table.</desc>
+  <defs>
+    <linearGradient id="scene-background-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#05080d" stop-opacity="1" />
+      <stop offset="58%" stop-color="#07101d" stop-opacity="1" />
+      <stop offset="100%" stop-color="#0b1826" stop-opacity="1" />
+    </linearGradient>
+    <radialGradient cx="34%" cy="28%" id="scene-planet-gradient" r="72%">
+      <stop offset="0%" stop-color="#d8f4f1" stop-opacity="0.98" />
+      <stop offset="38%" stop-color="#54e3d3" stop-opacity="0.86" />
+      <stop offset="72%" stop-color="#4f78ff" stop-opacity="0.62" />
+      <stop offset="100%" stop-color="#07101d" stop-opacity="0.94" />
+    </radialGradient>
+    <linearGradient id="scene-ring-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#4f78ff" stop-opacity="0.16" />
+      <stop offset="48%" stop-color="#54e3d3" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#d8f4f1" stop-opacity="0.12" />
+    </linearGradient>
+    <linearGradient id="scene-console-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#102436" stop-opacity="0.96" />
+      <stop offset="100%" stop-color="#05080d" stop-opacity="0.98" />
+    </linearGradient>
+    <filter height="200%" id="scene-signal-glow" width="200%" x="-50%" y="-50%">
+      <feGaussianBlur result="kernel-blur" stdDeviation="5" />
+      <feMerge>
+        <feMergeNode in="kernel-blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter height="200%" id="scene-planet-glow" width="200%" x="-50%" y="-50%">
+      <feGaussianBlur result="kernel-blur" stdDeviation="8" />
+      <feMerge>
+        <feMergeNode in="kernel-blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g data-layer="background" id="scene-background">
+    <rect fill="url(#scene-background-gradient)" height="720" width="1200" x="0" y="0" />
+    <circle cx="216" cy="115.2" fill="#4f78ff" opacity="0.05" r="240" />
+  </g>
+  <g data-layer="stars" id="scene-stars">
+    <circle cx="1116" cy="369" fill="#54e3d3" opacity="0.873079" r="1" />
+    <circle cx="800" cy="374" fill="#d8f4f1" opacity="0.781671" r="1" />
+    <circle cx="842" cy="200" fill="#d8f4f1" opacity="0.334919" r="1" />
+    <circle cx="516" cy="32" fill="#d8f4f1" opacity="0.861435" r="1" />
+    <circle cx="497" cy="416" fill="#d8f4f1" opacity="0.297821" r="2" />
+    <circle cx="121" cy="254" fill="#d8f4f1" opacity="0.631114" r="1" />
+    <circle cx="358" cy="118" fill="#d8f4f1" opacity="0.294093" r="1" />
+    <circle cx="268" cy="402" fill="#d8f4f1" opacity="0.50672" r="1" />
+    <circle cx="1069" cy="436" fill="#d8f4f1" opacity="0.671655" r="1" />
+    <circle cx="608" cy="177" fill="#d8f4f1" opacity="0.464721" r="1" />
+    <circle cx="333" cy="360" fill="#d8f4f1" opacity="0.402262" r="1" />
+    <circle cx="209" cy="87" fill="#d8f4f1" opacity="0.339102" r="1" />
+    <circle cx="553" cy="324" fill="#d8f4f1" opacity="0.801343" r="2" />
+    <circle cx="730" cy="232" fill="#d8f4f1" opacity="0.315616" r="1" />
+    <circle cx="440" cy="163" fill="#d8f4f1" opacity="0.744437" r="1" />
+    <circle cx="170" cy="268" fill="#d8f4f1" opacity="0.804325" r="1" />
+    <circle cx="928" cy="342" fill="#d8f4f1" opacity="0.583771" r="1" />
+    <circle cx="642" cy="54" fill="#54e3d3" opacity="0.618838" r="1" />
+    <circle cx="695" cy="380" fill="#d8f4f1" opacity="0.611702" r="1" />
+    <circle cx="1030" cy="335" fill="#d8f4f1" opacity="0.892377" r="1" />
+    <circle cx="124" cy="219" fill="#54e3d3" opacity="0.613609" r="1" />
+    <circle cx="688" cy="187" fill="#d8f4f1" opacity="0.757532" r="1" />
+    <circle cx="48" cy="312" fill="#d8f4f1" opacity="0.852971" r="2" />
+    <circle cx="72" cy="170" fill="#d8f4f1" opacity="0.677539" r="1" />
+    <circle cx="596" cy="321" fill="#d8f4f1" opacity="0.554586" r="1" />
+    <circle cx="795" cy="108" fill="#d8f4f1" opacity="0.733172" r="1" />
+    <circle cx="336" cy="320" fill="#d8f4f1" opacity="0.550966" r="1" />
+    <circle cx="1034" cy="274" fill="#d8f4f1" opacity="0.360847" r="1" />
+    <circle cx="475" cy="411" fill="#d8f4f1" opacity="0.726278" r="1" />
+    <circle cx="1135" cy="180" fill="#d8f4f1" opacity="0.560568" r="1" />
+    <circle cx="91" cy="189" fill="#54e3d3" opacity="0.811403" r="2" />
+    <circle cx="109" cy="346" fill="#d8f4f1" opacity="0.736977" r="1" />
+    <circle cx="1140" cy="125" fill="#d8f4f1" opacity="0.531666" r="1" />
+    <circle cx="530" cy="123" fill="#d8f4f1" opacity="0.429478" r="1" />
+    <circle cx="551" cy="396" fill="#54e3d3" opacity="0.305628" r="1" />
+    <circle cx="177" cy="432" fill="#d8f4f1" opacity="0.87045" r="1" />
+    <circle cx="479" cy="207" fill="#54e3d3" opacity="0.898243" r="1" />
+    <circle cx="637" cy="429" fill="#54e3d3" opacity="0.702224" r="1" />
+    <circle cx="1151" cy="48" fill="#54e3d3" opacity="0.649803" r="1" />
+    <circle cx="544" cy="180" fill="#d8f4f1" opacity="0.549047" r="1" />
+    <circle cx="874" cy="275" fill="#d8f4f1" opacity="0.651388" r="1" />
+    <circle cx="232" cy="125" fill="#d8f4f1" opacity="0.867223" r="1" />
+    <circle cx="342" cy="234" fill="#d8f4f1" opacity="0.477951" r="1" />
+    <circle cx="120" cy="87" fill="#d8f4f1" opacity="0.687873" r="1" />
+    <circle cx="387" cy="172" fill="#d8f4f1" opacity="0.732549" r="2" />
+    <circle cx="623" cy="246" fill="#d8f4f1" opacity="0.880899" r="2" />
+    <circle cx="1061" cy="124" fill="#54e3d3" opacity="0.79181" r="1" />
+    <circle cx="841" cy="409" fill="#d8f4f1" opacity="0.742957" r="1" />
+    <circle cx="1034" cy="362" fill="#54e3d3" opacity="0.830831" r="1" />
+    <circle cx="329" cy="251" fill="#d8f4f1" opacity="0.461931" r="1" />
+    <circle cx="425" cy="322" fill="#d8f4f1" opacity="0.825144" r="1" />
+    <circle cx="649" cy="156" fill="#d8f4f1" opacity="0.854601" r="1" />
+    <circle cx="573" cy="129" fill="#d8f4f1" opacity="0.533417" r="1" />
+    <circle cx="288" cy="53" fill="#d8f4f1" opacity="0.620171" r="1" />
+    <circle cx="45" cy="44" fill="#54e3d3" opacity="0.299437" r="1" />
+    <circle cx="532" cy="421" fill="#d8f4f1" opacity="0.699088" r="1" />
+    <line filter="url(#scene-signal-glow)" opacity="0.74" stroke="#54e3d3" stroke-linecap="round" stroke-width="2" x1="236" x2="319.693" y1="134" y2="161.193" />
+    <line opacity="0.1776" stroke="#4f78ff" stroke-linecap="round" stroke-width="1" x1="236" x2="348.986" y1="134" y2="170.711" />
+    <line filter="url(#scene-signal-glow)" opacity="0.42" stroke="#54e3d3" stroke-linecap="round" stroke-width="2" x1="602" x2="651.707" y1="92" y2="113.099" />
+    <line opacity="0.1008" stroke="#4f78ff" stroke-linecap="round" stroke-width="1" x1="602" x2="669.105" y1="92" y2="120.484" />
+    <line filter="url(#scene-signal-glow)" opacity="0.58" stroke="#54e3d3" stroke-linecap="round" stroke-width="2" x1="1006" x2="1075.21" y1="152" y2="171.846" />
+    <line opacity="0.1392" stroke="#4f78ff" stroke-linecap="round" stroke-width="1" x1="1006" x2="1099.43" y1="152" y2="178.792" />
+  </g>
+  <g data-layer="window" id="scene-window">
+    <path d="M 72 508 L 72 96 Q 600 18 1128 96 L 1128 508" fill="none" stroke="#31546a" stroke-opacity="0.88" stroke-width="2" />
+    <path d="M 92 498 L 92 112 Q 600 42 1108 112 L 1108 498" fill="none" stroke="#1b3445" stroke-opacity="0.72" stroke-width="1" />
+    <line opacity="0.62" stroke="#1b3445" stroke-width="1" x1="210" x2="210" y1="92" y2="508" />
+    <line opacity="0.62" stroke="#1b3445" stroke-width="1" x1="390" x2="390" y1="92" y2="508" />
+    <line opacity="0.62" stroke="#1b3445" stroke-width="1" x1="810" x2="810" y1="92" y2="508" />
+    <line opacity="0.62" stroke="#1b3445" stroke-width="1" x1="990" x2="990" y1="92" y2="508" />
+  </g>
+  <g data-layer="planet" id="scene-planet">
+    <ellipse cx="846" cy="244" fill="none" opacity="0.64" rx="192" ry="48" stroke="url(#scene-ring-gradient)" stroke-width="18" transform="rotate(-12.0 846 244)" />
+    <circle cx="846" cy="244" fill="url(#scene-planet-gradient)" filter="url(#scene-planet-glow)" r="118" />
+    <circle cx="812.96" cy="218.04" fill="#d8f4f1" opacity="0.12" r="40.12" />
+    <path d="M 654 244 A 192 48 0 0 0 1038 244" fill="none" opacity="0.92" stroke="url(#scene-ring-gradient)" stroke-linecap="round" stroke-width="9" transform="rotate(-12.0 846 244)" />
+  </g>
+  <g data-layer="architecture" id="scene-architecture">
+    <path d="M 0 0 L 166 0 L 112 720 L 0 720 Z M 1200 0 L 1034 0 L 1088 720 L 1200 720 Z" fill="#0b1826" opacity="0.94" />
+    <line stroke="#54e3d3" stroke-opacity="0.24" stroke-width="2" x1="84" x2="118" y1="132" y2="480" />
+    <line stroke="#54e3d3" stroke-opacity="0.24" stroke-width="2" x1="1116" x2="1082" y1="132" y2="480" />
+  </g>
+  <g data-layer="console" id="scene-console">
+    <path d="M 0 502 L 1200 502 L 1200 720 L 0 720 Z" fill="url(#scene-console-gradient)" />
+    <path d="M 180 720 L 300 548 L 900 548 L 1020 720 Z" fill="#102436" stroke="#31546a" stroke-width="1" />
+    <ellipse cx="600" cy="586" fill="#4f78ff" filter="url(#scene-signal-glow)" opacity="0.18" rx="152" ry="34" />
+    <ellipse cx="600" cy="586" fill="none" rx="152" ry="34" stroke="#54e3d3" stroke-opacity="0.72" stroke-width="2" />
+    <line opacity="0.3" stroke="#54e3d3" stroke-width="1" x1="488" x2="488" y1="556" y2="616" />
+    <line opacity="0.3" stroke="#54e3d3" stroke-width="1" x1="544" x2="544" y1="556" y2="616" />
+    <line opacity="0.3" stroke="#54e3d3" stroke-width="1" x1="600" x2="600" y1="556" y2="616" />
+    <line opacity="0.3" stroke="#54e3d3" stroke-width="1" x1="656" x2="656" y1="556" y2="616" />
+    <line opacity="0.3" stroke="#54e3d3" stroke-width="1" x1="712" x2="712" y1="556" y2="616" />
+  </g>
+  <g data-layer="atmosphere" id="scene-atmosphere" opacity="0.72">
+    <line stroke="#54e3d3" stroke-opacity="0.24" stroke-width="1" x1="132" x2="1068" y1="502" y2="502" />
+    <ellipse cx="600" cy="578" fill="#54e3d3" opacity="0.05" rx="384" ry="92" />
+  </g>
+  <g data-layer="foreground" id="scene-foreground">
+    <rect fill="#0b1826" height="104" rx="14" stroke="#1b3445" stroke-width="1" width="248" x="132" y="588" />
+    <text fill="#54e3d3" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" x="156" y="622">OBSERVATORY ARRAY</text>
+    <text fill="#d8f4f1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="0" x="156" y="656">PLANETARY WINDOW ONLINE</text>
+    <text fill="#587887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="400" letter-spacing="1.4" x="156" y="682">SEED 17031998 // 56 STARS</text>
+    <rect fill="#0b1826" height="104" rx="22" stroke="#1b3445" stroke-width="1" width="248" x="820" y="588" />
+    <text fill="#4f78ff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" x="844" y="622">SCENE SYSTEM // M09</text>
+    <text fill="#d8f4f1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="0" x="844" y="656">STATIC GITHUB SURFACE</text>
+    <text fill="#587887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="400" letter-spacing="1.4" x="844" y="682">TOKEN-DRIVEN // DETERMINISTIC</text>
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="1.4" text-anchor="middle" x="600" y="44">PLANETARY OBSERVATORY</text>
+    <text fill="#e8b15c" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="1.4" text-anchor="middle" x="600" y="68">DEEP-SPACE ENGINEERING INTERFACE</text>
+  </g>
+</svg>

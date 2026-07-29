@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "sceneId": "planetary-observatory",
+  "themeId": "planetary-observatory",
+  "title": "Planetary Observatory Scene System",
+  "description": "A deterministic static observatory interior framing a ringed planet, star field, structural window, command console and holographic table.",
+  "viewport": {"width": 1200, "height": 720},
+  "starSeed": 17031998,
+  "starCount": 56,
+  "horizonY": 508,
+  "planet": {
+    "centerX": 846,
+    "centerY": 244,
+    "radius": 118,
+    "ringRadiusX": 192,
+    "ringRadiusY": 48,
+    "ringAngle": -12
+  },
+  "shootingStars": [
+    {"x": 236, "y": 134, "length": 88, "angle": 18, "opacity": 0.74},
+    {"x": 602, "y": 92, "length": 54, "angle": 23, "opacity": 0.42},
+    {"x": 1006, "y": 152, "length": 72, "angle": 16, "opacity": 0.58}
+  ],
+  "layerOrder": [
+    "background",
+    "stars",
+    "window",
+    "planet",
+    "architecture",
+    "console",
+    "atmosphere",
+    "foreground"
+  ]
+}

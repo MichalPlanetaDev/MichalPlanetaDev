@@ -18,10 +18,12 @@ from profile_system.model import (
     ProfileDataError,
     load_profile_snapshot,
 )
+from profile_system.observatory_scene import render_observatory_scene
 from profile_system.probes import (
     ProbeDataError,
     load_svg_probe_snapshot,
 )
+from profile_system.scene import SceneDataError, load_observatory_scene
 from profile_system.svg_document import render_svg_probe
 from profile_system.svg_kernel import SvgKernelError
 from profile_system.visual_grammar import render_visual_grammar
@@ -107,6 +109,23 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
 
+    scene_parser = subparsers.add_parser("scene")
+    scene_parser.add_argument(
+        "--source",
+        required=True,
+        type=Path,
+    )
+    scene_parser.add_argument(
+        "--tokens",
+        required=True,
+        type=Path,
+    )
+    scene_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
     probe_parser = subparsers.add_parser("probe")
     probe_parser.add_argument(
         "--source",
@@ -158,6 +177,20 @@ def main(
             )
             return 0
 
+        if arguments.command == "scene":
+            scene_snapshot = load_observatory_scene(arguments.source)
+            token_snapshot = load_design_token_snapshot(arguments.tokens)
+            document = render_observatory_scene(
+                scene_snapshot,
+                token_snapshot,
+            )
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
         if arguments.command == "probe":
             probe_snapshot = load_svg_probe_snapshot(arguments.source)
             document = render_svg_probe(probe_snapshot)
@@ -175,6 +208,7 @@ def main(
         DesignTokenError,
         ProbeDataError,
         ProfileDataError,
+        SceneDataError,
         SvgKernelError,
     ) as error:
         print(

@@ -20,6 +20,7 @@ SAFE_ELEMENTS = frozenset(
         "clipPath",
         "defs",
         "desc",
+        "ellipse",
         "feGaussianBlur",
         "feMerge",
         "feMergeNode",

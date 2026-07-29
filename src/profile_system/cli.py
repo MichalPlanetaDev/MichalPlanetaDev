@@ -12,6 +12,7 @@ from profile_system.design_tokens import (
     DesignTokenError,
     load_design_token_snapshot,
 )
+from profile_system.kernel_specimen import render_kernel_specimen
 from profile_system.manifest import render_profile_manifest
 from profile_system.model import (
     ProfileDataError,
@@ -22,6 +23,7 @@ from profile_system.probes import (
     load_svg_probe_snapshot,
 )
 from profile_system.svg_document import render_svg_probe
+from profile_system.svg_kernel import SvgKernelError
 from profile_system.visual_grammar import render_visual_grammar
 
 
@@ -93,6 +95,18 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
 
+    kernel_parser = subparsers.add_parser("kernel")
+    kernel_parser.add_argument(
+        "--tokens",
+        required=True,
+        type=Path,
+    )
+    kernel_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
     probe_parser = subparsers.add_parser("probe")
     probe_parser.add_argument(
         "--source",
@@ -134,6 +148,16 @@ def main(
             )
             return 0
 
+        if arguments.command == "kernel":
+            token_snapshot = load_design_token_snapshot(arguments.tokens)
+            document = render_kernel_specimen(token_snapshot)
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
         if arguments.command == "probe":
             probe_snapshot = load_svg_probe_snapshot(arguments.source)
             document = render_svg_probe(probe_snapshot)
@@ -151,6 +175,7 @@ def main(
         DesignTokenError,
         ProbeDataError,
         ProfileDataError,
+        SvgKernelError,
     ) as error:
         print(
             f"profile-system: {error}",

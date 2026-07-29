@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="renderer-kernel-title renderer-kernel-description" height="520" role="img" viewBox="0 0 1200 520" width="1200">
+  <title id="renderer-kernel-title">SVG Renderer Kernel</title>
+  <desc id="renderer-kernel-description">Token-driven static SVG primitives, layer boundaries, accessible text and local resource references.</desc>
+  <defs>
+    <linearGradient id="kernel-background-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#05080d" stop-opacity="1" />
+      <stop offset="54%" stop-color="#07101d" stop-opacity="1" />
+      <stop offset="100%" stop-color="#0b1826" stop-opacity="1" />
+    </linearGradient>
+    <linearGradient id="kernel-signal-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#54e3d3" stop-opacity="1" />
+      <stop offset="100%" stop-color="#4f78ff" stop-opacity="1" />
+    </linearGradient>
+    <radialGradient cx="38%" cy="32%" id="kernel-orbit-gradient" r="68%">
+      <stop offset="0%" stop-color="#d8f4f1" stop-opacity="0.96" />
+      <stop offset="44%" stop-color="#54e3d3" stop-opacity="0.84" />
+      <stop offset="100%" stop-color="#4f78ff" stop-opacity="0.18" />
+    </radialGradient>
+    <linearGradient id="kernel-mask-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="1" />
+      <stop offset="48%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="1" />
+    </linearGradient>
+    <clipPath id="kernel-panel-clip">
+      <rect height="92" rx="14" width="386" x="198" y="72" />
+    </clipPath>
+    <mask id="kernel-fade-mask" maskContentUnits="objectBoundingBox">
+      <rect fill="url(#kernel-mask-gradient)" height="1" width="1" x="0" y="0" />
+    </mask>
+    <filter height="200%" id="kernel-signal-glow" width="200%" x="-50%" y="-50%">
+      <feGaussianBlur result="kernel-blur" stdDeviation="5" />
+      <feMerge>
+        <feMergeNode in="kernel-blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g data-layer="background" id="layer-background">
+    <rect fill="url(#kernel-background-gradient)" height="520" width="1200" x="0" y="0" />
+  </g>
+  <g data-layer="grid" id="layer-grid" opacity="0.12">
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="60" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="150" x2="150" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="240" x2="240" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="330" x2="330" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="420" x2="420" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="510" x2="510" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="600" x2="600" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="690" x2="690" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="780" x2="780" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="870" x2="870" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="960" x2="960" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="1050" x2="1050" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="1140" x2="1140" y1="36" y2="484" />
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="92" y2="92" />
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="164" y2="164" />
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="236" y2="236" />
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="308" y2="308" />
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="380" y2="380" />
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="452" y2="452" />
+  </g>
+  <g data-layer="interface" id="layer-interface">
+    <rect fill="none" height="448" rx="22" stroke="#31546a" stroke-opacity="0.72" stroke-width="1" width="1080" x="60" y="36" />
+    <line stroke="url(#kernel-signal-gradient)" stroke-linecap="round" stroke-width="2" x1="60" x2="246" y1="36" y2="36" />
+    <text fill="#54e3d3" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1.4" x="60" y="76">SVG RENDERER KERNEL // M08</text>
+    <text fill="#d8f4f1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="-1.2" x="60" y="120">TOKEN-DRIVEN SVG PRIMITIVES</text>
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" x="60" y="146">Deterministic geometry, owned identifiers and validated local references.</text>
+  </g>
+  <g data-layer="primitives" id="layer-primitives" transform="translate(60 178)">
+    <rect fill="#0b1826" height="240" rx="22" stroke="#1b3445" stroke-width="1" width="640" x="0" y="0" />
+    <text fill="#587887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" x="28" y="32">GEOMETRY / CLIPPING / FILTERS</text>
+    <circle cx="108" cy="126" fill="url(#kernel-orbit-gradient)" filter="url(#kernel-signal-glow)" r="54" />
+    <circle cx="108" cy="126" fill="none" r="76" stroke="#4f78ff" stroke-dasharray="7 9" stroke-opacity="0.72" stroke-width="1" />
+    <path d="M 202 162 L 240 82 L 282 142 L 338 68 L 382 134" fill="none" stroke="url(#kernel-signal-gradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    <g clip-path="url(#kernel-panel-clip)">
+      <rect fill="#102436" height="92" rx="14" width="386" x="198" y="72" />
+      <rect fill="url(#kernel-signal-gradient)" height="92" opacity="0.45" width="386" x="198" y="72" />
+    </g>
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="500" x="198" y="198">LOCAL DEFS → URL REFERENCES → STATIC OUTPUT</text>
+  </g>
+  <g data-layer="typography" id="layer-typography" transform="translate(724 178)">
+    <rect fill="#0b1826" height="240" rx="22" stroke="#1b3445" stroke-width="1" width="416" x="0" y="0" />
+    <text fill="#587887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" x="28" y="32">TYPOGRAPHY / TOKENS / LAYERS</text>
+    <text fill="#d8f4f1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" x="28" y="74">Readable by default</text>
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" x="28" y="104">No hover-only evidence. No external fonts.</text>
+    <rect fill="#54e3d3" height="10" rx="5" width="34" x="28" y="132" />
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="1.4" x="78" y="141">SIGNAL</text>
+    <rect fill="#4f78ff" height="10" rx="5" width="34" x="28" y="156" />
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="1.4" x="78" y="165">ORBIT</text>
+    <rect fill="#e8b15c" height="10" rx="5" width="34" x="28" y="180" />
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="1.4" x="78" y="189">WARNING</text>
+    <rect fill="#69d3a2" height="10" rx="5" width="34" x="28" y="204" />
+    <text fill="#86a6b4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="1.4" x="78" y="213">SUCCESS</text>
+  </g>
+  <g data-layer="footer" id="layer-footer">
+    <line stroke="#1b3445" stroke-width="1" x1="60" x2="1140" y1="452" y2="452" />
+    <text fill="#587887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="500" letter-spacing="1.4" x="60" y="482">SAFE STATIC SVG • DETERMINISTIC OUTPUT • NO EXTERNAL REFERENCES</text>
+    <text fill="#54e3d3" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="1.4" text-anchor="end" x="1140" y="482">KERNEL STATUS // READY</text>
+  </g>
+</svg>

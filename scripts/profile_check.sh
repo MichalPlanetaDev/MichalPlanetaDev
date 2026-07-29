@@ -19,6 +19,13 @@ COMMITTED_TOKENS="$(
         "$REPOSITORY_ROOT/assets/generated/contracts/visual-grammar.json"
 )"
 
+FIRST_KERNEL="$CHECK_ROOT/kernel-first.svg"
+SECOND_KERNEL="$CHECK_ROOT/kernel-second.svg"
+COMMITTED_KERNEL="$(
+    printf '%s\n' \
+        "$REPOSITORY_ROOT/assets/generated/kernel/svg-renderer-kernel.svg"
+)"
+
 FIRST_PROBE="$CHECK_ROOT/probe-first.svg"
 SECOND_PROBE="$CHECK_ROOT/probe-second.svg"
 
@@ -56,6 +63,7 @@ uv run pytest
 shellcheck \
     scripts/profile_build.sh \
     scripts/profile_check.sh \
+    scripts/profile_kernel.sh \
     scripts/profile_probe.sh \
     scripts/profile_tokens.sh
 
@@ -100,6 +108,128 @@ cmp --silent \
 python3 -B -m json.tool \
     "$FIRST_TOKENS" \
     >/dev/null
+
+scripts/profile_kernel.sh \
+    "$FIRST_KERNEL"
+
+scripts/profile_kernel.sh \
+    "$SECOND_KERNEL"
+
+test -s "$FIRST_KERNEL"
+test -s "$SECOND_KERNEL"
+test -s "$COMMITTED_KERNEL"
+
+cmp --silent \
+    "$FIRST_KERNEL" \
+    "$SECOND_KERNEL"
+
+cmp --silent \
+    "$FIRST_KERNEL" \
+    "$COMMITTED_KERNEL"
+
+xmllint \
+    --noout \
+    "$FIRST_KERNEL"
+
+xmllint \
+    --noout \
+    "$COMMITTED_KERNEL"
+
+python3 -B - \
+    "$FIRST_KERNEL" <<'PYTHON_KERNEL_POLICY'
+from __future__ import annotations
+
+import re
+import sys
+import xml.etree.ElementTree as element_tree
+from pathlib import Path
+
+path = Path(sys.argv[1])
+root = element_tree.parse(path).getroot()
+
+forbidden_elements = {
+    "animate",
+    "animateMotion",
+    "animateTransform",
+    "foreignObject",
+    "image",
+    "script",
+    "set",
+}
+required_identifiers = {
+    "renderer-kernel-title",
+    "renderer-kernel-description",
+    "layer-background",
+    "layer-grid",
+    "layer-interface",
+    "layer-primitives",
+    "layer-typography",
+    "layer-footer",
+}
+identifiers: list[str] = []
+references: set[str] = set()
+
+if root.attrib.get("role") != "img":
+    raise SystemExit("Renderer kernel root must use role=img")
+
+labelled_by = set(root.attrib.get("aria-labelledby", "").split())
+
+if not {
+    "renderer-kernel-title",
+    "renderer-kernel-description",
+}.issubset(labelled_by):
+    raise SystemExit("Renderer kernel is missing accessible labelling")
+
+if root.attrib.get("viewBox") != "0 0 1200 520":
+    raise SystemExit("Renderer kernel viewBox differs from its contract")
+
+for element in root.iter():
+    element_name = element.tag.rsplit("}", 1)[-1]
+
+    if element_name in forbidden_elements:
+        raise SystemExit(f"Forbidden SVG element: {element_name}")
+
+    identifier = element.attrib.get("id")
+
+    if identifier is not None:
+        identifiers.append(identifier)
+
+    for attribute_name, value in element.attrib.items():
+        local_name = attribute_name.rsplit("}", 1)[-1]
+
+        if local_name.lower().startswith("on"):
+            raise SystemExit(
+                f"Forbidden SVG event attribute: {local_name}"
+            )
+        if local_name == "href":
+            raise SystemExit("Renderer kernel must not contain href")
+
+        references.update(
+            re.findall(
+                r"url\(#([a-z0-9-]+)\)",
+                value,
+            )
+        )
+
+identifier_set = set(identifiers)
+
+if len(identifiers) != len(identifier_set):
+    raise SystemExit("Renderer kernel contains duplicate identifiers")
+
+if not references.issubset(identifier_set):
+    unresolved = sorted(references - identifier_set)
+    raise SystemExit(
+        "Renderer kernel contains unresolved references: "
+        + ", ".join(unresolved)
+    )
+
+if not required_identifiers.issubset(identifier_set):
+    missing = sorted(required_identifiers - identifier_set)
+    raise SystemExit(
+        "Renderer kernel is missing required layers: "
+        + ", ".join(missing)
+    )
+PYTHON_KERNEL_POLICY
 
 scripts/profile_probe.sh \
     "$FIRST_PROBE"
@@ -240,4 +370,5 @@ printf '[PASS] Python formatting, lint and static analysis\n'
 printf '[PASS] Behavioral tests and shell validation\n'
 printf '[PASS] Deterministic publication manifest\n'
 printf '[PASS] Deterministic visual grammar contract\n'
+printf '[PASS] Deterministic SVG renderer kernel\n'
 printf '[PASS] Deterministic static SVG probe and safety policy\n'

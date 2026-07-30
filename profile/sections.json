@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "sectionSetId": "engineering-sections",
+  "themeId": "planetary-observatory",
+  "title": "Michał Planeta — Engineering Systems and Evidence",
+  "description": "A deterministic public engineering surface presenting selected projects, verified technologies, evidence records, disciplines, and public connection endpoints.",
+  "viewport": {
+    "width": 1200,
+    "height": 1760
+  },
+  "sectionOrder": [
+    "projects",
+    "stack",
+    "evidence",
+    "disciplines",
+    "connect"
+  ],
+  "maximumTechnologies": 11,
+  "copyrightNotice": "Copyright © 2026 Michał Planeta. All rights reserved."
+}

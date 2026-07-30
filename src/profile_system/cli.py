@@ -12,6 +12,7 @@ from profile_system.design_tokens import (
     DesignTokenError,
     load_design_token_snapshot,
 )
+from profile_system.engineering_sections import render_engineering_sections
 from profile_system.hero import HeroDataError, load_identity_hero
 from profile_system.identity_hero import render_identity_hero
 from profile_system.kernel_specimen import render_kernel_specimen
@@ -26,6 +27,10 @@ from profile_system.probes import (
     load_svg_probe_snapshot,
 )
 from profile_system.scene import SceneDataError, load_observatory_scene
+from profile_system.sections import (
+    SectionsDataError,
+    load_engineering_sections,
+)
 from profile_system.svg_document import render_svg_probe
 from profile_system.svg_kernel import SvgKernelError
 from profile_system.visual_grammar import render_visual_grammar
@@ -106,6 +111,28 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
     kernel_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
+    sections_parser = subparsers.add_parser("sections")
+    sections_parser.add_argument(
+        "--source",
+        required=True,
+        type=Path,
+    )
+    sections_parser.add_argument(
+        "--profile",
+        required=True,
+        type=Path,
+    )
+    sections_parser.add_argument(
+        "--tokens",
+        required=True,
+        type=Path,
+    )
+    sections_parser.add_argument(
         "--output",
         required=True,
         type=Path,
@@ -206,6 +233,22 @@ def main(
             )
             return 0
 
+        if arguments.command == "sections":
+            sections_snapshot = load_engineering_sections(arguments.source)
+            profile_snapshot = load_profile_snapshot(arguments.profile)
+            token_snapshot = load_design_token_snapshot(arguments.tokens)
+            document = render_engineering_sections(
+                sections_snapshot,
+                profile_snapshot,
+                token_snapshot,
+            )
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
         if arguments.command == "hero":
             profile_snapshot = load_profile_snapshot(arguments.profile)
             hero_snapshot = load_identity_hero(arguments.hero)
@@ -257,6 +300,7 @@ def main(
         ProbeDataError,
         ProfileDataError,
         SceneDataError,
+        SectionsDataError,
         SvgKernelError,
     ) as error:
         print(

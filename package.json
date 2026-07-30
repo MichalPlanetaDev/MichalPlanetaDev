@@ -13,6 +13,7 @@
     "profile:tokens": "bash scripts/profile_tokens.sh",
     "profile:kernel": "bash scripts/profile_kernel.sh",
     "profile:scene": "bash scripts/profile_scene.sh",
-    "profile:hero": "bash scripts/profile_hero.sh"
+    "profile:hero": "bash scripts/profile_hero.sh",
+    "profile:sections": "bash scripts/profile_sections.sh"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "compositionId": "github-profile-readme",
+  "profileId": "michal-planeta",
+  "themeId": "planetary-observatory",
+  "heroAsset": "assets/generated/hero/identity-observatory.svg",
+  "sectionsAsset": "assets/generated/sections/engineering-sections.svg",
+  "assetWidthPercent": 100,
+  "textFallbackTitle": "Text-only engineering profile",
+  "licensePath": "LICENSE",
+  "copyrightNotice": "Copyright © 2026 Michał Planeta. All rights reserved.",
+  "sourceReviewNotice": "Source review is permitted; reuse requires prior written permission."
+}

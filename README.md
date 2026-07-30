@@ -1,80 +1,68 @@
-<div align="center">
-
-# Michał Płaneta
-
-### Software Engineer focused on systems, graphics, game technology and defensive security
-
-I build software that can be tested, replayed, inspected and understood when something goes wrong. My work is centered on explicit architecture, deterministic behavior, evidence-driven debugging, reproducible verification and careful ownership of state across trust boundaries.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Michał_Płaneta-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michal-planeta-4b5701235)
-[![ArtStation](https://img.shields.io/badge/ArtStation-skillu-13AFF0?logo=artstation&logoColor=white)](https://www.artstation.com/skillu)
-[![ORCID](https://img.shields.io/badge/ORCID-0009--0009--1613--4357-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0009-1613-4357)
-
-</div>
-
-## Engineering profile
-
-I am interested in the complete engineering process rather than a narrow fragment of it. That includes requirements, architecture, implementation, data flow, rendering, simulation, testing, observability, CI/CD, documentation and release verification. I work primarily in Linux and WSL environments and prefer CLI-first workflows because they make builds and validation reproducible.
-
-My strongest public work currently sits at the intersection of native C++ and Vulkan rendering, Rust systems programming, server-authoritative multiplayer security, deterministic simulation, telemetry, evidence integrity, SQLite-backed investigation tooling and developer-facing automation. I also work with C#, Unity, Python, Go, SQL, web technologies, Blender and real-time graphics.
-
-## Selected engineering work
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### [Tickline](https://github.com/MichalPlanetaDev/tickline)
-
-A deterministic security-engineering system built around authoritative simulation, bounded protocol parsing, replay protection, canonical evidence, SHA-256 evidence chaining, SQLite investigations, native replay tooling, Unity forensic visualization and Python analytics.
-
-`C++23` `Go` `Python` `Unity` `SQLite` `Docker`
-
-</td>
-<td width="50%" valign="top">
-
-### [Afterlight](https://github.com/MichalPlanetaDev/afterlight)
-
-A native C++23 and Vulkan renderer built around The Last Observatory. The project focuses on explicit geometry, material ownership, lighting, depth, device-local GPU resources, reproducible validation and renderer contracts.
-
-`C++23` `Vulkan` `CMake` `GLSL` `Linux`
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### [Rust Security Sandbox](https://github.com/MichalPlanetaDev/rust-security-sandbox)
-
-A lawful defensive multiplayer-security laboratory with a server-authoritative backend, validation rules, structured telemetry, evidence records, SQLite investigation storage, CLI workflows, a read-only API and an investigation dashboard.
-
-`Rust` `SQLite` `HTTP API` `Docker` `CI`
-
-</td>
-<td width="50%" valign="top">
-
-### [Anti-Cheat Portfolio](https://github.com/MichalPlanetaDev/anticheat-portfolio)
-
-A Rust workspace demonstrating authoritative multiplayer simulation, deterministic detection rules, JSONL telemetry, offline replay, investigation reports, configurable policy, risk scoring, CSV export and a Docker-based demo flow.
-
-`Rust` `TOML` `JSONL` `Docker` `GitHub Actions`
-
-</td>
-</tr>
-</table>
-
-## Current technical direction
-
-I am continuing to deepen my work in rendering architecture, GPU resource management, graphics APIs, game-engine subsystems, security-sensitive backend systems, data persistence, observability and automated verification. I am particularly interested in projects where software engineering meets mathematics, physics, simulation, graphics or complex stateful systems.
-
-## Working principles
-
-I treat external input as untrusted, state ownership as an architectural decision, logs and telemetry as engineering evidence, and tests as executable contracts. I prefer small verifiable changes over broad speculative rewrites. A feature is not complete when it merely compiles; it should be explainable, reproducible and inspectable under failure.
-
-## Profile metrics
+<!-- profile-system:begin -->
 
 <div align="center">
 
-<img src="./github-metrics.svg" width="100%" alt="Michał Płaneta GitHub metrics">
+  <img src="./assets/generated/hero/identity-observatory.svg" width="100%" alt="Michał Planeta — cinematic systems engineer identity observatory">
 
 </div>
+
+<br>
+
+<div align="center">
+
+  <img src="./assets/generated/sections/engineering-sections.svg" width="100%" alt="Selected projects, technologies, engineering evidence, disciplines and public connection endpoints">
+
+</div>
+
+<br>
+
+<details>
+<summary><strong>Text-only engineering profile</strong></summary>
+
+<p><strong>A — CINEMATIC SYSTEMS ENGINEER</strong></p>
+
+<p><strong>Michał Planeta</strong></p>
+
+<p>Software engineer working across rendering, game systems, automation, and technical design.</p>
+
+<p>Michał Planeta develops software from architecture and low-level behavior through tooling, validation, and presentation.</p>
+
+<p><em>Build the system, understand the mechanism, verify the result.</em></p>
+
+<h3>Selected projects</h3>
+
+<p><a href="https://github.com/MichalPlanetaDev/MichalPlanetaDev"><strong>GitHub Profile System</strong></a></p>
+<p>A deterministic publication system for a cinematic, evidence-driven GitHub engineering profile.</p>
+<p><strong>Space Invaders Adventure</strong></p>
+<p>A browser-based 6DoF space-combat project with component damage, progression systems, automated tests, and WebGPU-aware rendering.</p>
+
+<h3>Technology evidence</h3>
+
+<p><code>Babylon.js</code> <code>GitHub Actions</code> <code>Playwright</code> <code>pnpm</code> <code>Python</code> <code>ShellCheck</code> <code>SVG</code> <code>TypeScript</code> <code>uv</code> <code>WebGPU</code> <code>xmllint</code></p>
+
+<h3>Engineering evidence</h3>
+
+<p><strong>Publication architecture</strong> <code>ARCHITECTURE</code><br>The system separates authored data, validated models, public projection, deterministic generation, and later presentation layers.</p>
+<p><strong>Repository history</strong> <code>REPOSITORY</code><br>The work branch records the deterministic build foundation, static SVG capability probe, tests, and publication safeguards.</p>
+<p><strong>Deterministic quality gates</strong> <code>TESTS</code><br>Repository checks cover formatting, linting, strict typing, behavioral tests, shell validation, XML validation, and byte-identical regeneration.</p>
+<p><strong>6DoF game systems</strong> <code>ARCHITECTURE</code><br>The project integrates flight, combat, weapon heat, component damage, enemy waves, progression, and first-person and third-person presentation.</p>
+<p><strong>Browser and simulation verification</strong> <code>TESTS</code><br>Playwright smoke coverage and headless Babylon.js simulations validate critical gameplay and rendering behavior.</p>
+
+<h3>Engineering disciplines</h3>
+
+<p><strong>Automated Quality Engineering</strong><br>Behavioral tests, strict static analysis, deterministic builds, policy checks, and browser-level verification are treated as part of implementation rather than post-processing.</p>
+<p><strong>Game Systems Engineering</strong><br>Interdependent flight, combat, damage, progression, camera, and encounter systems are designed as testable runtime components.</p>
+<p><strong>Rendering and Graphics</strong><br>Work spans browser graphics APIs, scene composition, static vector publication, fallback strategy, and rendering verification.</p>
+<p><strong>Software Architecture</strong><br>Domain data, validation, rendering, automation, and publication boundaries are separated so that each layer remains independently testable and replaceable.</p>
+
+<h3>Connect</h3>
+
+<p><a href="https://github.com/MichalPlanetaDev">GitHub profile</a> &nbsp;·&nbsp; <a href="https://github.com/MichalPlanetaDev/MichalPlanetaDev">GitHub Profile System repository</a></p>
+
+</details>
+
+<p align="center">
+  <sub>Copyright © 2026 Michał Planeta. All rights reserved. Source review is permitted; reuse requires prior written permission. See <a href="./LICENSE">LICENSE</a>.</sub>
+</p>
+
+<!-- profile-system:end -->

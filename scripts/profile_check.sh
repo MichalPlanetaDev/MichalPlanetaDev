@@ -47,6 +47,10 @@ COMMITTED_SECTIONS="$(
         "$REPOSITORY_ROOT/assets/generated/sections/engineering-sections.svg"
 )"
 
+FIRST_README="$CHECK_ROOT/readme-first.md"
+SECOND_README="$CHECK_ROOT/readme-second.md"
+COMMITTED_README="$REPOSITORY_ROOT/README.md"
+
 FIRST_PROBE="$CHECK_ROOT/probe-first.svg"
 SECOND_PROBE="$CHECK_ROOT/probe-second.svg"
 
@@ -87,6 +91,7 @@ shellcheck \
     scripts/profile_hero.sh \
     scripts/profile_kernel.sh \
     scripts/profile_probe.sh \
+    scripts/profile_readme.sh \
     scripts/profile_scene.sh \
     scripts/profile_sections.sh \
     scripts/profile_tokens.sh
@@ -611,6 +616,91 @@ for forbidden_phrase in (
         raise SystemExit(f"LICENSE contains open-source boilerplate: {forbidden_phrase}")
 PYTHON_SECTIONS_POLICY
 
+scripts/profile_readme.sh \
+    "$FIRST_README"
+
+scripts/profile_readme.sh \
+    "$SECOND_README"
+
+test -s "$FIRST_README"
+test -s "$SECOND_README"
+test -s "$COMMITTED_README"
+
+cmp --silent \
+    "$FIRST_README" \
+    "$SECOND_README"
+
+cmp --silent \
+    "$FIRST_README" \
+    "$COMMITTED_README"
+
+python3 -B - \
+    "$FIRST_README" \
+    profile/readme.json \
+    profile/profile.json <<'PYTHON_README_POLICY'
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+readme_path = Path(sys.argv[1])
+composition_path = Path(sys.argv[2])
+profile_path = Path(sys.argv[3])
+repository_root = Path.cwd()
+
+document = readme_path.read_text(encoding="utf-8")
+composition = json.loads(composition_path.read_text(encoding="utf-8"))
+profile = json.loads(profile_path.read_text(encoding="utf-8"))
+
+if document.count("<!-- profile-system:begin -->") != 1:
+    raise SystemExit("README must contain one profile-system begin marker")
+if document.count("<!-- profile-system:end -->") != 1:
+    raise SystemExit("README must contain one profile-system end marker")
+if document.count("<img ") != 2:
+    raise SystemExit("README must contain exactly two publication images")
+
+sources = re.findall(r'<img src="([^"]+)"', document)
+expected_sources = [
+    "./" + composition["heroAsset"],
+    "./" + composition["sectionsAsset"],
+]
+if sources != expected_sources:
+    raise SystemExit("README image order or paths differ from composition")
+
+for source in sources:
+    if "://" in source or source.startswith("//"):
+        raise SystemExit("README image sources must remain repository-relative")
+    referenced = repository_root / source.removeprefix("./")
+    if not referenced.is_file():
+        raise SystemExit(f"README references missing artifact: {source}")
+
+required_copy = [
+    profile["displayName"],
+    profile["identity"]["headline"],
+    profile["identity"]["role"],
+    profile["identity"]["motto"],
+    profile["identity"]["summary"],
+    composition["copyrightNotice"],
+    composition["sourceReviewNotice"],
+]
+for value in required_copy:
+    if value not in document:
+        raise SystemExit(f"README is missing canonical copy: {value}")
+
+if 'href="./LICENSE"' not in document:
+    raise SystemExit("README must reference the repository LICENSE")
+if "shields.io" in document:
+    raise SystemExit("README must not use remote badge images")
+if "<script" in document.lower():
+    raise SystemExit("README must not contain executable script elements")
+if "Museum of Broken Software" in document:
+    raise SystemExit("README references an unreleased project")
+if "Michał Płaneta" in document:
+    raise SystemExit("README contains the superseded display-name spelling")
+PYTHON_README_POLICY
+
 scripts/profile_probe.sh \
     "$FIRST_PROBE"
 
@@ -754,4 +844,5 @@ printf '[PASS] Deterministic SVG renderer kernel\n'
 printf '[PASS] Deterministic planetary observatory scene\n'
 printf '[PASS] Deterministic canonical identity hero\n'
 printf '[PASS] Deterministic engineering sections and license policy\n'
+printf '[PASS] Deterministic README composition and publication policy\n'
 printf '[PASS] Deterministic static SVG probe and safety policy\n'

@@ -26,6 +26,8 @@ from profile_system.probes import (
     ProbeDataError,
     load_svg_probe_snapshot,
 )
+from profile_system.readme import ReadmeDataError, load_readme_composition
+from profile_system.readme_composer import render_profile_readme
 from profile_system.scene import SceneDataError, load_observatory_scene
 from profile_system.sections import (
     SectionsDataError,
@@ -111,6 +113,23 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
     kernel_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
+    readme_parser = subparsers.add_parser("readme")
+    readme_parser.add_argument(
+        "--composition",
+        required=True,
+        type=Path,
+    )
+    readme_parser.add_argument(
+        "--profile",
+        required=True,
+        type=Path,
+    )
+    readme_parser.add_argument(
         "--output",
         required=True,
         type=Path,
@@ -233,6 +252,20 @@ def main(
             )
             return 0
 
+        if arguments.command == "readme":
+            composition_snapshot = load_readme_composition(arguments.composition)
+            profile_snapshot = load_profile_snapshot(arguments.profile)
+            document = render_profile_readme(
+                composition_snapshot,
+                profile_snapshot,
+            )
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
         if arguments.command == "sections":
             sections_snapshot = load_engineering_sections(arguments.source)
             profile_snapshot = load_profile_snapshot(arguments.profile)
@@ -299,6 +332,7 @@ def main(
         HeroDataError,
         ProbeDataError,
         ProfileDataError,
+        ReadmeDataError,
         SceneDataError,
         SectionsDataError,
         SvgKernelError,

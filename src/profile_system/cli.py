@@ -12,6 +12,8 @@ from profile_system.design_tokens import (
     DesignTokenError,
     load_design_token_snapshot,
 )
+from profile_system.hero import HeroDataError, load_identity_hero
+from profile_system.identity_hero import render_identity_hero
 from profile_system.kernel_specimen import render_kernel_specimen
 from profile_system.manifest import render_profile_manifest
 from profile_system.model import (
@@ -109,6 +111,33 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
 
+    hero_parser = subparsers.add_parser("hero")
+    hero_parser.add_argument(
+        "--profile",
+        required=True,
+        type=Path,
+    )
+    hero_parser.add_argument(
+        "--hero",
+        required=True,
+        type=Path,
+    )
+    hero_parser.add_argument(
+        "--scene",
+        required=True,
+        type=Path,
+    )
+    hero_parser.add_argument(
+        "--tokens",
+        required=True,
+        type=Path,
+    )
+    hero_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
     scene_parser = subparsers.add_parser("scene")
     scene_parser.add_argument(
         "--source",
@@ -177,6 +206,24 @@ def main(
             )
             return 0
 
+        if arguments.command == "hero":
+            profile_snapshot = load_profile_snapshot(arguments.profile)
+            hero_snapshot = load_identity_hero(arguments.hero)
+            scene_snapshot = load_observatory_scene(arguments.scene)
+            token_snapshot = load_design_token_snapshot(arguments.tokens)
+            document = render_identity_hero(
+                profile_snapshot,
+                scene_snapshot,
+                token_snapshot,
+                hero_snapshot,
+            )
+
+            _write_atomic(
+                arguments.output,
+                document,
+            )
+            return 0
+
         if arguments.command == "scene":
             scene_snapshot = load_observatory_scene(arguments.source)
             token_snapshot = load_design_token_snapshot(arguments.tokens)
@@ -206,6 +253,7 @@ def main(
         UnicodeError,
         json.JSONDecodeError,
         DesignTokenError,
+        HeroDataError,
         ProbeDataError,
         ProfileDataError,
         SceneDataError,

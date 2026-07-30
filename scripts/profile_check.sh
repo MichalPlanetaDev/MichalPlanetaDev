@@ -33,6 +33,13 @@ COMMITTED_SCENE="$(
         "$REPOSITORY_ROOT/assets/generated/scenes/planetary-observatory.svg"
 )"
 
+FIRST_HERO="$CHECK_ROOT/hero-first.svg"
+SECOND_HERO="$CHECK_ROOT/hero-second.svg"
+COMMITTED_HERO="$(
+    printf '%s\n' \
+        "$REPOSITORY_ROOT/assets/generated/hero/identity-observatory.svg"
+)"
+
 FIRST_PROBE="$CHECK_ROOT/probe-first.svg"
 SECOND_PROBE="$CHECK_ROOT/probe-second.svg"
 
@@ -70,6 +77,7 @@ uv run pytest
 shellcheck \
     scripts/profile_build.sh \
     scripts/profile_check.sh \
+    scripts/profile_hero.sh \
     scripts/profile_kernel.sh \
     scripts/profile_probe.sh \
     scripts/profile_scene.sh \
@@ -347,6 +355,125 @@ if star_count != source["starCount"]:
     raise SystemExit("Rendered star count differs from the scene contract")
 PYTHON_SCENE_POLICY
 
+scripts/profile_hero.sh \
+    "$FIRST_HERO"
+
+scripts/profile_hero.sh \
+    "$SECOND_HERO"
+
+test -s "$FIRST_HERO"
+test -s "$SECOND_HERO"
+test -s "$COMMITTED_HERO"
+
+cmp --silent \
+    "$FIRST_HERO" \
+    "$SECOND_HERO"
+
+cmp --silent \
+    "$FIRST_HERO" \
+    "$COMMITTED_HERO"
+
+xmllint \
+    --noout \
+    "$FIRST_HERO"
+
+xmllint \
+    --noout \
+    "$COMMITTED_HERO"
+
+python3 -B - \
+    "$FIRST_HERO" \
+    profile/profile.json <<'PYTHON_HERO_POLICY'
+from __future__ import annotations
+
+import json
+import re
+import sys
+import xml.etree.ElementTree as element_tree
+from pathlib import Path
+
+svg_path = Path(sys.argv[1])
+profile_path = Path(sys.argv[2])
+root = element_tree.parse(svg_path).getroot()
+profile = json.loads(profile_path.read_text(encoding="utf-8"))
+identity = profile["identity"]
+
+required_identifiers = {
+    "renderer-kernel-title",
+    "renderer-kernel-description",
+    "scene-background",
+    "scene-stars",
+    "scene-window",
+    "scene-planet",
+    "scene-architecture",
+    "scene-console",
+    "scene-atmosphere",
+    "scene-foreground",
+    "hero-identity",
+    "hero-identity-panel",
+    "hero-identity-headline",
+    "hero-identity-name",
+    "hero-identity-motto",
+    "hero-status",
+}
+forbidden_elements = {
+    "animate",
+    "animateMotion",
+    "animateTransform",
+    "foreignObject",
+    "image",
+    "script",
+    "set",
+}
+identifiers: list[str] = []
+references: set[str] = set()
+texts: list[str] = []
+
+if root.attrib.get("role") != "img":
+    raise SystemExit("Identity hero root must use role=img")
+if root.attrib.get("viewBox") != "0 0 1200 720":
+    raise SystemExit("Identity hero viewBox differs from its contract")
+
+for element in root.iter():
+    name = element.tag.rsplit("}", 1)[-1]
+    if name in forbidden_elements:
+        raise SystemExit(f"Forbidden identity hero element: {name}")
+    identifier = element.attrib.get("id")
+    if identifier is not None:
+        identifiers.append(identifier)
+    if element.text:
+        texts.append(element.text)
+    for attribute_name, value in element.attrib.items():
+        local_name = attribute_name.rsplit("}", 1)[-1]
+        if local_name.lower().startswith("on"):
+            raise SystemExit(f"Forbidden identity hero event: {local_name}")
+        if local_name == "href":
+            raise SystemExit("Identity hero must not contain href")
+        references.update(re.findall(r"url\(#([a-z0-9-]+)\)", value))
+
+identifier_set = set(identifiers)
+if len(identifiers) != len(identifier_set):
+    raise SystemExit("Identity hero contains duplicate identifiers")
+if not required_identifiers.issubset(identifier_set):
+    missing = sorted(required_identifiers - identifier_set)
+    raise SystemExit("Identity hero is missing layers: " + ", ".join(missing))
+if not references.issubset(identifier_set):
+    unresolved = sorted(references - identifier_set)
+    raise SystemExit(
+        "Identity hero contains unresolved references: "
+        + ", ".join(unresolved)
+    )
+
+content = "\n".join(texts)
+for required_text in (
+    profile["displayName"].upper(),
+    identity["headline"],
+    identity["motto"],
+):
+    if required_text not in content:
+        raise SystemExit(f"Identity hero is missing canonical copy: {required_text}")
+PYTHON_HERO_POLICY
+
 scripts/profile_probe.sh \
     "$FIRST_PROBE"
 
@@ -488,4 +615,5 @@ printf '[PASS] Deterministic publication manifest\n'
 printf '[PASS] Deterministic visual grammar contract\n'
 printf '[PASS] Deterministic SVG renderer kernel\n'
 printf '[PASS] Deterministic planetary observatory scene\n'
+printf '[PASS] Deterministic canonical identity hero\n'
 printf '[PASS] Deterministic static SVG probe and safety policy\n'

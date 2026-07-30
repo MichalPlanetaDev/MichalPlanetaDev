@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "heroId": "identity-observatory",
+  "profileId": "michal-planeta",
+  "sceneId": "planetary-observatory",
+  "themeId": "planetary-observatory",
+  "viewport": {
+    "width": 1200,
+    "height": 720
+  },
+  "panel": {
+    "x": 112,
+    "y": 154,
+    "width": 500,
+    "height": 286
+  },
+  "layerOrder": [
+    "scene",
+    "identity",
+    "status"
+  ]
+}

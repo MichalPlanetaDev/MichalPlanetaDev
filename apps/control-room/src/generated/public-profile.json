@@ -1,0 +1,306 @@
+{
+  "disciplines": [
+    {
+      "evidenceIds": [
+        "profile-system-tests",
+        "space-combat-tests"
+      ],
+      "id": "automated-quality-engineering",
+      "name": "Automated Quality Engineering",
+      "projectIds": [
+        "github-profile-system",
+        "space-invaders-adventure"
+      ],
+      "summary": "Behavioral tests, strict static analysis, deterministic builds, policy checks, and browser-level verification are treated as part of implementation rather than post-processing."
+    },
+    {
+      "evidenceIds": [
+        "space-combat-systems"
+      ],
+      "id": "game-systems-engineering",
+      "name": "Game Systems Engineering",
+      "projectIds": [
+        "space-invaders-adventure"
+      ],
+      "summary": "Interdependent flight, combat, damage, progression, camera, and encounter systems are designed as testable runtime components."
+    },
+    {
+      "evidenceIds": [
+        "profile-system-repository",
+        "space-combat-systems"
+      ],
+      "id": "rendering-and-graphics",
+      "name": "Rendering and Graphics",
+      "projectIds": [
+        "github-profile-system",
+        "space-invaders-adventure"
+      ],
+      "summary": "Work spans browser graphics APIs, scene composition, static vector publication, fallback strategy, and rendering verification."
+    },
+    {
+      "evidenceIds": [
+        "profile-system-architecture",
+        "space-combat-systems"
+      ],
+      "id": "software-architecture",
+      "name": "Software Architecture",
+      "projectIds": [
+        "github-profile-system",
+        "space-invaders-adventure"
+      ],
+      "summary": "Domain data, validation, rendering, automation, and publication boundaries are separated so that each layer remains independently testable and replaceable."
+    }
+  ],
+  "displayName": "Michał Planeta",
+  "environmentId": "planetary-observatory",
+  "evidence": [
+    {
+      "id": "profile-system-architecture",
+      "kind": "architecture",
+      "label": "Publication architecture",
+      "linkId": null,
+      "summary": "The system separates authored data, validated models, public projection, deterministic generation, and later presentation layers."
+    },
+    {
+      "id": "profile-system-repository",
+      "kind": "repository",
+      "label": "Repository history",
+      "linkId": "profile-system-repository-link",
+      "summary": "The work branch records the deterministic build foundation, static SVG capability probe, tests, and publication safeguards."
+    },
+    {
+      "id": "profile-system-tests",
+      "kind": "tests",
+      "label": "Deterministic quality gates",
+      "linkId": null,
+      "summary": "Repository checks cover formatting, linting, strict typing, behavioral tests, shell validation, XML validation, and byte-identical regeneration."
+    },
+    {
+      "id": "space-combat-systems",
+      "kind": "architecture",
+      "label": "6DoF game systems",
+      "linkId": null,
+      "summary": "The project integrates flight, combat, weapon heat, component damage, enemy waves, progression, and first-person and third-person presentation."
+    },
+    {
+      "id": "space-combat-tests",
+      "kind": "tests",
+      "label": "Browser and simulation verification",
+      "linkId": null,
+      "summary": "Playwright smoke coverage and headless Babylon.js simulations validate critical gameplay and rendering behavior."
+    }
+  ],
+  "generator": {
+    "name": "profile-system",
+    "version": "0.1.0"
+  },
+  "identity": {
+    "headline": "A — CINEMATIC SYSTEMS ENGINEER",
+    "motto": "Build the system, understand the mechanism, verify the result.",
+    "role": "Software engineer working across rendering, game systems, automation, and technical design.",
+    "summary": "Michał Planeta develops software from architecture and low-level behavior through tooling, validation, and presentation."
+  },
+  "links": [
+    {
+      "id": "github-profile-link",
+      "kind": "profile",
+      "label": "GitHub profile",
+      "url": "https://github.com/MichalPlanetaDev"
+    },
+    {
+      "id": "profile-system-repository-link",
+      "kind": "repository",
+      "label": "GitHub Profile System repository",
+      "url": "https://github.com/MichalPlanetaDev/MichalPlanetaDev"
+    }
+  ],
+  "profileId": "michal-planeta",
+  "projects": [
+    {
+      "evidenceIds": [
+        "profile-system-repository",
+        "profile-system-tests",
+        "profile-system-architecture"
+      ],
+      "featured": true,
+      "id": "github-profile-system",
+      "linkIds": [
+        "profile-system-repository-link"
+      ],
+      "name": "GitHub Profile System",
+      "priority": 10,
+      "status": "active",
+      "summary": "A deterministic publication system for a cinematic, evidence-driven GitHub engineering profile.",
+      "technologyIds": [
+        "python",
+        "svg",
+        "uv",
+        "pnpm",
+        "github-actions",
+        "shellcheck",
+        "xmllint"
+      ]
+    },
+    {
+      "evidenceIds": [
+        "space-combat-systems",
+        "space-combat-tests"
+      ],
+      "featured": true,
+      "id": "space-invaders-adventure",
+      "linkIds": [],
+      "name": "Space Invaders Adventure",
+      "priority": 20,
+      "status": "active",
+      "summary": "A browser-based 6DoF space-combat project with component damage, progression systems, automated tests, and WebGPU-aware rendering.",
+      "technologyIds": [
+        "typescript",
+        "babylonjs",
+        "webgpu",
+        "playwright",
+        "github-actions"
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "sourceSchemaVersion": 2,
+  "technologies": [
+    {
+      "category": "framework",
+      "evidenceIds": [
+        "space-combat-systems",
+        "space-combat-tests"
+      ],
+      "id": "babylonjs",
+      "name": "Babylon.js",
+      "projectIds": [
+        "space-invaders-adventure"
+      ],
+      "usage": "Real-time browser scene composition, simulation, cameras, combat entities, and headless verification."
+    },
+    {
+      "category": "automation",
+      "evidenceIds": [
+        "profile-system-tests",
+        "space-combat-tests"
+      ],
+      "id": "github-actions",
+      "name": "GitHub Actions",
+      "projectIds": [
+        "github-profile-system",
+        "space-invaders-adventure"
+      ],
+      "usage": "Repository validation and reproducible publication workflows."
+    },
+    {
+      "category": "testing",
+      "evidenceIds": [
+        "space-combat-tests"
+      ],
+      "id": "playwright",
+      "name": "Playwright",
+      "projectIds": [
+        "space-invaders-adventure"
+      ],
+      "usage": "Browser smoke verification for critical interactive project flows."
+    },
+    {
+      "category": "tool",
+      "evidenceIds": [
+        "profile-system-tests"
+      ],
+      "id": "pnpm",
+      "name": "pnpm",
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "usage": "Locked Node.js command orchestration and reproducible package installation."
+    },
+    {
+      "category": "language",
+      "evidenceIds": [
+        "profile-system-architecture",
+        "profile-system-tests"
+      ],
+      "id": "python",
+      "name": "Python",
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "usage": "Typed domain models, validation, deterministic generation, and repository tooling."
+    },
+    {
+      "category": "testing",
+      "evidenceIds": [
+        "profile-system-tests"
+      ],
+      "id": "shellcheck",
+      "name": "ShellCheck",
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "usage": "Static validation of repository-owned shell entry points."
+    },
+    {
+      "category": "graphics",
+      "evidenceIds": [
+        "profile-system-repository",
+        "profile-system-tests"
+      ],
+      "id": "svg",
+      "name": "SVG",
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "usage": "Deterministic, repository-owned GitHub visual surfaces with validated static capabilities."
+    },
+    {
+      "category": "language",
+      "evidenceIds": [
+        "space-combat-systems"
+      ],
+      "id": "typescript",
+      "name": "TypeScript",
+      "projectIds": [
+        "space-invaders-adventure"
+      ],
+      "usage": "Typed browser gameplay systems and rendering integration."
+    },
+    {
+      "category": "tool",
+      "evidenceIds": [
+        "profile-system-tests"
+      ],
+      "id": "uv",
+      "name": "uv",
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "usage": "Locked Python environment resolution and command execution."
+    },
+    {
+      "category": "graphics",
+      "evidenceIds": [
+        "space-combat-systems"
+      ],
+      "id": "webgpu",
+      "name": "WebGPU",
+      "projectIds": [
+        "space-invaders-adventure"
+      ],
+      "usage": "Primary browser graphics path with controlled fallback behavior."
+    },
+    {
+      "category": "testing",
+      "evidenceIds": [
+        "profile-system-tests"
+      ],
+      "id": "xmllint",
+      "name": "xmllint",
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "usage": "Structural XML validation for generated SVG publication artifacts."
+    }
+  ]
+}

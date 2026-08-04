@@ -12,6 +12,7 @@ from profile_system.design_tokens import (
     DesignTokenError,
     load_design_token_snapshot,
 )
+from profile_system.frontend_snapshot import render_frontend_snapshot
 from profile_system.manifest import render_profile_manifest
 from profile_system.model import (
     ProfileDataError,
@@ -81,6 +82,18 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
     )
 
+    frontend_parser = subparsers.add_parser("frontend")
+    frontend_parser.add_argument(
+        "--source",
+        required=True,
+        type=Path,
+    )
+    frontend_parser.add_argument(
+        "--output",
+        required=True,
+        type=Path,
+    )
+
     tokens_parser = subparsers.add_parser("tokens")
     tokens_parser.add_argument(
         "--source",
@@ -121,6 +134,16 @@ def main(
             _write_atomic(
                 arguments.output_dir / "profile-manifest.json",
                 manifest,
+            )
+            return 0
+
+        if arguments.command == "frontend":
+            profile_snapshot = load_profile_snapshot(arguments.source)
+            document = render_frontend_snapshot(profile_snapshot)
+
+            _write_atomic(
+                arguments.output,
+                document,
             )
             return 0
 

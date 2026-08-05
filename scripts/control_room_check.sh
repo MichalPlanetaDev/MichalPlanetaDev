@@ -61,7 +61,12 @@ scripts/profile_check.sh
 
 shellcheck \
     scripts/control_room_check.sh \
-    scripts/control_room_data.sh
+    scripts/control_room_data.sh \
+    tests/shell/control_room_check_test.sh \
+    tests/shell/control_room_data_test.sh
+
+tests/shell/control_room_data_test.sh
+tests/shell/control_room_check_test.sh
 
 generate_contracts "$FIRST_ROOT"
 generate_contracts "$SECOND_ROOT"

@@ -39,16 +39,32 @@ tar \
     . |
     tar -C "$FIXTURE" -xf -
 
-"$FIXTURE/scripts/control_room_data.sh"
+PROFILE_OUTPUT="$FIXTURE/apps/control-room/src/generated/public-profile.json"
+TOKEN_CSS_OUTPUT="$FIXTURE/apps/control-room/src/generated/design-tokens.css"
+TOKEN_TYPESCRIPT_OUTPUT="$FIXTURE/apps/control-room/src/generated/design-tokens.ts"
 
-test -s \
-    "$FIXTURE/apps/control-room/src/generated/public-profile.json" ||
+rm -f \
+    "$PROFILE_OUTPUT" \
+    "$TOKEN_CSS_OUTPUT" \
+    "$TOKEN_TYPESCRIPT_OUTPUT"
+
+for output in \
+    "$PROFILE_OUTPUT" \
+    "$TOKEN_CSS_OUTPUT" \
+    "$TOKEN_TYPESCRIPT_OUTPUT"
+do
+    if [ -e "$output" ]; then
+        fail "fixture output was not removed before generation: $output"
+    fi
+done
+
+UV_LINK_MODE=copy "$FIXTURE/scripts/control_room_data.sh"
+
+test -s "$PROFILE_OUTPUT" ||
     fail "missing generated public-profile.json"
 
-test -s \
-    "$FIXTURE/apps/control-room/src/generated/design-tokens.css" ||
+test -s "$TOKEN_CSS_OUTPUT" ||
     fail "missing generated design-tokens.css"
 
-test -s \
-    "$FIXTURE/apps/control-room/src/generated/design-tokens.ts" ||
+test -s "$TOKEN_TYPESCRIPT_OUTPUT" ||
     fail "missing generated design-tokens.ts"

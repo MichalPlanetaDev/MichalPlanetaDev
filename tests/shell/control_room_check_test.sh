@@ -8,6 +8,7 @@ REPOSITORY_ROOT="$(
 TEMPORARY_ROOT="$(mktemp -d)"
 FIXTURE="$TEMPORARY_ROOT/repository"
 FAKE_BIN="$TEMPORARY_ROOT/bin"
+MARKER_ROOT="$TEMPORARY_ROOT/markers"
 STDOUT_FILE="$TEMPORARY_ROOT/stdout"
 STDERR_FILE="$TEMPORARY_ROOT/stderr"
 
@@ -22,7 +23,7 @@ fail() {
 
 trap cleanup EXIT
 
-mkdir -p "$FIXTURE" "$FAKE_BIN"
+mkdir -p "$FIXTURE" "$FAKE_BIN" "$MARKER_ROOT"
 
 tar \
     --exclude='./.git' \
@@ -53,6 +54,24 @@ exit 0
 PROFILE_CHECK_STUB
 chmod +x "$FIXTURE/scripts/profile_check.sh"
 
+cat >"$FIXTURE/tests/shell/control_room_data_test.sh" <<'DATA_MARKER'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+: "${CONTROL_ROOM_SHELL_TEST_MARKER_ROOT:?}"
+touch "$CONTROL_ROOM_SHELL_TEST_MARKER_ROOT/data-test-ran"
+DATA_MARKER
+
+cat >"$FIXTURE/tests/shell/control_room_check_test.sh" <<'CHECK_MARKER'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+: "${CONTROL_ROOM_SHELL_TEST_MARKER_ROOT:?}"
+touch "$CONTROL_ROOM_SHELL_TEST_MARKER_ROOT/check-test-ran"
+CHECK_MARKER
+
+chmod +x \
+    "$FIXTURE/tests/shell/control_room_data_test.sh" \
+    "$FIXTURE/tests/shell/control_room_check_test.sh"
+
 cat >"$FAKE_BIN/pnpm" <<'PNPM_STUB'
 #!/usr/bin/env bash
 set -Eeuo pipefail
@@ -61,6 +80,8 @@ PNPM_STUB
 chmod +x "$FAKE_BIN/pnpm"
 
 set +e
+CONTROL_ROOM_SHELL_TEST_MARKER_ROOT="$MARKER_ROOT" \
+UV_LINK_MODE=copy \
 PATH="$FAKE_BIN:$PATH" \
     "$FIXTURE/scripts/control_room_check.sh" \
     >"$STDOUT_FILE" \
@@ -77,3 +98,9 @@ grep -F \
     "$STDERR_FILE" \
     >/dev/null ||
     fail "stale design token diagnostic did not identify the CSS artifact"
+
+test -f "$MARKER_ROOT/data-test-ran" ||
+    fail "control_room_check.sh did not run the data-generation shell test"
+
+test -f "$MARKER_ROOT/check-test-ran" ||
+    fail "control_room_check.sh did not run the stale-output shell test"

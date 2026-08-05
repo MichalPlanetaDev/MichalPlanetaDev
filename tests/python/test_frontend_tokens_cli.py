@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import errno
+import io
 import re
 import tempfile
 import unittest
+from contextlib import redirect_stderr
 from pathlib import Path
 from unittest.mock import patch
 
@@ -75,19 +77,21 @@ class FrontendTokenCliTests(unittest.TestCase):
         )
 
     def test_identical_output_paths_are_rejected_without_writing(self) -> None:
-        exit_code = main(
-            [
-                "frontend-tokens",
-                "--source",
-                str(TOKEN_SOURCE),
-                "--css-output",
-                str(self.css_output),
-                "--typescript-output",
-                str(self.css_output),
-            ]
-        )
+        with patch("profile_system.cli.load_design_token_snapshot") as load_snapshot:
+            exit_code = main(
+                [
+                    "frontend-tokens",
+                    "--source",
+                    str(TOKEN_SOURCE),
+                    "--css-output",
+                    str(self.css_output),
+                    "--typescript-output",
+                    str(self.css_output),
+                ]
+            )
 
         self.assertEqual(2, exit_code)
+        load_snapshot.assert_not_called()
         self.assertFalse(self.css_output.exists())
 
     def test_second_replacement_failure_restores_both_destinations(self) -> None:
@@ -122,6 +126,63 @@ class FrontendTokenCliTests(unittest.TestCase):
             "old ts\n",
             self.typescript_output.read_text(encoding="utf-8"),
         )
+        residue = sorted(
+            path.name for path in self.root.iterdir() if path.name.startswith(".")
+        )
+        self.assertEqual([], residue)
+
+    def test_incomplete_rollback_reports_write_and_rollback_failures(
+        self,
+    ) -> None:
+        self.css_output.write_text("old css\n", encoding="utf-8")
+        self.typescript_output.write_text("old ts\n", encoding="utf-8")
+        original_replace = __import__("os").replace
+        stderr = io.StringIO()
+
+        def replace_with_write_and_rollback_failures(
+            source: str | Path,
+            destination: str | Path,
+        ) -> None:
+            source_path = Path(source)
+            destination_path = Path(destination)
+
+            if (
+                destination_path == self.typescript_output
+                and ".write." in source_path.name
+            ):
+                raise OSError(
+                    errno.EIO,
+                    "simulated TypeScript replacement failure",
+                    str(destination_path),
+                )
+
+            if destination_path == self.css_output and ".rollback." in source_path.name:
+                raise OSError(
+                    errno.EACCES,
+                    "simulated CSS rollback failure",
+                    str(destination_path),
+                )
+
+            original_replace(source, destination)
+
+        with (
+            patch(
+                "profile_system.cli.os.replace",
+                side_effect=replace_with_write_and_rollback_failures,
+            ),
+            redirect_stderr(stderr),
+        ):
+            exit_code = main(self.command())
+
+        diagnostic = stderr.getvalue()
+        self.assertEqual(2, exit_code)
+        self.assertIn(
+            "simulated TypeScript replacement failure",
+            diagnostic,
+        )
+        self.assertIn(str(self.typescript_output), diagnostic)
+        self.assertIn("simulated CSS rollback failure", diagnostic)
+        self.assertIn(str(self.css_output), diagnostic)
         residue = sorted(
             path.name for path in self.root.iterdir() if path.name.startswith(".")
         )

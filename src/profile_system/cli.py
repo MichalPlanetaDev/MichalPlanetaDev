@@ -103,17 +103,24 @@ def _restore_destination(
     path.unlink(missing_ok=True)
 
 
-def _write_atomic_pair(
+def _require_distinct_output_paths(
     first_path: Path,
-    first_content: str,
     second_path: Path,
-    second_content: str,
 ) -> None:
     if first_path.resolve() == second_path.resolve():
         raise OutputTransactionError(
             "Frontend token CSS and TypeScript outputs must use distinct paths: "
             f"{first_path}"
         )
+
+
+def _write_atomic_pair(
+    first_path: Path,
+    first_content: str,
+    second_path: Path,
+    second_content: str,
+) -> None:
+    _require_distinct_output_paths(first_path, second_path)
 
     first_existed = first_path.exists()
     second_existed = second_path.exists()
@@ -184,8 +191,8 @@ def _write_atomic_pair(
         if rollback_errors:
             details = "; ".join(rollback_errors)
             raise OutputTransactionError(
-                "Frontend token generation failed and rollback was incomplete: "
-                f"{details}"
+                "Frontend token generation failed during output replacement "
+                f"({write_error}); rollback was incomplete: {details}"
             ) from write_error
 
         raise
@@ -302,6 +309,10 @@ def main(
             return 0
 
         if arguments.command == "frontend-tokens":
+            _require_distinct_output_paths(
+                arguments.css_output,
+                arguments.typescript_output,
+            )
             token_snapshot = load_design_token_snapshot(arguments.source)
             frontend_tokens = resolve_frontend_design_tokens(token_snapshot)
             css_document = render_frontend_design_css(frontend_tokens)

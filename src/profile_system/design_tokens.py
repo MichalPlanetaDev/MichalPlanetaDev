@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 from collections.abc import Mapping
 from dataclasses import dataclass
@@ -244,12 +245,21 @@ def _integer(source: dict[str, object], field: str, context: str) -> int:
     return value
 
 
-def _number(source: dict[str, object], field: str, context: str) -> float:
-    value = source.get(field)
-
+def _finite_number(value: object, context: str) -> int | float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
-        raise DesignTokenError(f"{context}.{field} must contain a number")
+        raise DesignTokenError(f"{context} must contain a number")
 
+    if not math.isfinite(value):
+        raise DesignTokenError(f"{context} must contain a finite number")
+
+    return value
+
+
+def _number(source: dict[str, object], field: str, context: str) -> float:
+    value = _finite_number(
+        source.get(field),
+        f"{context}.{field}",
+    )
     return float(value)
 
 
@@ -264,11 +274,10 @@ def _numeric_group(
     records: list[NumericToken] = []
 
     for identifier in identifiers:
-        raw = source.get(identifier)
-
-        if isinstance(raw, bool) or not isinstance(raw, (int, float)):
-            raise DesignTokenError(f"{context}.{identifier} must contain a number")
-
+        raw = _finite_number(
+            source.get(identifier),
+            f"{context}.{identifier}",
+        )
         records.append(NumericToken(identifier, raw))
 
     return tuple(records)

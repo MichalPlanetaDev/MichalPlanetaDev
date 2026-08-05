@@ -220,6 +220,42 @@ class DesignTokenTests(unittest.TestCase):
             with self.assertRaisesRegex(DesignTokenError, "does not meet minimum"):
                 load_design_token_snapshot(path)
 
+    def test_non_finite_numeric_token_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            typography = document["typography"]
+            assert isinstance(typography, dict)
+            tracking = typography["tracking"]
+            assert isinstance(tracking, dict)
+            tracking["heading"] = float("nan")
+            path = self.write_document(document, Path(temporary_directory))
+
+            with self.assertRaisesRegex(
+                DesignTokenError,
+                r"Design token source\.typography\.tracking\.heading "
+                r"must contain a finite number",
+            ):
+                load_design_token_snapshot(path)
+
+    def test_non_finite_contrast_minimum_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            rules = document["rules"]
+            assert isinstance(rules, dict)
+            pairs = rules["contrastPairs"]
+            assert isinstance(pairs, list)
+            first = pairs[0]
+            assert isinstance(first, dict)
+            first["minimum"] = float("inf")
+            path = self.write_document(document, Path(temporary_directory))
+
+            with self.assertRaisesRegex(
+                DesignTokenError,
+                r"Design token source\.rules\.contrastPairs\[0\]"
+                r"\.minimum must contain a finite number",
+            ):
+                load_design_token_snapshot(path)
+
     def test_invalid_motion_policy_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             document = self.load_document()

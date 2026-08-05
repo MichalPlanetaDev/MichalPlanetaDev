@@ -56,9 +56,23 @@ class TokenCliTests(unittest.TestCase):
             self.assertEqual(first_output.read_bytes(), second_output.read_bytes())
 
             document = json.loads(first_output.read_text(encoding="utf-8"))
-            self.assertEqual(1, document["schemaVersion"])
+            self.assertEqual(2, document["schemaVersion"])
             self.assertEqual("planetary-observatory", document["themeId"])
             self.assertEqual(14, document["groups"]["colors"]["count"])
+            self.assertEqual(
+                [
+                    '"SFMono-Regular"',
+                    "Consolas",
+                    '"Liberation Mono"',
+                    "monospace",
+                ],
+                document["groups"]["typography"]["monoStack"],
+            )
+            self.assertEqual(120, document["groups"]["motion"]["duration"]["fast"])
+            self.assertEqual(
+                "background.void",
+                document["semantic"]["surface"]["canvas"]["reference"],
+            )
             self.assertEqual("static-github", document["rules"]["motion"])
             self.assertTrue(all(record["passes"] for record in document["contrast"]))
 

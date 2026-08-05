@@ -42,6 +42,70 @@ class DesignTokenTests(unittest.TestCase):
             all(pair.actual >= pair.minimum for pair in snapshot.contrast_pairs)
         )
 
+    def test_repository_contract_exposes_semantic_roles(self) -> None:
+        snapshot = load_design_token_snapshot(TOKEN_SOURCE)
+
+        self.assertEqual(
+            "background.void",
+            snapshot.semantic_groups["surface"]["canvas"].reference,
+        )
+        self.assertEqual(
+            "typography.fontStack",
+            snapshot.semantic_groups["font"]["content"].reference,
+        )
+
+    def test_unknown_semantic_reference_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            semantic = document["semantic"]
+            assert isinstance(semantic, dict)
+            surface = semantic["surface"]
+            assert isinstance(surface, dict)
+            surface["canvas"] = "background.missing"
+            path = self.write_document(document, Path(temporary_directory))
+
+            with self.assertRaisesRegex(
+                DesignTokenError,
+                r"semantic\.surface\.canvas references unknown token "
+                r"background\.missing",
+            ):
+                load_design_token_snapshot(path)
+
+    def test_semantic_reference_cycle_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            semantic = document["semantic"]
+            assert isinstance(semantic, dict)
+            surface = semantic["surface"]
+            assert isinstance(surface, dict)
+            surface["canvas"] = "semantic.surface.elevated"
+            surface["elevated"] = "semantic.surface.canvas"
+            path = self.write_document(document, Path(temporary_directory))
+
+            with self.assertRaisesRegex(
+                DesignTokenError,
+                r"Semantic reference cycle: semantic\.surface\.canvas -> "
+                r"semantic\.surface\.elevated -> semantic\.surface\.canvas",
+            ):
+                load_design_token_snapshot(path)
+
+    def test_semantic_reference_kind_mismatch_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            semantic = document["semantic"]
+            assert isinstance(semantic, dict)
+            spacing = semantic["spacing"]
+            assert isinstance(spacing, dict)
+            spacing["section"] = "accent.signal"
+            path = self.write_document(document, Path(temporary_directory))
+
+            with self.assertRaisesRegex(
+                DesignTokenError,
+                r"semantic\.spacing\.section requires a length token; "
+                r"accent\.signal resolves to color",
+            ):
+                load_design_token_snapshot(path)
+
     def test_unknown_top_level_field_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             document = self.load_document()

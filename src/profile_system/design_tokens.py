@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
+from types import MappingProxyType
 from typing import cast
 
-SUPPORTED_SCHEMA_VERSION = 1
+SUPPORTED_SCHEMA_VERSION = 2
 IDENTIFIER_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 COLOR_PATTERN = re.compile(r"#[0-9a-f]{6}")
 
@@ -24,6 +26,100 @@ STROKE_IDS = ("hairline", "emphasis")
 OPACITY_IDS = ("subtle", "muted", "secondary", "strong")
 LAYOUT_IDS = ("canvasWidth", "safeInset", "columns", "gutter", "sectionGap")
 EFFECT_IDS = ("glowBlur", "glowOpacity")
+MOTION_DURATION_IDS = ("fast", "standard")
+
+SEMANTIC_ROLE_KINDS: dict[str, dict[str, str]] = {
+    "surface": {
+        "canvas": "color",
+        "depth": "color",
+        "panel": "color",
+        "elevated": "color",
+    },
+    "content": {
+        "primary": "color",
+        "secondary": "color",
+        "muted": "color",
+        "inverse": "color",
+    },
+    "signal": {
+        "primary": "color",
+        "secondary": "color",
+        "warning": "color",
+        "critical": "color",
+        "success": "color",
+    },
+    "structure": {
+        "subtle": "color",
+        "strong": "color",
+        "focus": "color",
+    },
+    "font": {
+        "content": "font-stack",
+        "technical": "font-stack",
+    },
+    "typeSize": {
+        "display": "length",
+        "title": "length",
+        "heading": "length",
+        "body": "length",
+        "label": "length",
+        "micro": "length",
+    },
+    "typeWeight": {
+        "regular": "font-weight",
+        "medium": "font-weight",
+        "semibold": "font-weight",
+        "bold": "font-weight",
+    },
+    "tracking": {
+        "display": "tracking",
+        "heading": "tracking",
+        "label": "tracking",
+    },
+    "spacing": {
+        "xs": "length",
+        "sm": "length",
+        "md": "length",
+        "lg": "length",
+        "xl": "length",
+        "2xl": "length",
+        "3xl": "length",
+        "4xl": "length",
+        "section": "length",
+        "safeInset": "length",
+        "gutter": "length",
+    },
+    "radius": {
+        "small": "length",
+        "medium": "length",
+        "large": "length",
+        "pill": "length",
+    },
+    "stroke": {
+        "hairline": "length",
+        "emphasis": "length",
+    },
+    "opacity": {
+        "subtle": "opacity",
+        "muted": "opacity",
+        "secondary": "opacity",
+        "strong": "opacity",
+    },
+    "effect": {
+        "glowBlur": "length",
+        "glowOpacity": "opacity",
+    },
+    "layout": {
+        "contentWidth": "length",
+        "columns": "number",
+    },
+    "motion": {
+        "fast": "duration",
+        "standard": "duration",
+    },
+}
+
+TokenValue = str | int | float | tuple[str, ...]
 
 
 class DesignTokenError(ValueError):
@@ -51,11 +147,35 @@ class ContrastPair:
 
 
 @dataclass(frozen=True, slots=True)
+class RawDesignToken:
+    token_id: str
+    kind: str
+    value: TokenValue
+
+
+@dataclass(frozen=True, slots=True)
+class SemanticTokenReference:
+    reference: str
+    resolved_token_id: str
+    kind: str
+
+
+@dataclass(frozen=True, slots=True)
+class SemanticTokenGroup:
+    group_id: str
+    tokens: Mapping[str, SemanticTokenReference]
+
+    def __getitem__(self, role_id: str) -> SemanticTokenReference:
+        return self.tokens[role_id]
+
+
+@dataclass(frozen=True, slots=True)
 class DesignTokenSnapshot:
     schema_version: int
     theme_id: str
     colors: tuple[ColorToken, ...]
     font_stack: tuple[str, ...]
+    mono_stack: tuple[str, ...]
     type_sizes: tuple[NumericToken, ...]
     type_weights: tuple[NumericToken, ...]
     tracking: tuple[NumericToken, ...]
@@ -66,6 +186,9 @@ class DesignTokenSnapshot:
     opacity: tuple[NumericToken, ...]
     layout: tuple[NumericToken, ...]
     effects: tuple[NumericToken, ...]
+    motion_durations: tuple[NumericToken, ...]
+    raw_tokens: Mapping[str, RawDesignToken]
+    semantic_groups: Mapping[str, SemanticTokenGroup]
     motion: str
     density: str
     corner_language: str
@@ -151,6 +274,23 @@ def _numeric_group(
     return tuple(records)
 
 
+def _font_stack(value: object, context: str) -> tuple[str, ...]:
+    values = _array(value, context)
+    stack: list[str] = []
+
+    for index, font_value in enumerate(values):
+        if not isinstance(font_value, str) or not font_value.strip():
+            raise DesignTokenError(
+                f"{context}[{index}] must contain a non-empty string"
+            )
+        stack.append(font_value.strip())
+
+    if not stack or len(stack) != len(set(stack)):
+        raise DesignTokenError(f"{context} must contain unique values")
+
+    return tuple(stack)
+
+
 def _strictly(values: tuple[float, ...], *, descending: bool, context: str) -> None:
     pairs = zip(values, values[1:], strict=False)
     valid = (
@@ -188,6 +328,185 @@ def _contrast(foreground: str, background: str) -> float:
     return (lighter + 0.05) / (darker + 0.05)
 
 
+def _raw_token_index(
+    *,
+    colors: tuple[ColorToken, ...],
+    font_stack: tuple[str, ...],
+    mono_stack: tuple[str, ...],
+    type_sizes: tuple[NumericToken, ...],
+    type_weights: tuple[NumericToken, ...],
+    tracking: tuple[NumericToken, ...],
+    spacing_unit: int,
+    spacing_steps: tuple[int, ...],
+    radii: tuple[NumericToken, ...],
+    strokes: tuple[NumericToken, ...],
+    opacity: tuple[NumericToken, ...],
+    layout: tuple[NumericToken, ...],
+    effects: tuple[NumericToken, ...],
+    motion_durations: tuple[NumericToken, ...],
+) -> Mapping[str, RawDesignToken]:
+    records: dict[str, RawDesignToken] = {}
+
+    def add(token_id: str, kind: str, value: TokenValue) -> None:
+        if token_id in records:
+            raise DesignTokenError(f"Duplicate raw token path: {token_id}")
+        records[token_id] = RawDesignToken(token_id, kind, value)
+
+    for color_token in colors:
+        add(color_token.token_id, "color", color_token.value)
+
+    add("typography.fontStack", "font-stack", font_stack)
+    add("typography.monoStack", "font-stack", mono_stack)
+
+    for type_size_token in type_sizes:
+        add(
+            f"typography.sizes.{type_size_token.token_id}",
+            "length",
+            type_size_token.value,
+        )
+    for type_weight_token in type_weights:
+        add(
+            f"typography.weights.{type_weight_token.token_id}",
+            "font-weight",
+            type_weight_token.value,
+        )
+    for tracking_token in tracking:
+        add(
+            f"typography.tracking.{tracking_token.token_id}",
+            "tracking",
+            tracking_token.value,
+        )
+
+    add("spacing.unit", "length", spacing_unit)
+    for index, value in enumerate(spacing_steps):
+        add(f"spacing.steps.{index}", "length", value)
+
+    for radius_token in radii:
+        add(
+            f"radii.{radius_token.token_id}",
+            "length",
+            radius_token.value,
+        )
+    for stroke_token in strokes:
+        add(
+            f"strokes.{stroke_token.token_id}",
+            "length",
+            stroke_token.value,
+        )
+    for opacity_token in opacity:
+        add(
+            f"opacity.{opacity_token.token_id}",
+            "opacity",
+            opacity_token.value,
+        )
+
+    for layout_token in layout:
+        kind = "number" if layout_token.token_id == "columns" else "length"
+        add(
+            f"layout.{layout_token.token_id}",
+            kind,
+            layout_token.value,
+        )
+
+    for effect_token in effects:
+        kind = "opacity" if effect_token.token_id == "glowOpacity" else "length"
+        add(
+            f"effects.{effect_token.token_id}",
+            kind,
+            effect_token.value,
+        )
+
+    for duration_token in motion_durations:
+        add(
+            f"motion.duration.{duration_token.token_id}",
+            "duration",
+            duration_token.value,
+        )
+
+    return MappingProxyType(records)
+
+
+def _semantic_groups(
+    value: object,
+    raw_tokens: Mapping[str, RawDesignToken],
+) -> Mapping[str, SemanticTokenGroup]:
+    semantic = _mapping(value, "Design token source.semantic")
+    _exact_keys(
+        semantic,
+        set(SEMANTIC_ROLE_KINDS),
+        "Design token source.semantic",
+    )
+
+    authored: dict[str, tuple[str, str]] = {}
+
+    for group_id, role_kinds in SEMANTIC_ROLE_KINDS.items():
+        context = f"Design token source.semantic.{group_id}"
+        group = _mapping(semantic.get(group_id), context)
+        _exact_keys(group, set(role_kinds), context)
+
+        for role_id, required_kind in role_kinds.items():
+            reference = _text(group, role_id, context)
+            authored[f"semantic.{group_id}.{role_id}"] = (
+                reference,
+                required_kind,
+            )
+
+    resolved_cache: dict[str, RawDesignToken] = {}
+
+    def resolve(path: str, stack: tuple[str, ...]) -> RawDesignToken:
+        raw = raw_tokens.get(path)
+        if raw is not None:
+            return raw
+
+        cached = resolved_cache.get(path)
+        if cached is not None:
+            return cached
+
+        authored_entry = authored.get(path)
+        if authored_entry is None:
+            origin = stack[0]
+            raise DesignTokenError(f"{origin} references unknown token {path}")
+
+        if path in stack:
+            cycle_start = stack.index(path)
+            cycle = (*stack[cycle_start:], path)
+            raise DesignTokenError(f"Semantic reference cycle: {' -> '.join(cycle)}")
+
+        reference, required_kind = authored_entry
+        target = resolve(reference, (*stack, path))
+
+        if target.kind != required_kind:
+            raise DesignTokenError(
+                f"{path} requires a {required_kind} token; "
+                f"{reference} resolves to {target.kind}"
+            )
+
+        resolved_cache[path] = target
+        return target
+
+    groups: dict[str, SemanticTokenGroup] = {}
+
+    for group_id, role_kinds in SEMANTIC_ROLE_KINDS.items():
+        references: dict[str, SemanticTokenReference] = {}
+
+        for role_id in role_kinds:
+            path = f"semantic.{group_id}.{role_id}"
+            reference, required_kind = authored[path]
+            target = resolve(path, ())
+            references[role_id] = SemanticTokenReference(
+                reference=reference,
+                resolved_token_id=target.token_id,
+                kind=required_kind,
+            )
+
+        groups[group_id] = SemanticTokenGroup(
+            group_id=group_id,
+            tokens=MappingProxyType(references),
+        )
+
+    return MappingProxyType(groups)
+
+
 def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
     source = _mapping(
         json.loads(path.read_text(encoding="utf-8")),
@@ -206,6 +525,8 @@ def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
             "opacity",
             "layout",
             "effects",
+            "motion",
+            "semantic",
             "rules",
         },
         "Design token source",
@@ -260,26 +581,18 @@ def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
     )
     _exact_keys(
         typography,
-        {"fontStack", "sizes", "weights", "tracking"},
+        {"fontStack", "monoStack", "sizes", "weights", "tracking"},
         "Design token source.typography",
     )
 
-    font_values = _array(
+    font_stack = _font_stack(
         typography.get("fontStack"),
         "Design token source.typography.fontStack",
     )
-    font_stack: list[str] = []
-
-    for index, font_value in enumerate(font_values):
-        if not isinstance(font_value, str) or not font_value.strip():
-            raise DesignTokenError(
-                "Design token source.typography.fontStack"
-                f"[{index}] must contain a non-empty string"
-            )
-        font_stack.append(font_value.strip())
-
-    if not font_stack or len(font_stack) != len(set(font_stack)):
-        raise DesignTokenError("Typography fontStack must contain unique values")
+    mono_stack = _font_stack(
+        typography.get("monoStack"),
+        "Design token source.typography.monoStack",
+    )
 
     type_sizes = _numeric_group(
         typography.get("sizes"),
@@ -362,6 +675,14 @@ def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
         "Design token source.effects",
     )
 
+    motion_source = _mapping(source.get("motion"), "Design token source.motion")
+    _exact_keys(motion_source, {"duration"}, "Design token source.motion")
+    motion_durations = _numeric_group(
+        motion_source.get("duration"),
+        MOTION_DURATION_IDS,
+        "Design token source.motion.duration",
+    )
+
     if any(float(record.value) <= 0 for record in radii + strokes):
         raise DesignTokenError("Radii and strokes must be positive")
 
@@ -388,6 +709,18 @@ def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
         raise DesignTokenError("effects.glowBlur must be between zero and 32")
     if not 0 <= effect_values["glowOpacity"] <= 1:
         raise DesignTokenError("effects.glowOpacity must be between zero and one")
+
+    duration_values = tuple(float(record.value) for record in motion_durations)
+    _strictly(
+        duration_values,
+        descending=False,
+        context="Motion durations",
+    )
+
+    if any(value <= 0 or value > 1000 for value in duration_values):
+        raise DesignTokenError(
+            "Motion durations must be greater than zero and at most 1000 milliseconds"
+        )
 
     rules = _mapping(source.get("rules"), "Design token source.rules")
     _exact_keys(
@@ -456,11 +789,10 @@ def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
     if not contrast_pairs:
         raise DesignTokenError("At least one contrast pair is required")
 
-    return DesignTokenSnapshot(
-        schema_version=schema_version,
-        theme_id=theme_id,
+    raw_tokens = _raw_token_index(
         colors=tuple(colors),
-        font_stack=tuple(font_stack),
+        font_stack=font_stack,
+        mono_stack=mono_stack,
         type_sizes=type_sizes,
         type_weights=type_weights,
         tracking=tracking,
@@ -471,6 +803,29 @@ def load_design_token_snapshot(path: Path) -> DesignTokenSnapshot:
         opacity=opacity,
         layout=layout,
         effects=effects,
+        motion_durations=motion_durations,
+    )
+    semantic_groups = _semantic_groups(source.get("semantic"), raw_tokens)
+
+    return DesignTokenSnapshot(
+        schema_version=schema_version,
+        theme_id=theme_id,
+        colors=tuple(colors),
+        font_stack=font_stack,
+        mono_stack=mono_stack,
+        type_sizes=type_sizes,
+        type_weights=type_weights,
+        tracking=tracking,
+        spacing_unit=spacing_unit,
+        spacing_steps=tuple(spacing_steps),
+        radii=radii,
+        strokes=strokes,
+        opacity=opacity,
+        layout=layout,
+        effects=effects,
+        motion_durations=motion_durations,
+        raw_tokens=raw_tokens,
+        semantic_groups=semantic_groups,
         motion=motion,
         density=density,
         corner_language=corner_language,

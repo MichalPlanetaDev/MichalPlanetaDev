@@ -54,6 +54,41 @@ class DesignTokenTests(unittest.TestCase):
             snapshot.semantic_groups["font"]["content"].reference,
         )
 
+    def test_semantic_reference_chain_resolves_to_raw_token(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            semantic = document["semantic"]
+            assert isinstance(semantic, dict)
+            surface = semantic["surface"]
+            assert isinstance(surface, dict)
+            surface["canvas"] = "semantic.surface.depth"
+            path = self.write_document(document, Path(temporary_directory))
+
+            snapshot = load_design_token_snapshot(path)
+            reference = snapshot.semantic_groups["surface"]["canvas"]
+
+            self.assertEqual("semantic.surface.depth", reference.reference)
+            self.assertEqual("background.deep", reference.resolved_token_id)
+            self.assertEqual("color", reference.kind)
+
+    def test_nested_unknown_reference_identifies_immediate_owner(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            document = self.load_document()
+            semantic = document["semantic"]
+            assert isinstance(semantic, dict)
+            surface = semantic["surface"]
+            assert isinstance(surface, dict)
+            surface["canvas"] = "semantic.surface.depth"
+            surface["depth"] = "background.missing"
+            path = self.write_document(document, Path(temporary_directory))
+
+            with self.assertRaisesRegex(
+                DesignTokenError,
+                r"semantic\.surface\.depth references unknown token "
+                r"background\.missing",
+            ):
+                load_design_token_snapshot(path)
+
     def test_unknown_semantic_reference_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             document = self.load_document()

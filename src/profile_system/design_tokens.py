@@ -464,8 +464,8 @@ def _semantic_groups(
 
         authored_entry = authored.get(path)
         if authored_entry is None:
-            origin = stack[0]
-            raise DesignTokenError(f"{origin} references unknown token {path}")
+            owner = stack[-1]
+            raise DesignTokenError(f"{owner} references unknown token {path}")
 
         if path in stack:
             cycle_start = stack.index(path)

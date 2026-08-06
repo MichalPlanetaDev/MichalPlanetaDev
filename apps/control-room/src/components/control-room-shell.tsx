@@ -54,7 +54,7 @@ export function ControlRoomShell({
 
       <main id="main-content" tabIndex={-1}>
         <section className="hero" id="profile">
-          <div className="hero-copy">
+          <div className="hero-copy identity-surface">
             <p className="eyebrow">{profile.identity.headline}</p>
             <h1>{profile.displayName}</h1>
             <p className="hero-role">{profile.identity.role}</p>

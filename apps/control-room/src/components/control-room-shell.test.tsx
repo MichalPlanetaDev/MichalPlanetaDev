@@ -33,6 +33,23 @@ describe("ControlRoomShell", () => {
     }
   });
 
+  it("preserves domain-specific composition hooks", () => {
+    const { container } = render(
+      <ControlRoomShell profile={publicProfile} />,
+    );
+
+    for (const selector of [
+      ".identity-surface",
+      ".scene-architecture",
+      ".project-sequence",
+      ".discipline-map",
+      ".evidence-timeline",
+      ".contact-links",
+    ]) {
+      expect(container.querySelector(selector)).not.toBeNull();
+    }
+  });
+
   it("keeps projects, evidence, and contact outside the scene layer", () => {
     const { container } = render(
       <ControlRoomShell profile={publicProfile} />,

@@ -7,12 +7,11 @@ import unittest
 import xml.etree.ElementTree as element_tree
 from pathlib import Path
 
-from profile_system.svg_document import render_svg_probe
-
 from profile_system.probes import (
     ProbeDataError,
     load_svg_probe_snapshot,
 )
+from profile_system.svg_document import render_svg_probe
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PROBE_SOURCE = REPOSITORY_ROOT / "profile" / "probes" / "github-svg-capabilities.json"

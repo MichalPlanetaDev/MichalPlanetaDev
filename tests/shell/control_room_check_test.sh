@@ -8,7 +8,6 @@ REPOSITORY_ROOT="$(
 TEMPORARY_ROOT="$(mktemp -d)"
 FIXTURE="$TEMPORARY_ROOT/repository"
 FAKE_BIN="$TEMPORARY_ROOT/bin"
-MARKER_ROOT="$TEMPORARY_ROOT/markers"
 STDOUT_FILE="$TEMPORARY_ROOT/stdout"
 STDERR_FILE="$TEMPORARY_ROOT/stderr"
 
@@ -23,7 +22,7 @@ fail() {
 
 trap cleanup EXIT
 
-mkdir -p "$FIXTURE" "$FAKE_BIN" "$MARKER_ROOT"
+mkdir -p "$FIXTURE" "$FAKE_BIN"
 
 tar \
     --exclude='./.git' \
@@ -43,45 +42,24 @@ tar \
     . |
     tar -C "$FIXTURE" -xf -
 
-mkdir -p "$FIXTURE/apps/control-room/src/generated"
 printf 'stale design token fixture\n' \
     >"$FIXTURE/apps/control-room/src/generated/design-tokens.css"
 
-cat >"$FIXTURE/scripts/profile_check.sh" <<'PROFILE_CHECK_STUB'
+cat >"$FAKE_BIN/uv" <<'UV_STUB'
 #!/usr/bin/env bash
-set -Eeuo pipefail
-exit 0
-PROFILE_CHECK_STUB
-chmod +x "$FIXTURE/scripts/profile_check.sh"
+printf 'unexpected uv invocation\n' >&2
+exit 97
+UV_STUB
 
-cat >"$FIXTURE/tests/shell/control_room_data_test.sh" <<'DATA_MARKER'
+cat >"$FAKE_BIN/python3" <<'PYTHON_STUB'
 #!/usr/bin/env bash
-set -Eeuo pipefail
-: "${CONTROL_ROOM_SHELL_TEST_MARKER_ROOT:?}"
-touch "$CONTROL_ROOM_SHELL_TEST_MARKER_ROOT/data-test-ran"
-DATA_MARKER
+printf 'unexpected python3 invocation\n' >&2
+exit 98
+PYTHON_STUB
 
-cat >"$FIXTURE/tests/shell/control_room_check_test.sh" <<'CHECK_MARKER'
-#!/usr/bin/env bash
-set -Eeuo pipefail
-: "${CONTROL_ROOM_SHELL_TEST_MARKER_ROOT:?}"
-touch "$CONTROL_ROOM_SHELL_TEST_MARKER_ROOT/check-test-ran"
-CHECK_MARKER
-
-chmod +x \
-    "$FIXTURE/tests/shell/control_room_data_test.sh" \
-    "$FIXTURE/tests/shell/control_room_check_test.sh"
-
-cat >"$FAKE_BIN/pnpm" <<'PNPM_STUB'
-#!/usr/bin/env bash
-set -Eeuo pipefail
-exit 0
-PNPM_STUB
-chmod +x "$FAKE_BIN/pnpm"
+chmod +x "$FAKE_BIN/uv" "$FAKE_BIN/python3"
 
 set +e
-CONTROL_ROOM_SHELL_TEST_MARKER_ROOT="$MARKER_ROOT" \
-UV_LINK_MODE=copy \
 PATH="$FAKE_BIN:$PATH" \
     "$FIXTURE/scripts/control_room_check.sh" \
     >"$STDOUT_FILE" \
@@ -99,8 +77,10 @@ grep -F \
     >/dev/null ||
     fail "stale design token diagnostic did not identify the CSS artifact"
 
-test -f "$MARKER_ROOT/data-test-ran" ||
-    fail "control_room_check.sh did not run the data-generation shell test"
+if grep -F "unexpected uv invocation" "$STDERR_FILE" >/dev/null; then
+    fail "canonical Control Room gate still invoked uv"
+fi
 
-test -f "$MARKER_ROOT/check-test-ran" ||
-    fail "control_room_check.sh did not run the stale-output shell test"
+if grep -F "unexpected python3 invocation" "$STDERR_FILE" >/dev/null; then
+    fail "canonical Control Room gate still invoked python3"
+fi

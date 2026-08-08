@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-export PYTHONDONTWRITEBYTECODE=1
 
 REPOSITORY_ROOT="$(
     cd "$(dirname "${BASH_SOURCE[0]}")/.." &&
@@ -9,9 +8,6 @@ REPOSITORY_ROOT="$(
 CHECK_ROOT="$REPOSITORY_ROOT/.profile-build/control-room-check"
 FIRST_ROOT="$CHECK_ROOT/first"
 SECOND_ROOT="$CHECK_ROOT/second"
-
-PROFILE_SOURCE="$REPOSITORY_ROOT/profile/profile.json"
-TOKEN_SOURCE="$REPOSITORY_ROOT/profile/design-tokens.json"
 
 COMMITTED_PROFILE="$REPOSITORY_ROOT/apps/control-room/src/generated/public-profile.json"
 COMMITTED_TOKEN_CSS="$REPOSITORY_ROOT/apps/control-room/src/generated/design-tokens.css"
@@ -24,6 +20,10 @@ FIRST_TOKEN_TYPESCRIPT="$FIRST_ROOT/design-tokens.ts"
 SECOND_PROFILE="$SECOND_ROOT/public-profile.json"
 SECOND_TOKEN_CSS="$SECOND_ROOT/design-tokens.css"
 SECOND_TOKEN_TYPESCRIPT="$SECOND_ROOT/design-tokens.ts"
+
+cleanup() {
+    rm -rf "$CHECK_ROOT"
+}
 
 assert_current_artifact() {
     local generated_path="$1"
@@ -42,31 +42,21 @@ assert_current_artifact() {
 generate_contracts() {
     local output_root="$1"
 
-    uv run profile-system frontend \
-        --source "$PROFILE_SOURCE" \
-        --output "$output_root/public-profile.json"
-
-    uv run profile-system frontend-tokens \
-        --source "$TOKEN_SOURCE" \
-        --css-output "$output_root/design-tokens.css" \
-        --typescript-output "$output_root/design-tokens.ts"
+    node \
+        "$REPOSITORY_ROOT/apps/control-room/tools/generate-control-room-contracts.ts" \
+        --output-root "$output_root"
 }
+
+trap cleanup EXIT
 
 cd "$REPOSITORY_ROOT"
 
 rm -rf "$CHECK_ROOT"
 mkdir -p "$FIRST_ROOT" "$SECOND_ROOT"
 
-scripts/profile_check.sh
-
 shellcheck \
     scripts/control_room_check.sh \
-    scripts/control_room_data.sh \
-    tests/shell/control_room_check_test.sh \
-    tests/shell/control_room_data_test.sh
-
-tests/shell/control_room_data_test.sh
-tests/shell/control_room_check_test.sh
+    tests/shell/control_room_check_test.sh
 
 generate_contracts "$FIRST_ROOT"
 generate_contracts "$SECOND_ROOT"
@@ -83,7 +73,9 @@ test -s "$COMMITTED_TOKEN_TYPESCRIPT"
 
 assert_current_artifact "$FIRST_PROFILE" "$SECOND_PROFILE"
 assert_current_artifact "$FIRST_TOKEN_CSS" "$SECOND_TOKEN_CSS"
-assert_current_artifact "$FIRST_TOKEN_TYPESCRIPT" "$SECOND_TOKEN_TYPESCRIPT"
+assert_current_artifact \
+    "$FIRST_TOKEN_TYPESCRIPT" \
+    "$SECOND_TOKEN_TYPESCRIPT"
 
 assert_current_artifact "$FIRST_PROFILE" "$COMMITTED_PROFILE"
 assert_current_artifact "$FIRST_TOKEN_CSS" "$COMMITTED_TOKEN_CSS"
@@ -91,12 +83,15 @@ assert_current_artifact \
     "$FIRST_TOKEN_TYPESCRIPT" \
     "$COMMITTED_TOKEN_TYPESCRIPT"
 
-python3 -B -m json.tool "$FIRST_PROFILE" >/dev/null
+node -e \
+    'JSON.parse(require("node:fs").readFileSync(process.argv[1], "utf8"))' \
+    "$FIRST_PROFILE"
 
 pnpm install \
     --frozen-lockfile \
     --ignore-scripts
 
+pnpm --filter @michal-planeta/control-room typecheck:tools
 pnpm --filter @michal-planeta/control-room typecheck
 pnpm --filter @michal-planeta/control-room test
 pnpm --filter @michal-planeta/control-room build
@@ -104,5 +99,5 @@ pnpm --filter @michal-planeta/control-room test:e2e
 
 printf '[PASS] Deterministic public frontend projection\n'
 printf '[PASS] Deterministic generated design contracts\n'
-printf '[PASS] Strict TypeScript and component contracts\n'
+printf '[PASS] Strict TypeScript tool and application contracts\n'
 printf '[PASS] Production build and browser acceptance\n'

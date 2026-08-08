@@ -161,7 +161,7 @@ footer {
 }
 
 .site-identity small {
-  color: var(--cr-content-muted);
+  color: var(--cr-content-secondary);
   font-family: var(--cr-font-technical);
   font-size: var(--cr-type-size-micro);
   letter-spacing: var(--cr-tracking-label);
@@ -992,7 +992,7 @@ footer {
   border-top:
     var(--cr-stroke-hairline) solid
     var(--cr-structure-subtle);
-  color: var(--cr-content-muted);
+  color: var(--cr-content-secondary);
   font-family: var(--cr-font-technical);
   font-size: var(--cr-type-size-label);
   letter-spacing: var(--cr-tracking-label);

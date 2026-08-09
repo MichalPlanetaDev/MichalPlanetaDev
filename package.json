@@ -7,10 +7,6 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "profile:build": "bash scripts/profile_build.sh",
-    "profile:check": "bash scripts/profile_check.sh",
-    "profile:probe": "bash scripts/profile_probe.sh",
-    "profile:tokens": "bash scripts/profile_tokens.sh",
     "control-room:data": "pnpm --filter @michal-planeta/control-room generate:contracts",
     "control-room:typecheck": "pnpm --filter @michal-planeta/control-room typecheck",
     "control-room:test": "pnpm --filter @michal-planeta/control-room test",

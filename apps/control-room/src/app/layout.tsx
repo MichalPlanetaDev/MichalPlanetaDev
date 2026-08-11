@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+
+import "@/generated/design-tokens.css";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Michał Planeta · Engineering Control Room",
+  description:
+    "An evidence-driven engineering portfolio across rendering, systems, " +
+    "automation, quality engineering, and technical design.",
+};
+
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<RootLayoutProps>) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}

@@ -271,4 +271,79 @@ describe("authored profile source", () => {
       "Profile source.links[0].url must contain an absolute https URL or contact mailto URL",
     );
   });
+
+  test("repository profile reflects post-contraction TypeScript architecture", async () => {
+    const { parseProfileSource } = await profileSourceModule();
+    const document = JSON.parse(
+      readFileSync(repositoryProfilePath, "utf8"),
+    ) as unknown;
+    const profile = parseProfileSource(document);
+
+    const profileProject = profile.projects.find(
+      (project) => project.id === "github-profile-system",
+    );
+
+    expect(profileProject).toBeDefined();
+
+    if (!profileProject) {
+      throw new Error("github-profile-system project is missing");
+    }
+
+    expect(profileProject.technologyIds).toEqual([
+      "typescript",
+      "nodejs",
+      "nextjs",
+      "react",
+      "pnpm",
+      "github-actions",
+      "playwright",
+      "shellcheck",
+    ]);
+
+    for (const retiredTechnologyId of [
+      "python",
+      "uv",
+      "svg",
+      "xmllint",
+    ]) {
+      expect(
+        profile.technologies.some(
+          (technology) => technology.id === retiredTechnologyId,
+        ),
+      ).toBe(false);
+    }
+
+    const repositoryEvidence = profile.evidence.find(
+      (evidence) => evidence.id === "profile-system-repository",
+    );
+    const testEvidence = profile.evidence.find(
+      (evidence) => evidence.id === "profile-system-tests",
+    );
+    const renderingDiscipline = profile.disciplines.find(
+      (discipline) => discipline.id === "rendering-and-graphics",
+    );
+
+    expect(repositoryEvidence).toBeDefined();
+    expect(testEvidence).toBeDefined();
+    expect(renderingDiscipline).toBeDefined();
+
+    if (!repositoryEvidence || !testEvidence || !renderingDiscipline) {
+      throw new Error("Required post-contraction evidence is missing");
+    }
+
+    const retiredEvidencePattern =
+      /static svg capability probe|xml validation|static vector publication/i;
+
+    expect(repositoryEvidence.summary).not.toMatch(
+      retiredEvidencePattern,
+    );
+    expect(testEvidence.summary).not.toMatch(retiredEvidencePattern);
+    expect(renderingDiscipline.summary).not.toMatch(
+      retiredEvidencePattern,
+    );
+    expect(renderingDiscipline.projectIds).not.toContain(
+      "github-profile-system",
+    );
+  });
+
 });

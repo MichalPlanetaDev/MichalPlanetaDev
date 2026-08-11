@@ -13,19 +13,20 @@
     {
       "id": "github-profile-system",
       "name": "GitHub Profile System",
-      "summary": "A deterministic publication system for a cinematic, evidence-driven GitHub engineering profile.",
+      "summary": "A deterministic TypeScript and Next.js publication system for an evidence-driven GitHub engineering profile.",
       "status": "active",
       "public": true,
       "featured": true,
       "priority": 10,
       "technologyIds": [
-        "python",
-        "svg",
-        "uv",
+        "typescript",
+        "nodejs",
+        "nextjs",
+        "react",
         "pnpm",
         "github-actions",
-        "shellcheck",
-        "xmllint"
+        "playwright",
+        "shellcheck"
       ],
       "evidenceIds": [
         "profile-system-repository",
@@ -63,7 +64,7 @@
       "id": "profile-system-repository",
       "kind": "repository",
       "label": "Repository history",
-      "summary": "The work branch records the deterministic build foundation, static SVG capability probe, tests, and publication safeguards.",
+      "summary": "The work branch records the TypeScript contract-generation boundary, Control Room frontend, behavioral tests, and publication safeguards.",
       "public": true,
       "linkId": "profile-system-repository-link"
     },
@@ -71,7 +72,7 @@
       "id": "profile-system-tests",
       "kind": "tests",
       "label": "Deterministic quality gates",
-      "summary": "Repository checks cover formatting, linting, strict typing, behavioral tests, shell validation, XML validation, and byte-identical regeneration.",
+      "summary": "Repository checks cover deterministic contract generation, ShellCheck, strict TypeScript checking, behavioral tests, production builds, and Playwright browser acceptance.",
       "public": true,
       "linkId": null
     },
@@ -79,7 +80,7 @@
       "id": "profile-system-architecture",
       "kind": "architecture",
       "label": "Publication architecture",
-      "summary": "The system separates authored data, validated models, public projection, deterministic generation, and later presentation layers.",
+      "summary": "The system separates authored profile data, validated TypeScript models, public projection, deterministic frontend contracts, and presentation boundaries.",
       "public": true,
       "linkId": null
     },
@@ -131,15 +132,45 @@
       ]
     },
     {
+      "id": "nextjs",
+      "name": "Next.js",
+      "category": "framework",
+      "usage": "Static Control Room application structure, production builds, and deployment-ready presentation.",
+      "public": true,
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "evidenceIds": [
+        "profile-system-architecture",
+        "profile-system-tests"
+      ]
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "runtime",
+      "usage": "Native TypeScript contract generation and repository-owned tooling on the Node.js 24 runtime.",
+      "public": true,
+      "projectIds": [
+        "github-profile-system"
+      ],
+      "evidenceIds": [
+        "profile-system-architecture",
+        "profile-system-tests"
+      ]
+    },
+    {
       "id": "playwright",
       "name": "Playwright",
       "category": "testing",
-      "usage": "Browser smoke verification for critical interactive project flows.",
+      "usage": "Browser acceptance for the Control Room presentation and smoke verification for critical interactive project flows.",
       "public": true,
       "projectIds": [
+        "github-profile-system",
         "space-invaders-adventure"
       ],
       "evidenceIds": [
+        "profile-system-tests",
         "space-combat-tests"
       ]
     },
@@ -157,17 +188,16 @@
       ]
     },
     {
-      "id": "python",
-      "name": "Python",
-      "category": "language",
-      "usage": "Typed domain models, validation, deterministic generation, and repository tooling.",
+      "id": "react",
+      "name": "React",
+      "category": "framework",
+      "usage": "Semantic Control Room interface composition and failure-resilient presentation boundaries.",
       "public": true,
       "projectIds": [
         "github-profile-system"
       ],
       "evidenceIds": [
-        "profile-system-architecture",
-        "profile-system-tests"
+        "profile-system-architecture"
       ]
     },
     {
@@ -184,43 +214,19 @@
       ]
     },
     {
-      "id": "svg",
-      "name": "SVG",
-      "category": "graphics",
-      "usage": "Deterministic, repository-owned GitHub visual surfaces with validated static capabilities.",
-      "public": true,
-      "projectIds": [
-        "github-profile-system"
-      ],
-      "evidenceIds": [
-        "profile-system-repository",
-        "profile-system-tests"
-      ]
-    },
-    {
       "id": "typescript",
       "name": "TypeScript",
       "category": "language",
-      "usage": "Typed browser gameplay systems and rendering integration.",
+      "usage": "Typed profile validation, deterministic contract generation, Control Room tooling, browser gameplay systems, and rendering integration.",
       "public": true,
       "projectIds": [
+        "github-profile-system",
         "space-invaders-adventure"
       ],
       "evidenceIds": [
+        "profile-system-architecture",
+        "profile-system-tests",
         "space-combat-systems"
-      ]
-    },
-    {
-      "id": "uv",
-      "name": "uv",
-      "category": "tool",
-      "usage": "Locked Python environment resolution and command execution.",
-      "public": true,
-      "projectIds": [
-        "github-profile-system"
-      ],
-      "evidenceIds": [
-        "profile-system-tests"
       ]
     },
     {
@@ -234,19 +240,6 @@
       ],
       "evidenceIds": [
         "space-combat-systems"
-      ]
-    },
-    {
-      "id": "xmllint",
-      "name": "xmllint",
-      "category": "testing",
-      "usage": "Structural XML validation for generated SVG publication artifacts.",
-      "public": true,
-      "projectIds": [
-        "github-profile-system"
-      ],
-      "evidenceIds": [
-        "profile-system-tests"
       ]
     }
   ],
@@ -280,14 +273,12 @@
     {
       "id": "rendering-and-graphics",
       "name": "Rendering and Graphics",
-      "summary": "Work spans browser graphics APIs, scene composition, static vector publication, fallback strategy, and rendering verification.",
+      "summary": "Work spans browser graphics APIs, scene composition, fallback strategy, and rendering verification.",
       "public": true,
       "projectIds": [
-        "github-profile-system",
         "space-invaders-adventure"
       ],
       "evidenceIds": [
-        "profile-system-repository",
         "space-combat-systems"
       ]
     },

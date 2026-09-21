@@ -1,0 +1,18 @@
+{
+  "name": "michal-planeta-profile-system",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "control-room:data": "pnpm --filter @michal-planeta/control-room generate:contracts",
+    "control-room:typecheck": "pnpm --filter @michal-planeta/control-room typecheck",
+    "control-room:test": "pnpm --filter @michal-planeta/control-room test",
+    "control-room:test:e2e": "pnpm --filter @michal-planeta/control-room test:e2e",
+    "control-room:build": "pnpm --filter @michal-planeta/control-room build",
+    "control-room:check": "tests/shell/control_room_check_test.sh && bash scripts/control_room_check.sh",
+    "control-room:dev": "pnpm --filter @michal-planeta/control-room dev"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "widgets": [
+    {
+      "instanceId": "widget_1791834451854",
+      "widgetId": "premium-ascii-profile-card",
+      "name": "Premium-ascii-profile-card Widget",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 800,
+        "height": 800
+      },
+      "config": {
+        "lockAspectRatio": true,
+        "transparentBackground": true,
+        "backgroundColor": "transparent",
+        "accentColor": "#39c5cf",
+        "secondaryColor": "#58a6ff",
+        "borderColor": "#1f3448",
+        "hideBorder": false,
+        "customName": "Michał Płaneta",
+        "customRoles": "Software Engineering, Game Development, DevOps/Cloud",
+        "showWebsite": false,
+        "showTerminalPrompt": true,
+        "customLocation": "Krakow, Poland",
+        "selectedRepos": [
+          "slot_guard",
+          "afterlight",
+          "tickline",
+          "api-content-parser"
+        ],
+        "maxRepos": 4,
+        "langsCount": 6
+      },
+      "locked": false,
+      "visible": true,
+      "zIndex": 3
+    },
+    {
+      "instanceId": "widget_1791835256908",
+      "widgetId": "avatar",
+      "name": "Avatar Widget",
+      "position": {
+        "x": 544,
+        "y": 88
+      },
+      "size": {
+        "width": 160,
+        "height": 160
+      },
+      "config": {
+        "lockAspectRatio": true
+      },
+      "locked": false,
+      "visible": true,
+      "zIndex": 3
+    },
+    {
+      "instanceId": "widget_1791835494255",
+      "widgetId": "asciiprofile-heatmap",
+      "name": "Asciiprofile-heatmap Widget",
+      "position": {
+        "x": 40,
+        "y": 1072
+      },
+      "size": {
+        "width": 720,
+        "height": 240
+      },
+      "config": {
+        "accentColor": "#ffa657",
+        "paletteIndex": 2,
+        "palette": [
+          "#161b22",
+          "#1f2937",
+          "#3b82f6",
+          "#60a5fa",
+          "#93c5fd",
+          "#c084fc"
+        ]
+      },
+      "locked": false,
+      "visible": true,
+      "zIndex": 5
+    },
+    {
+      "instanceId": "widget_1791836249164",
+      "widgetId": "codeweb-retro-grid",
+      "name": "Codeweb-retro-grid Widget",
+      "position": {
+        "x": 40,
+        "y": 788
+      },
+      "size": {
+        "width": 720,
+        "height": 260
+      },
+      "config": {
+        "selectedTechs": [
+          "cpp",
+          "py",
+          "cs",
+          "postgres",
+          "docker",
+          "linux",
+          "fastapi",
+          "redis",
+          "kubernetes",
+          "githubactions",
+          "azure"
+        ],
+        "lockAspectRatio": false,
+        "accentColor": "#55ffff",
+        "secondaryColor": "#c084fc",
+        "showTitle": true,
+        "displayMode": "both",
+        "technologies": [
+          "cpp",
+          "py",
+          "cs",
+          "postgres",
+          "docker",
+          "linux",
+          "fastapi",
+          "redis",
+          "kubernetes",
+          "githubactions",
+          "azure"
+        ]
+      },
+      "locked": false,
+      "visible": true,
+      "zIndex": 4
+    }
+  ],
+  "globalStyles": {
+    "backgroundColor": "#060606",
+    "textColor": "#e5e5e5",
+    "accentColor": "#c5ff4a",
+    "borderColor": "#252525",
+    "fontFamily": "Inter Tight",
+    "borderRadius": 0,
+    "padding": 24,
+    "themeMode": "dark",
+    "templateStyle": "blank",
+    "transparentBackground": true
+  },
+  "templateId": "blank"
+}
